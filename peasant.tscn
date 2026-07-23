@@ -622,6 +622,8 @@ collision_mask = 13
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3u1pd")
+has_bow = true
+has_sword = true
 arrow_scene = ExtResource("2_p0nvd")
 rock_scene = ExtResource("3_d237o")
 
