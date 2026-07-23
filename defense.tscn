@@ -5,7 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://2qyqn0nlmd55" path="res://sprites/peasant/victory.png" id="3_1mt72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
-size = Vector2(22, 624)
+size = Vector2(22, 1093.8914)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yikbh"]
+vertices = PackedVector2Array(891.0625, 505.8828, 889.0625, -210.32813, 1419.3281, -187.77344, 1422.8906, 817.7422, 532.6719, 826.47656, 681.9375, 505.8828, 530.6719, 210.49219, 683.9297, -203.32031, -89.890625, -193.89063, 323.8125, 215.71875, -86.34375, 820.9375, 326.79688, 826.28125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 8, 9, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1487, 881, 469, 891, 467, 276, 388, 278, 391, 891, -150, 884, -154, -257, 748, -268, 746, 442, 827, 442, 825, -277, 1483, -249)])
+agent_radius = 69.69
 
 [node name="defense" type="Node2D" unique_id=391971717]
 
@@ -13,23 +19,42 @@ size = Vector2(22, 624)
 position = Vector2(534, 171)
 
 [node name="TestEnemy2" parent="." unique_id=1253608452 instance=ExtResource("2_www7w")]
-position = Vector2(268, 339)
+position = Vector2(186, 412)
 
 [node name="TestEnemy3" parent="." unique_id=1895010919 instance=ExtResource("2_www7w")]
-position = Vector2(625, 420)
+position = Vector2(1030, 161)
 
 [node name="Peasant" parent="." unique_id=772900983 instance=ExtResource("1_p2qeu")]
 position = Vector2(331, 195)
 
 [node name="wall" type="StaticBody2D" parent="." unique_id=1701953456]
-position = Vector2(118, 146)
+position = Vector2(787, -71)
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1950632504]
-position = Vector2(1, 164)
+position = Vector2(1, 268.56836)
+scale = Vector2(3.6963475, 0.44507456)
 shape = SubResource("RectangleShape2D_5gpkp")
 
 [node name="Victory" type="Sprite2D" parent="wall" unique_id=1781399969]
-position = Vector2(0.9999999, 164.99998)
-scale = Vector2(0.011857996, 0.58251274)
+position = Vector2(0.9999999, 271.58093)
+scale = Vector2(0.039366066, 0.45077604)
 texture = ExtResource("3_1mt72")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=1818001655]
+position = Vector2(428, 356)
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=927002163]
+position = Vector2(1, 164)
+scale = Vector2(3.6963475, 0.44507456)
+shape = SubResource("RectangleShape2D_5gpkp")
+
+[node name="Victory" type="Sprite2D" parent="wall2" unique_id=154780901]
+position = Vector2(0.9999999, 164)
+scale = Vector2(0.039366066, 0.44444448)
+texture = ExtResource("3_1mt72")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=814512667]
+position = Vector2(1, 0)
+navigation_polygon = SubResource("NavigationPolygon_yikbh")

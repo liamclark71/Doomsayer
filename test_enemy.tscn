@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://xeowil7p14p6" path="res://test_enemy.gd" id="1_ghv5c"]
 [ext_resource type="Texture2D" uid="uid://csplukvcgk8fj" path="res://icon.svg" id="2_yikbh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
-size = Vector2(106, 104)
+[sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
+radius = 63.0
 
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1828912522]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_floor_layers = 4294967280
 script = ExtResource("1_ghv5c")
 metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
 
@@ -17,4 +20,11 @@ texture = ExtResource("2_yikbh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086249025]
 position = Vector2(1, -1)
-shape = SubResource("RectangleShape2D_5gpkp")
+shape = SubResource("CircleShape2D_yikbh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=268476584]
+avoidance_enabled = true
+radius = 50.0
+debug_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

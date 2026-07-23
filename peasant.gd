@@ -29,7 +29,7 @@ func _physics_process(_delta):
 		legs.play("walk")
 	else:
 		legs.play("stand")
-	legs.rotation = velocity.angle() - PI / 2
+	legs.rotation = velocity.angle() + PI / 2
 	torso.look_at(get_global_mouse_position())
 	torso.rotation += deg_to_rad(90)
 	
