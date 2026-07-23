@@ -1,3 +1,35 @@
 [gd_scene format=3 uid="uid://suwqsn8xm3rg"]
 
-[node name="defense" type="Node" unique_id=88942640]
+[ext_resource type="PackedScene" uid="uid://v6h063iyep0p" path="res://peasant.tscn" id="1_p2qeu"]
+[ext_resource type="PackedScene" uid="uid://fmosyq08lpv" path="res://test_enemy.tscn" id="2_www7w"]
+[ext_resource type="Texture2D" uid="uid://2qyqn0nlmd55" path="res://sprites/peasant/victory.png" id="3_1mt72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
+size = Vector2(22, 624)
+
+[node name="defense" type="Node2D" unique_id=391971717]
+
+[node name="TestEnemy" parent="." unique_id=1828912522 instance=ExtResource("2_www7w")]
+position = Vector2(534, 171)
+
+[node name="TestEnemy2" parent="." unique_id=1253608452 instance=ExtResource("2_www7w")]
+position = Vector2(268, 339)
+
+[node name="TestEnemy3" parent="." unique_id=1895010919 instance=ExtResource("2_www7w")]
+position = Vector2(625, 420)
+
+[node name="Peasant" parent="." unique_id=772900983 instance=ExtResource("1_p2qeu")]
+position = Vector2(331, 195)
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=1701953456]
+position = Vector2(118, 146)
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1950632504]
+position = Vector2(1, 164)
+shape = SubResource("RectangleShape2D_5gpkp")
+
+[node name="Victory" type="Sprite2D" parent="wall" unique_id=1781399969]
+position = Vector2(0.9999999, 164.99998)
+scale = Vector2(0.011857996, 0.58251274)
+texture = ExtResource("3_1mt72")

@@ -1,0 +1,542 @@
+[gd_scene format=3 uid="uid://v6h063iyep0p"]
+
+[ext_resource type="Script" uid="uid://hckgky8dnc0b" path="res://peasant.gd" id="1_3u1pd"]
+[ext_resource type="Texture2D" uid="uid://coisfrf0jknyi" path="res://sprites/peasant/peasant leg frames/002.png" id="1_qv86v"]
+[ext_resource type="Texture2D" uid="uid://bfiy3dkj4ucke" path="res://sprites/peasant/peasant leg frames/005.png" id="2_a12kw"]
+[ext_resource type="Texture2D" uid="uid://dgf5vw2cub80s" path="res://sprites/peasant/peasant leg frames/000.png" id="3_aa8ps"]
+[ext_resource type="Texture2D" uid="uid://qsvutt8xtaiq" path="res://sprites/peasant/peasant leg frames/001.png" id="4_a8hvi"]
+[ext_resource type="Texture2D" uid="uid://dcvtfc25a8jn1" path="res://sprites/peasant/peasant leg frames/003.png" id="5_1i6bk"]
+[ext_resource type="Texture2D" uid="uid://cnxhbl6vivvcf" path="res://sprites/peasant/peasant leg frames/004.png" id="6_3u1pd"]
+[ext_resource type="Texture2D" uid="uid://bmggr75v3nbsc" path="res://sprites/peasant/peasant body frames/006.png" id="7_p0nvd"]
+[ext_resource type="Texture2D" uid="uid://ixyc8lh7h5iv" path="res://sprites/peasant/peasant body frames/007.png" id="8_d237o"]
+[ext_resource type="Texture2D" uid="uid://cgweghwsure28" path="res://sprites/peasant/peasant body frames/008.png" id="9_61nkb"]
+[ext_resource type="Texture2D" uid="uid://wg316arnjs66" path="res://sprites/peasant/peasant body frames/009.png" id="10_q71mf"]
+[ext_resource type="Texture2D" uid="uid://d30rsvowlf1d8" path="res://sprites/peasant/peasant body frames/004.png" id="11_1i6bk"]
+[ext_resource type="Texture2D" uid="uid://cebgcpusqvpjm" path="res://sprites/peasant/peasant body frames/000.png" id="11_gp7sx"]
+[ext_resource type="Texture2D" uid="uid://byp45objvopdp" path="res://sprites/peasant/peasant body frames/005.png" id="12_3u1pd"]
+[ext_resource type="Texture2D" uid="uid://k826mq3r6j2e" path="res://sprites/peasant/peasant body frames/001.png" id="12_s7gtl"]
+[ext_resource type="Texture2D" uid="uid://binpg0d4o7sng" path="res://sprites/peasant/peasant body frames/010.png" id="13_qnjh6"]
+[ext_resource type="Texture2D" uid="uid://b5aq3dtg61lwf" path="res://sprites/peasant/peasant body frames/011.png" id="14_plvwj"]
+[ext_resource type="Texture2D" uid="uid://dycwdmk1v8hi8" path="res://sprites/peasant/peasant body frames/012.png" id="15_dcrm0"]
+[ext_resource type="Texture2D" uid="uid://daspts1xrqga2" path="res://sprites/peasant/peasant body frames/013.png" id="16_1kt68"]
+[ext_resource type="Texture2D" uid="uid://ur45vxhp7oqv" path="res://sprites/peasant/peasant body frames/002.png" id="19_p0nvd"]
+[ext_resource type="Texture2D" uid="uid://cgmvbhooc4bov" path="res://sprites/peasant/peasant body frames/003.png" id="20_d237o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qv86v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a12kw")
+}],
+"loop": 1,
+"name": &"stand",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_aa8ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a8hvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qv86v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1i6bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3u1pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a12kw")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86ood"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_p0nvd")
+}],
+"loop": 1,
+"name": &"bow_draw",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_d237o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_61nkb")
+}],
+"loop": 1,
+"name": &"bow_hold",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_q71mf")
+}],
+"loop": 1,
+"name": &"bow_release",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_1i6bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3u1pd")
+}],
+"loop": 1,
+"name": &"club_swing",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_gp7sx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s7gtl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qnjh6")
+}],
+"loop": 1,
+"name": &"sling_draw",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_plvwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dcrm0")
+}],
+"loop": 1,
+"name": &"sling_hold",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_1kt68")
+}],
+"loop": 1,
+"name": &"sling_release",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_p0nvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_d237o")
+}],
+"loop": 1,
+"name": &"sword_swing",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gpkp"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_1i6bk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3u1pd"]
+resource_name = "bow_draw"
+length = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"bow_draw"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p0nvd"]
+resource_name = "bow_hold"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"bow_hold"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_d237o"]
+resource_name = "bow_release"
+length = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"bow_release"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_61nkb"]
+resource_name = "club_swing"
+length = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"club_swing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_q71mf"]
+resource_name = "idle"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_gp7sx"]
+resource_name = "sling_draw"
+length = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sling_draw"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_s7gtl"]
+resource_name = "sling_hold"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sling_hold"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_qnjh6"]
+resource_name = "sling_release"
+length = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sling_release"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_plvwj"]
+resource_name = "sword_swing"
+length = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sword_swing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dcrm0"]
+_data = {
+&"RESET": SubResource("Animation_1i6bk"),
+&"bow_draw": SubResource("Animation_3u1pd"),
+&"bow_hold": SubResource("Animation_p0nvd"),
+&"bow_release": SubResource("Animation_d237o"),
+&"club_swing": SubResource("Animation_61nkb"),
+&"default": SubResource("Animation_q71mf"),
+&"sling_draw": SubResource("Animation_gp7sx"),
+&"sling_hold": SubResource("Animation_s7gtl"),
+&"sling_release": SubResource("Animation_qnjh6"),
+&"sword_swing": SubResource("Animation_plvwj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p0nvd"]
+animation = &"bow_draw"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d237o"]
+animation = &"bow_hold"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_61nkb"]
+animation = &"bow_release"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q71mf"]
+animation = &"club_swing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gp7sx"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s7gtl"]
+animation = &"sling_draw"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qnjh6"]
+animation = &"sling_hold"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_plvwj"]
+animation = &"sling_release"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dcrm0"]
+animation = &"sword_swing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1kt68"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2hwpg"]
+advance_mode = 2
+advance_expression = "drawing_bow == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_62kdh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mdp7r"]
+advance_mode = 2
+advance_expression = "bow_released == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6oug"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lja4b"]
+states/End/position = Vector2(1116.8, 100.8)
+states/bow_draw/node = SubResource("AnimationNodeAnimation_p0nvd")
+states/bow_draw/position = Vector2(521.8976, 31.679996)
+states/bow_hold/node = SubResource("AnimationNodeAnimation_d237o")
+states/bow_hold/position = Vector2(663.0816, 32.444157)
+states/bow_release/node = SubResource("AnimationNodeAnimation_61nkb")
+states/bow_release/position = Vector2(848.4, 55.199997)
+states/club_swing/node = SubResource("AnimationNodeAnimation_q71mf")
+states/club_swing/position = Vector2(519.6657, 195.2)
+states/default/node = SubResource("AnimationNodeAnimation_gp7sx")
+states/default/position = Vector2(382, 99.2)
+states/sling_draw/node = SubResource("AnimationNodeAnimation_s7gtl")
+states/sling_draw/position = Vector2(522.1846, 130.368)
+states/sling_hold/node = SubResource("AnimationNodeAnimation_qnjh6")
+states/sling_hold/position = Vector2(662.1357, 136.16)
+states/sling_release/node = SubResource("AnimationNodeAnimation_plvwj")
+states/sling_release/position = Vector2(797.36005, 120.96)
+states/sword_swing/node = SubResource("AnimationNodeAnimation_dcrm0")
+states/sword_swing/position = Vector2(646, 188.8)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_1kt68"), "default", "bow_draw", SubResource("AnimationNodeStateMachineTransition_2hwpg"), "bow_draw", "bow_hold", SubResource("AnimationNodeStateMachineTransition_62kdh"), "bow_hold", "bow_release", SubResource("AnimationNodeStateMachineTransition_mdp7r"), "bow_release", "default", SubResource("AnimationNodeStateMachineTransition_w6oug")]
+
+[node name="Peasant" type="CharacterBody2D" unique_id=772900983]
+script = ExtResource("1_3u1pd")
+
+[node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]
+position = Vector2(3.3881318e-21, 4.7683716e-07)
+sprite_frames = SubResource("SpriteFrames_rskbl")
+animation = &"stand"
+frame_progress = 0.9774829
+offset = Vector2(1.9047621, -30.095242)
+
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=1289831435]
+sprite_frames = SubResource("SpriteFrames_86ood")
+autoplay = "default"
+offset = Vector2(2, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1782194813]
+shape = SubResource("CircleShape2D_5gpkp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=720814624]
+libraries/ = SubResource("AnimationLibrary_dcrm0")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1495472346]
+tree_root = SubResource("AnimationNodeStateMachine_lja4b")
+anim_player = NodePath("../AnimationPlayer")

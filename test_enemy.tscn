@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://fmosyq08lpv"]
+
+[ext_resource type="Script" uid="uid://xeowil7p14p6" path="res://test_enemy.gd" id="1_ghv5c"]
+[ext_resource type="Texture2D" uid="uid://csplukvcgk8fj" path="res://icon.svg" id="2_yikbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
+size = Vector2(106, 104)
+
+[node name="TestEnemy" type="CharacterBody2D" unique_id=1828912522]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_ghv5c")
+metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=978609351]
+texture = ExtResource("2_yikbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086249025]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_5gpkp")
