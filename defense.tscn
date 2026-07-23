@@ -1,28 +1,19 @@
 [gd_scene format=3 uid="uid://suwqsn8xm3rg"]
 
 [ext_resource type="PackedScene" uid="uid://v6h063iyep0p" path="res://peasant.tscn" id="1_p2qeu"]
-[ext_resource type="PackedScene" uid="uid://fmosyq08lpv" path="res://test_enemy.tscn" id="2_www7w"]
 [ext_resource type="Texture2D" uid="uid://2qyqn0nlmd55" path="res://sprites/peasant/victory.png" id="3_1mt72"]
+[ext_resource type="PackedScene" uid="uid://cwvgtrxdmy75o" path="res://goblin.tscn" id="3_b1r40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
 size = Vector2(22, 1093.8914)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yikbh"]
-vertices = PackedVector2Array(891.0625, 505.8828, 889.0625, -210.32813, 1419.3281, -187.77344, 1422.8906, 817.7422, 532.6719, 826.47656, 681.9375, 505.8828, 530.6719, 210.49219, 683.9297, -203.32031, -89.890625, -193.89063, 323.8125, 215.71875, -86.34375, 820.9375, 326.79688, 826.28125)
+vertices = PackedVector2Array(845.0469, 460, 843.0469, -258.21094, 1465.0625, -231.75, 1468.9297, 863.1719, 486.9375, 872.8203, 727.9531, 460, 484.9375, 257.53906, 729.9375, -249.77344, -135.92969, -239.21094, 369.90625, 260.45313, -132.0625, 866.21875, 372.90625, 872.7578)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 8, 9, 11)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1487, 881, 469, 891, 467, 276, 388, 278, 391, 891, -150, 884, -154, -257, 748, -268, 746, 442, 827, 442, 825, -277, 1483, -249)])
-agent_radius = 69.69
+agent_radius = 18.0
 
 [node name="defense" type="Node2D" unique_id=391971717]
-
-[node name="TestEnemy" parent="." unique_id=1828912522 instance=ExtResource("2_www7w")]
-position = Vector2(534, 171)
-
-[node name="TestEnemy2" parent="." unique_id=1253608452 instance=ExtResource("2_www7w")]
-position = Vector2(186, 412)
-
-[node name="TestEnemy3" parent="." unique_id=1895010919 instance=ExtResource("2_www7w")]
-position = Vector2(1030, 161)
 
 [node name="Peasant" parent="." unique_id=772900983 instance=ExtResource("1_p2qeu")]
 position = Vector2(331, 195)
@@ -58,3 +49,303 @@ texture = ExtResource("3_1mt72")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=814512667]
 position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_yikbh")
+
+[node name="Goblin" parent="." unique_id=1828912522 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin2" parent="." unique_id=1014059339 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin3" parent="." unique_id=815671363 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin4" parent="." unique_id=81062723 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin5" parent="." unique_id=1631880939 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin6" parent="." unique_id=1402795955 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin7" parent="." unique_id=1134672761 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin8" parent="." unique_id=305189345 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin9" parent="." unique_id=620583717 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin10" parent="." unique_id=193319327 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin11" parent="." unique_id=807722044 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin12" parent="." unique_id=1594122799 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin13" parent="." unique_id=1242022278 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin14" parent="." unique_id=85298100 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin15" parent="." unique_id=1831687986 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin16" parent="." unique_id=2071657236 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin17" parent="." unique_id=1344352239 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin18" parent="." unique_id=1595829376 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin19" parent="." unique_id=1763554355 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin20" parent="." unique_id=1949929950 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin21" parent="." unique_id=1852051087 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin22" parent="." unique_id=2047381318 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin23" parent="." unique_id=1541887865 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin24" parent="." unique_id=2103500588 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin25" parent="." unique_id=999770976 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin26" parent="." unique_id=931418638 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin27" parent="." unique_id=2009174215 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin28" parent="." unique_id=1610608158 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin29" parent="." unique_id=1114075980 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin30" parent="." unique_id=657860111 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin31" parent="." unique_id=1972781844 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin32" parent="." unique_id=767894489 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin33" parent="." unique_id=279054467 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin34" parent="." unique_id=543084826 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin35" parent="." unique_id=220874597 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin36" parent="." unique_id=1662298415 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin37" parent="." unique_id=175758846 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin38" parent="." unique_id=920845888 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin39" parent="." unique_id=890978248 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin40" parent="." unique_id=1314825493 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin41" parent="." unique_id=212119317 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin42" parent="." unique_id=1973274392 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin43" parent="." unique_id=170727029 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin44" parent="." unique_id=292490591 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin45" parent="." unique_id=764611806 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin46" parent="." unique_id=1886084155 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin47" parent="." unique_id=180530238 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin48" parent="." unique_id=644158373 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin49" parent="." unique_id=791402672 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin50" parent="." unique_id=96017189 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin51" parent="." unique_id=129283514 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin52" parent="." unique_id=1308929764 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin53" parent="." unique_id=458417556 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin54" parent="." unique_id=464760649 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin55" parent="." unique_id=925874095 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin56" parent="." unique_id=68504408 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin57" parent="." unique_id=1461473668 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin58" parent="." unique_id=1091789152 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin59" parent="." unique_id=2056664908 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin60" parent="." unique_id=955814004 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin61" parent="." unique_id=1882484738 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin62" parent="." unique_id=1515504069 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin63" parent="." unique_id=1608731249 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin64" parent="." unique_id=1151261364 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin65" parent="." unique_id=1687294828 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin66" parent="." unique_id=1557343845 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin67" parent="." unique_id=168429569 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin68" parent="." unique_id=1649785736 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin69" parent="." unique_id=715458647 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin70" parent="." unique_id=836742650 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin71" parent="." unique_id=1211537824 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin72" parent="." unique_id=1970396914 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin73" parent="." unique_id=1909029191 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin74" parent="." unique_id=105071087 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin75" parent="." unique_id=1420076078 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin76" parent="." unique_id=1581975247 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin77" parent="." unique_id=307441246 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin78" parent="." unique_id=1949162833 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin79" parent="." unique_id=524918362 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin80" parent="." unique_id=1344784203 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin81" parent="." unique_id=29216832 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin82" parent="." unique_id=501729081 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin83" parent="." unique_id=1848771714 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin84" parent="." unique_id=2075155231 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin85" parent="." unique_id=97331509 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin86" parent="." unique_id=271153684 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin87" parent="." unique_id=641741579 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin88" parent="." unique_id=1548773620 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin89" parent="." unique_id=462460410 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin90" parent="." unique_id=435105308 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)
+
+[node name="Goblin91" parent="." unique_id=179107067 instance=ExtResource("3_b1r40")]
+position = Vector2(92, 493)
+
+[node name="Goblin92" parent="." unique_id=2120651174 instance=ExtResource("3_b1r40")]
+position = Vector2(38, 269)
+
+[node name="Goblin93" parent="." unique_id=285296010 instance=ExtResource("3_b1r40")]
+position = Vector2(1149, 497)
+
+[node name="Goblin94" parent="." unique_id=1066301819 instance=ExtResource("3_b1r40")]
+position = Vector2(1096, 686)
+
+[node name="Goblin95" parent="." unique_id=832726066 instance=ExtResource("3_b1r40")]
+position = Vector2(904, 657)
+
+[node name="Goblin96" parent="." unique_id=112479938 instance=ExtResource("3_b1r40")]
+position = Vector2(721, 669)
+
+[node name="Goblin97" parent="." unique_id=1545578007 instance=ExtResource("3_b1r40")]
+position = Vector2(527, 539)
+
+[node name="Goblin98" parent="." unique_id=2013410778 instance=ExtResource("3_b1r40")]
+position = Vector2(570, 412)
+
+[node name="Goblin99" parent="." unique_id=1218864964 instance=ExtResource("3_b1r40")]
+position = Vector2(625, 263)
+
+[node name="Goblin100" parent="." unique_id=71139359 instance=ExtResource("3_b1r40")]
+position = Vector2(615, 122)

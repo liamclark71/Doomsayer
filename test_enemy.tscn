@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://csplukvcgk8fj" path="res://icon.svg" id="2_yikbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
-radius = 63.0
+radius = 43.011627
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lja4b"]
+radius = 59.0
 
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1828912522]
 collision_layer = 8
@@ -26,5 +29,12 @@ shape = SubResource("CircleShape2D_yikbh")
 avoidance_enabled = true
 radius = 50.0
 debug_enabled = true
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1810046402]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=490216361]
+shape = SubResource("CircleShape2D_lja4b")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

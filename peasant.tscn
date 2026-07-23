@@ -323,11 +323,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"_hit_enemies"
+"method": &"_start_swing"
+}, {
+"args": [],
+"method": &"_end_swing"
 }]
 }
 
@@ -493,11 +496,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0833),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"_hit_enemies"
+"method": &"_start_swing"
+}, {
+"args": [],
+"method": &"_end_swing"
 }]
 }
 
@@ -622,7 +628,6 @@ collision_mask = 13
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3u1pd")
-has_bow = true
 has_sword = true
 arrow_scene = ExtResource("2_p0nvd")
 rock_scene = ExtResource("3_d237o")
@@ -630,7 +635,7 @@ rock_scene = ExtResource("3_d237o")
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]
 position = Vector2(3.3881318e-21, 4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_rskbl")
-animation = &"stand"
+animation = &"walk"
 offset = Vector2(1.9047621, -30.095242)
 
 [node name="Torso" type="AnimatedSprite2D" parent="." unique_id=1289831435]
@@ -638,11 +643,11 @@ sprite_frames = SubResource("SpriteFrames_86ood")
 autoplay = "default"
 offset = Vector2(2, -19)
 
-[node name="HitBoxArea" type="Area2D" parent="Torso" unique_id=1969321947]
+[node name="HitBox" type="Area2D" parent="Torso" unique_id=1969321947]
 collision_layer = 0
 collision_mask = 8
 
-[node name="HitBox" type="CollisionShape2D" parent="Torso/HitBoxArea" unique_id=1927135026]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torso/HitBox" unique_id=1927135026]
 position = Vector2(-1, -69.25)
 shape = SubResource("RectangleShape2D_5gpkp")
 
@@ -661,5 +666,5 @@ tree_root = SubResource("AnimationNodeStateMachine_lja4b")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
-[connection signal="body_entered" from="Torso/HitBoxArea" to="." method="_on_hit_box_area_body_entered"]
-[connection signal="body_exited" from="Torso/HitBoxArea" to="." method="_on_hit_box_area_body_exited"]
+[connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
