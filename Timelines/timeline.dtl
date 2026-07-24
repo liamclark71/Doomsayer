@@ -1,0 +1,19 @@
+You awake gasping from a nightmare about swarming goblins and blood.
+It's a premonition... It must be.
+They'll attack at sundown and you need to be prepared.
+How will you save this village?
+Who can you convince to help?
+All you know is, you have 10 hours left.
+- Enter village squre
+label Village
+[background arg="res://img/point_and_click/backgrounds/village_square.png" fade="0.0"]
+- Yell about the imminent goblin attack.
+	No one seems to believe you. Within a few minutes, they start keeping their distance.
+	jump Village
+- Visit the...
+	- Blacksmith
+		jump blacksmith_timeline/ 
+	- Hunter
+	- Doctor
+	- Carpenter
+	- Acrobat

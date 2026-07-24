@@ -1,0 +1,16 @@
+[background fade="0.0"]
+"How can I help you?"
+label blacksmith_greeting
+- "I'd like to buy a sword."
+	"That'll be 6 Gold"
+	- Purchase [you will have the sword upgrade]
+	- "I don't have that much money."
+		jump blacksmith_greeting
+- "The goblins are attacking!"
+	He looks out at the window at the peaceful town square, then back at you.
+	"You sure about that?"
+	"They're going to attack at sundown.\
+	Will you help me defend the town from the church?"
+
+- Return to the square
+	jump timeline/Village
