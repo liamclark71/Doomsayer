@@ -1,0 +1,280 @@
+[gd_scene format=3 uid="uid://cwvgtrxdmy75o"]
+
+[ext_resource type="Script" uid="uid://d16r53dji6kid" path="res://goblin.gd" id="1_u6mjv"]
+[ext_resource type="Texture2D" uid="uid://bfq0dm1lkofvp" path="res://sprites/peasant/goblin leg frames/002.png" id="2_ixvp6"]
+[ext_resource type="Texture2D" uid="uid://ccruxhkge0ann" path="res://sprites/peasant/goblin leg frames/005.png" id="3_mq4fs"]
+[ext_resource type="Texture2D" uid="uid://dg0o5uhdv3hju" path="res://sprites/peasant/goblin leg frames/000.png" id="4_g7r1m"]
+[ext_resource type="Texture2D" uid="uid://c1ix48dbnq1tk" path="res://sprites/peasant/goblin leg frames/001.png" id="5_3x2od"]
+[ext_resource type="Texture2D" uid="uid://5m8vwh8un8og" path="res://sprites/peasant/goblin leg frames/003.png" id="6_gut4f"]
+[ext_resource type="Texture2D" uid="uid://de5o8nmo8ppr1" path="res://sprites/peasant/goblin leg frames/004.png" id="7_vqqyg"]
+[ext_resource type="Texture2D" uid="uid://g42ov0574hna" path="res://sprites/peasant/goblin body frames/000.png" id="8_lon5w"]
+[ext_resource type="Texture2D" uid="uid://c3ynl6u4uw36g" path="res://sprites/peasant/goblin body frames/001.png" id="9_lqvpw"]
+[ext_resource type="Texture2D" uid="uid://cfrwn544e3otj" path="res://sprites/peasant/goblin body frames/002.png" id="10_gut4f"]
+[ext_resource type="Texture2D" uid="uid://dgw7c6df6oeie" path="res://sprites/peasant/goblin body frames/003.png" id="11_vqqyg"]
+[ext_resource type="Texture2D" uid="uid://ceycjw0xp7o18" path="res://sprites/peasant/goblin body frames/004.png" id="12_lon5w"]
+[ext_resource type="Texture2D" uid="uid://bqblf87o838gb" path="res://sprites/peasant/goblin body frames/005.png" id="13_lqvpw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lja4b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ixvp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mq4fs")
+}],
+"loop": 1,
+"name": &"stand",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g7r1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3x2od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ixvp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gut4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vqqyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mq4fs")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gpkp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lon5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lqvpw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_gut4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vqqyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lon5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lqvpw")
+}],
+"loop": 1,
+"name": &"stab",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
+size = Vector2(31, 56.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
+radius = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gpkp"]
+radius = 26.0
+height = 74.0
+
+[sub_resource type="Animation" id="Animation_gut4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vqqyg"]
+resource_name = "default"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_lon5w"]
+resource_name = "stab"
+length = 0.5833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"stab"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.4166),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hit"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqvpw"]
+_data = {
+&"RESET": SubResource("Animation_gut4f"),
+&"default": SubResource("Animation_vqqyg"),
+&"stab": SubResource("Animation_lon5w")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gut4f"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqqyg"]
+animation = &"stab"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lon5w"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqvpw"]
+advance_mode = 2
+advance_expression = "in_range == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sm8he"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gut4f"]
+states/Start/position = Vector2(200, 99.840004)
+states/default/node = SubResource("AnimationNodeAnimation_gut4f")
+states/default/position = Vector2(361.19998, 89.4976)
+states/stab/node = SubResource("AnimationNodeAnimation_vqqyg")
+states/stab/position = Vector2(549.2, 89.6)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_lon5w"), "default", "stab", SubResource("AnimationNodeStateMachineTransition_lqvpw"), "stab", "default", SubResource("AnimationNodeStateMachineTransition_sm8he")]
+
+[node name="Goblin" type="CharacterBody2D" unique_id=1828912522]
+collision_layer = 8
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_floor_layers = 4294967280
+script = ExtResource("1_u6mjv")
+metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
+
+[node name="Legs" type="AnimatedSprite2D" parent="." unique_id=102870723]
+sprite_frames = SubResource("SpriteFrames_lja4b")
+animation = &"walk"
+autoplay = "stand"
+frame_progress = 0.69010854
+offset = Vector2(3, -20)
+
+[node name="Torso" type="AnimatedSprite2D" parent="." unique_id=1319410262]
+sprite_frames = SubResource("SpriteFrames_5gpkp")
+offset = Vector2(1, -18)
+
+[node name="HitBox" type="Area2D" parent="Torso" unique_id=954167266]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torso/HitBox" unique_id=1660546805]
+position = Vector2(3.5, -58.75)
+shape = SubResource("RectangleShape2D_5gpkp")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1086249025]
+shape = SubResource("CircleShape2D_yikbh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=268476584]
+avoidance_enabled = true
+radius = 19.0
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1231414089]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=147470270]
+position = Vector2(0, -4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5gpkp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1400576799]
+libraries/ = SubResource("AnimationLibrary_lqvpw")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=373525476]
+active = false
+tree_root = SubResource("AnimationNodeStateMachine_gut4f")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://fmosyq08lpv"]
+
+[ext_resource type="Script" uid="uid://xeowil7p14p6" path="res://test_enemy.gd" id="1_ghv5c"]
+[ext_resource type="Texture2D" uid="uid://csplukvcgk8fj" path="res://icon.svg" id="2_yikbh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
+radius = 43.011627
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lja4b"]
+radius = 59.0
+
+[node name="TestEnemy" type="CharacterBody2D" unique_id=1828912522]
+collision_layer = 8
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_floor_layers = 4294967280
+script = ExtResource("1_ghv5c")
+metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=978609351]
+texture = ExtResource("2_yikbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086249025]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_yikbh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=268476584]
+avoidance_enabled = true
+radius = 50.0
+debug_enabled = true
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1810046402]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=490216361]
+shape = SubResource("CircleShape2D_lja4b")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
