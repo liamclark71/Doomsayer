@@ -113,6 +113,10 @@ func hit():
 
 func take_damage(dam):
 	hitpoints = hitpoints - dam
+	var tween = get_tree().create_tween()
+	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
+	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
+
 
 
 func die():
