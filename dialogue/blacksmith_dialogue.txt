@@ -1,0 +1,6 @@
+"How can I help you?"
+&"I'd like to buy a sword."{buy}
+&"The goblins are attacking."{goblins}
+@buy@"That'll be 6 Gold."
+&"I'll buy it."[sword]
+&"I don't have that much money."
