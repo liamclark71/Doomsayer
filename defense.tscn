@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://2qyqn0nlmd55" path="res://sprites/peasant/victory.png" id="3_1mt72"]
 [ext_resource type="PackedScene" uid="uid://cwvgtrxdmy75o" path="res://goblin.tscn" id="3_b1r40"]
 [ext_resource type="PackedScene" uid="uid://pcrcyr8lcgnd" path="res://npc.tscn" id="4_b1r40"]
+[ext_resource type="AudioStream" uid="uid://cemer7oaxjo6g" path="res://soundtracks/doomsseeing.wav" id="5_7088l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
 size = Vector2(22, 1093.8914)
@@ -59,3 +60,7 @@ position = Vector2(1159, -34)
 
 [node name="NPC" parent="." unique_id=512784346 instance=ExtResource("4_b1r40")]
 position = Vector2(58, 581)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=998408937]
+stream = ExtResource("5_7088l")
+autoplay = true
