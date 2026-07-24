@@ -3,23 +3,44 @@ class_name Character extends CharacterBody2D
 @export var speed = 400
 @export var has_bow = false
 @export var has_sword = false
+@export var dodge_unlocked = false
 @export var arrow_scene: PackedScene
 @export var rock_scene: PackedScene
 @export var hitpoints = 5
+@export var dodge_speed = 1500
+@export var dodge_duration = 0.1
+@export var dodge_cooldown = 0.5
+@export var camera_lookahead = 0.15
 
 @onready var legs = $Legs
 @onready var torso = $Torso
 @onready var anim_tree = $AnimationTree
+@onready var anim_player = $AnimationPlayer
 @onready var proj_spawn = $Torso/ProjectileSpawn
 @onready var hitbox = $Torso/HitBox/CollisionShape2D
+@onready var swing_timer = $SwingTimer
+@onready var shoot_timer = $ShootTimer
+@onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
+
+var camera 
 
 var damage = 1
 var drawing = false
 var swinging = false
 var hit_enemies := {}
+var alive = true
+var targetable = true
+
+var dodging = false
+var can_dodge = true
+var dodge_direction = Vector2.ZERO
+var last_move_direction = Vector2.DOWN
+var swing_on_cooldown = false
+var shoot_on_cooldown = false
 
 
 func _ready():
+	camera = $Camera
 	legs.play("stand")
 	anim_tree.active = true
 	if has_sword:
@@ -29,30 +50,60 @@ func _ready():
 
 
 func _physics_process(_delta):
-	get_input()
-	if velocity != Vector2(0, 0):
-		legs.play("walk")
-	else:
-		legs.play("stand")
-	legs.rotation = velocity.angle() + PI / 2
-	torso.look_at(get_global_mouse_position())
-	torso.rotation += deg_to_rad(90)
-	
-	move_and_slide()
+	if alive:
+		get_input()
+		if dodging:
+			velocity = dodge_direction * dodge_speed
+		else:
+			if velocity != Vector2(0, 0):
+				legs.play("walk")
+			else:
+				legs.play("stand")
+		legs.rotation = velocity.angle() + PI / 2
+		torso.look_at(get_global_mouse_position())
+		torso.rotation += deg_to_rad(90)
+		move_and_slide()
+		
+		var mouse_offset = (get_global_mouse_position() - global_position) * camera_lookahead
+		camera.position = mouse_offset
 
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
-	if Input.is_action_pressed("draw"):
+	
+	if input_direction != Vector2.ZERO:
+		last_move_direction = input_direction
+	
+	if not dodging:
+		velocity = input_direction * speed
+	
+	if Input.is_action_just_pressed("dodge") and can_dodge and not dodging:
+		_start_dodge(input_direction)
+	
+	if Input.is_action_pressed("draw") and shoot_on_cooldown == false:
 		drawing = true
 	else:
 		drawing = false
-	if Input.is_action_pressed("swing"):
+	if Input.is_action_pressed("swing") and swing_on_cooldown == false:
 		swinging = true
+		swing_on_cooldown = true
+		swing_timer.start()
 	else:
 		swinging = false
 
+func _start_dodge(input_direction: Vector2):
+	if input_direction != Vector2.ZERO:
+		dodge_direction = input_direction 
+	else: 
+		return
+	dodging = true
+	can_dodge = false
+	
+	await get_tree().create_timer(dodge_duration).timeout
+	dodging = false
+	
+	await get_tree().create_timer(dodge_cooldown).timeout
+	can_dodge = true
 
 func _start_swing():
 	hit_enemies.clear()
@@ -64,6 +115,8 @@ func _end_swing():
 
 
 func take_damage(dam):
+	if not alive:
+		return
 	hitpoints -= dam
 	print("hp: ", hitpoints)
 	if hitpoints <= 0:
@@ -74,10 +127,22 @@ func take_damage(dam):
 
 func game_over():
 	print("Oh no! I have been defeated by the Goblins")
-	
+	anim_tree.active = false
+	anim_player.play("die")
+	legs.visible = false
+	z_index = -1
+	alive = false
+	if game_over_menu:
+		game_over_menu.modulate = Color.TRANSPARENT
+		game_over_menu.visible = true
+		var tween = get_tree().create_tween()
+		tween.tween_interval(1.5)
+		tween.tween_property(game_over_menu, "modulate", Color(1,1,1,.9), 1)
 
 
 func _shoot_projectile():
+	shoot_on_cooldown = true
+	shoot_timer.start()
 	if has_bow:
 		var arrow = arrow_scene.instantiate()
 		get_parent().add_child(arrow)
@@ -97,3 +162,10 @@ func _on_hit_box_area_entered(area):
 		hit_enemies[area.get_parent()] = true
 		area.get_parent().take_damage(damage)
 		area.get_parent().apply_knockback(torso.global_position, 400)
+
+func _on_swing_timer_timeout():
+	swing_on_cooldown = false
+
+
+func _on_shoot_timer_timeout():
+	shoot_on_cooldown = false

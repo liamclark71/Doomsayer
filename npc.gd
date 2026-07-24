@@ -1,32 +1,38 @@
 extends Character
 
-@onready var shoot_timer = $ShootTimer
-@onready var swing_timer = $SwingTimer
+@onready var death_timer = $DeathTimer
 @onready var swinging_duration_timer = $SwingingDurationTimer
 
-var swing_on_cooldown = false
+func _ready():
+	legs.play("stand")
+	anim_tree.active = true
+	if has_sword:
+		damage = 2
+	z_index = 1
+	hitbox.disabled = true
 
 func _physics_process(_delta):
-	if velocity != Vector2(0, 0):
-		legs.play("walk")
-	else:
-		legs.play("stand")
-	legs.rotation = velocity.angle() + PI / 2
-	
-	var target = get_nearest_visible_goblin()
-	if target:
-		torso.look_at(target.global_position)
-		torso.rotation += PI / 2
-		if global_position.distance_to(target.global_position) <= 130:
-			if swing_on_cooldown == false:
-				drawing = false
-				swinging = true
-				swing_on_cooldown = true
-				swing_timer.start()
-				swinging_duration_timer.start()
-		elif drawing == false:
-			drawing = true
-			shoot_timer.start()
+	if alive:
+		if velocity != Vector2(0, 0):
+			legs.play("walk")
+		else:
+			legs.play("stand")
+		legs.rotation = velocity.angle() + PI / 2
+		
+		var target = get_nearest_visible_goblin()
+		if target:
+			torso.look_at(target.global_position)
+			torso.rotation += PI / 2
+			if global_position.distance_to(target.global_position) <= 130:
+				if swing_on_cooldown == false:
+					drawing = false
+					swinging = true
+					swing_on_cooldown = true
+					swing_timer.start()
+					swinging_duration_timer.start()
+			elif drawing == false:
+				drawing = true
+				shoot_timer.start()
 
 
 func get_input():
@@ -56,6 +62,13 @@ func get_nearest_visible_goblin() -> Enemy:
 	
 	return nearest
 
+func game_over():
+	anim_tree.active = false
+	anim_player.play("die")
+	legs.visible = false
+	z_index = -1
+	alive = false
+	death_timer.start()
 
 func _on_shoot_timer_timeout():
 	drawing = false
@@ -67,3 +80,7 @@ func _on_swing_timer_timeout():
 
 func _on_swinging_duration_timer_timeout():
 	swinging = false
+
+
+func _on_death_timer_timeout():
+	targetable = false
