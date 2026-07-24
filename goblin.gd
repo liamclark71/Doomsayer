@@ -24,6 +24,7 @@ func _ready():
 	agent.target_desired_distance = 80
 	legs.play("stand")
 	anim_tree.active = true
+	$SpearAudioController.pitch_scale = randf_range(0.8, 1.2)
 	
 	target = get_closest_character()
 	if target:
@@ -106,16 +107,16 @@ func apply_knockback(from_position: Vector2, strength: float):
 
 
 func hit():
-	
 	for body in hitbox_array:
-		body.take_damage(damage)
+		body.take_damage(damage, 'test')
 
 
-func take_damage(dam):
+func take_damage(dam, damageType):
 	hitpoints = hitpoints - dam
 	var tween = get_tree().create_tween()
 	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
+
 
 
 

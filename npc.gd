@@ -38,7 +38,6 @@ func _physics_process(_delta):
 func get_input():
 	pass
 
-
 func get_nearest_visible_goblin() -> Enemy:
 	var nearest: Enemy = null
 	var nearest_dist := INF

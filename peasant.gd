@@ -114,7 +114,7 @@ func _end_swing():
 	hitbox.disabled = true
 
 
-func take_damage(dam):
+func take_damage(dam, damageType):
 	if not alive:
 		return
 	var tween = get_tree().create_tween()
@@ -163,7 +163,7 @@ func _shoot_projectile():
 func _on_hit_box_area_entered(area):
 	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
 		hit_enemies[area.get_parent()] = true
-		area.get_parent().take_damage(damage)
+		area.get_parent().take_damage(damage, 'club' if not has_sword else 'sword')
 		area.get_parent().apply_knockback(torso.global_position, 400)
 
 func _on_swing_timer_timeout():

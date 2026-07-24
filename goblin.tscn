@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://vvnwdagfdt2f" path="res://sprites/goblin/goblin body frames/007.png" id="11_sm8he"]
 [ext_resource type="Texture2D" uid="uid://ceycjw0xp7o18" path="res://sprites/goblin/goblin body frames/004.png" id="12_sm8he"]
 [ext_resource type="Texture2D" uid="uid://bqblf87o838gb" path="res://sprites/goblin/goblin body frames/005.png" id="13_8m2n1"]
+[ext_resource type="AudioStream" uid="uid://d4ihhmpxvi2og" path="res://sound_assets/swing.wav" id="16_lqvpw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lja4b"]
 animations = [{
@@ -231,6 +232,21 @@ tracks/2/keys = {
 "method": &"hit"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpearAudioController")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_lqvpw")
+}],
+"times": PackedFloat32Array(0.33333334)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqvpw"]
 _data = {
@@ -322,6 +338,9 @@ anim_player = NodePath("../AnimationPlayer")
 process_callback = 0
 wait_time = 0.5
 autostart = true
+
+[node name="SpearAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1102054912]
+attenuation = 5.856333
 
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]
