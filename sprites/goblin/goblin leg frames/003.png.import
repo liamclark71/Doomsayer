@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1ix48dbnq1tk"
-path="res://.godot/imported/001.png-4a00526d9dafa82db301cbfb302e4e64.ctex"
+uid="uid://5m8vwh8un8og"
+path="res://.godot/imported/003.png-9f99d1baf43af10fce4384b5fd2dc8d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/peasant/goblin leg frames/001.png"
-dest_files=["res://.godot/imported/001.png-4a00526d9dafa82db301cbfb302e4e64.ctex"]
+source_file="res://sprites/goblin/goblin leg frames/003.png"
+dest_files=["res://.godot/imported/003.png-9f99d1baf43af10fce4384b5fd2dc8d1.ctex"]
 
 [params]
 

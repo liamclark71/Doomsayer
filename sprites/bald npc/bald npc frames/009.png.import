@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfrwn544e3otj"
-path="res://.godot/imported/002.png-39c2a49e83d748693f50f77e0d3285c3.ctex"
+uid="uid://ou2yrr1m72l2"
+path="res://.godot/imported/009.png-8e5e8ca6a61b01b4dd8340bb23f49603.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/peasant/goblin body frames/002.png"
-dest_files=["res://.godot/imported/002.png-39c2a49e83d748693f50f77e0d3285c3.ctex"]
+source_file="res://sprites/bald npc/bald npc frames/009.png"
+dest_files=["res://.godot/imported/009.png-8e5e8ca6a61b01b4dd8340bb23f49603.ctex"]
 
 [params]
 

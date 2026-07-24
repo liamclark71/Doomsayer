@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Character extends CharacterBody2D
 
 @export var speed = 400
 @export var has_bow = false
@@ -18,6 +18,7 @@ var drawing = false
 var swinging = false
 var hit_enemies := {}
 
+
 func _ready():
 	legs.play("stand")
 	anim_tree.active = true
@@ -25,6 +26,7 @@ func _ready():
 		damage = 2
 	z_index = 1
 	hitbox.disabled = true
+
 
 func _physics_process(_delta):
 	get_input()
@@ -38,6 +40,7 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
@@ -50,12 +53,15 @@ func get_input():
 	else:
 		swinging = false
 
+
 func _start_swing():
 	hit_enemies.clear()
 	hitbox.disabled = false
 
+
 func _end_swing():
 	hitbox.disabled = true
+
 
 func take_damage(dam):
 	hitpoints -= dam
@@ -64,11 +70,11 @@ func take_damage(dam):
 		game_over()
 	else:
 		print("OOUUWWWOUWOWOUUWWWWUU")
-	
 
 
 func game_over():
 	print("Oh no! I have been defeated by the Goblins")
+
 
 func _shoot_projectile():
 	if has_bow:
@@ -83,6 +89,7 @@ func _shoot_projectile():
 		
 		rock.global_position = proj_spawn.global_position
 		rock.global_rotation = torso.global_rotation
+
 
 func _on_hit_box_area_entered(area):
 	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):

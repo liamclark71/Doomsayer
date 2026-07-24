@@ -1,27 +1,27 @@
 [gd_scene format=3 uid="uid://cwvgtrxdmy75o"]
 
 [ext_resource type="Script" uid="uid://d16r53dji6kid" path="res://goblin.gd" id="1_u6mjv"]
-[ext_resource type="Texture2D" uid="uid://bfq0dm1lkofvp" path="res://sprites/peasant/goblin leg frames/002.png" id="2_ixvp6"]
-[ext_resource type="Texture2D" uid="uid://ccruxhkge0ann" path="res://sprites/peasant/goblin leg frames/005.png" id="3_mq4fs"]
-[ext_resource type="Texture2D" uid="uid://dg0o5uhdv3hju" path="res://sprites/peasant/goblin leg frames/000.png" id="4_g7r1m"]
-[ext_resource type="Texture2D" uid="uid://c1ix48dbnq1tk" path="res://sprites/peasant/goblin leg frames/001.png" id="5_3x2od"]
-[ext_resource type="Texture2D" uid="uid://5m8vwh8un8og" path="res://sprites/peasant/goblin leg frames/003.png" id="6_gut4f"]
-[ext_resource type="Texture2D" uid="uid://de5o8nmo8ppr1" path="res://sprites/peasant/goblin leg frames/004.png" id="7_vqqyg"]
-[ext_resource type="Texture2D" uid="uid://g42ov0574hna" path="res://sprites/peasant/goblin body frames/000.png" id="8_lon5w"]
-[ext_resource type="Texture2D" uid="uid://c3ynl6u4uw36g" path="res://sprites/peasant/goblin body frames/001.png" id="9_lqvpw"]
-[ext_resource type="Texture2D" uid="uid://cfrwn544e3otj" path="res://sprites/peasant/goblin body frames/002.png" id="10_gut4f"]
-[ext_resource type="Texture2D" uid="uid://dgw7c6df6oeie" path="res://sprites/peasant/goblin body frames/003.png" id="11_vqqyg"]
-[ext_resource type="Texture2D" uid="uid://ceycjw0xp7o18" path="res://sprites/peasant/goblin body frames/004.png" id="12_lon5w"]
-[ext_resource type="Texture2D" uid="uid://bqblf87o838gb" path="res://sprites/peasant/goblin body frames/005.png" id="13_lqvpw"]
+[ext_resource type="Texture2D" uid="uid://bfq0dm1lkofvp" path="res://sprites/goblin/goblin leg frames/002.png" id="2_gut4f"]
+[ext_resource type="Texture2D" uid="uid://ccruxhkge0ann" path="res://sprites/goblin/goblin leg frames/005.png" id="3_vqqyg"]
+[ext_resource type="Texture2D" uid="uid://dg0o5uhdv3hju" path="res://sprites/goblin/goblin leg frames/000.png" id="4_lon5w"]
+[ext_resource type="Texture2D" uid="uid://c1ix48dbnq1tk" path="res://sprites/goblin/goblin leg frames/001.png" id="5_lqvpw"]
+[ext_resource type="Texture2D" uid="uid://5m8vwh8un8og" path="res://sprites/goblin/goblin leg frames/003.png" id="6_sm8he"]
+[ext_resource type="Texture2D" uid="uid://de5o8nmo8ppr1" path="res://sprites/goblin/goblin leg frames/004.png" id="7_8m2n1"]
+[ext_resource type="Texture2D" uid="uid://g42ov0574hna" path="res://sprites/goblin/goblin body frames/000.png" id="8_gut4f"]
+[ext_resource type="Texture2D" uid="uid://c3ynl6u4uw36g" path="res://sprites/goblin/goblin body frames/001.png" id="9_vqqyg"]
+[ext_resource type="Texture2D" uid="uid://cfrwn544e3otj" path="res://sprites/goblin/goblin body frames/002.png" id="10_lon5w"]
+[ext_resource type="Texture2D" uid="uid://dgw7c6df6oeie" path="res://sprites/goblin/goblin body frames/003.png" id="11_lqvpw"]
+[ext_resource type="Texture2D" uid="uid://ceycjw0xp7o18" path="res://sprites/goblin/goblin body frames/004.png" id="12_sm8he"]
+[ext_resource type="Texture2D" uid="uid://bqblf87o838gb" path="res://sprites/goblin/goblin body frames/005.png" id="13_8m2n1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lja4b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ixvp6")
+"texture": ExtResource("2_gut4f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_mq4fs")
+"texture": ExtResource("3_vqqyg")
 }],
 "loop": 1,
 "name": &"stand",
@@ -29,22 +29,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_g7r1m")
+"texture": ExtResource("4_lon5w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_3x2od")
+"texture": ExtResource("5_lqvpw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ixvp6")
+"texture": ExtResource("2_gut4f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_gut4f")
+"texture": ExtResource("6_sm8he")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_vqqyg")
+"texture": ExtResource("7_8m2n1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_mq4fs")
+"texture": ExtResource("3_vqqyg")
 }],
 "loop": 1,
 "name": &"walk",
@@ -55,10 +55,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_lon5w")
+"texture": ExtResource("8_gut4f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_lqvpw")
+"texture": ExtResource("9_vqqyg")
 }],
 "loop": 1,
 "name": &"default",
@@ -66,16 +66,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_gut4f")
+"texture": ExtResource("10_lon5w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_vqqyg")
+"texture": ExtResource("11_lqvpw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_lon5w")
+"texture": ExtResource("12_sm8he")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_lqvpw")
+"texture": ExtResource("13_8m2n1")
 }],
 "loop": 1,
 "name": &"stab",
@@ -222,7 +222,7 @@ states/stab/node = SubResource("AnimationNodeAnimation_vqqyg")
 states/stab/position = Vector2(549.2, 89.6)
 transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_lon5w"), "default", "stab", SubResource("AnimationNodeStateMachineTransition_lqvpw"), "stab", "default", SubResource("AnimationNodeStateMachineTransition_sm8he")]
 
-[node name="Goblin" type="CharacterBody2D" unique_id=1828912522]
+[node name="Goblin" type="CharacterBody2D" unique_id=1828912522 groups=["goblin"]]
 collision_layer = 8
 collision_mask = 7
 motion_mode = 1
@@ -275,6 +275,12 @@ tree_root = SubResource("AnimationNodeStateMachine_gut4f")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="PathTimer" type="Timer" parent="." unique_id=1154471776]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]

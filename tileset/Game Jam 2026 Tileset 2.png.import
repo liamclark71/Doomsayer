@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g42ov0574hna"
-path="res://.godot/imported/000.png-942c39b957558f0d2b898a14c6f77555.ctex"
+uid="uid://bfkey2m1faw5r"
+path="res://.godot/imported/Game Jam 2026 Tileset 2.png-6079eeb33b30809ab1a25743eee7f307.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/peasant/goblin body frames/000.png"
-dest_files=["res://.godot/imported/000.png-942c39b957558f0d2b898a14c6f77555.ctex"]
+source_file="res://tileset/Game Jam 2026 Tileset 2.png"
+dest_files=["res://.godot/imported/Game Jam 2026 Tileset 2.png-6079eeb33b30809ab1a25743eee7f307.ctex"]
 
 [params]
 
