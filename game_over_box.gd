@@ -5,8 +5,8 @@ extends Control
 
 
 func _on_day_button_pressed():
-	pass # restart whole game
+	get_tree().change_scene_to_file("res://point_and_click.tscn")
 
 
 func _on_night_button_pressed():
-	pass # restart night
+	get_tree().reload_current_scene()

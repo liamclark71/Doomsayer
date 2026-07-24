@@ -117,6 +117,9 @@ func _end_swing():
 func take_damage(dam):
 	if not alive:
 		return
+	var tween = get_tree().create_tween()
+	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
+	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 	hitpoints -= dam
 	print("hp: ", hitpoints)
 	if hitpoints <= 0:
