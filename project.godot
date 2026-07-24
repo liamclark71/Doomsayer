@@ -36,7 +36,11 @@ layout/style_directory={
 }
 layout/style_list=["res://dialogue_style.tres"]
 layout/default_style="res://dialogue_style.tres"
-variables={}
+variables={
+"blacksmith_recruited": false,
+"sword": false,
+"yell": false
+}
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
