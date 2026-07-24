@@ -5,14 +5,14 @@ How will you save this village?
 Who can you convince to help?
 All you know is, you have 10 hours left.
 - Enter village squre
-label Village
+label square
 [background arg="res://img/point_and_click/backgrounds/village_square.png" fade="0.0"]
-- Yell about the imminent goblin attack.
+- Yell about the imminent goblin attack
 	No one seems to believe you. Within a few minutes, they start keeping their distance.
-	jump Village
+	jump square
 - Visit the...
 	- Blacksmith
-		jump blacksmith_timeline/ 
+		jump blacksmith_timeline/
 	- Hunter
 	- Doctor
 	- Carpenter

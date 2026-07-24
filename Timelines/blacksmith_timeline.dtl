@@ -1,16 +1,30 @@
 [background fade="0.0"]
-"How can I help you?"
+join Blacksmith center
+Blacksmith: "How can I help you?"
 label blacksmith_greeting
 - "I'd like to buy a sword."
-	"That'll be 6 Gold"
+	Blacksmith: "That'll be 6 Gold"
 	- Purchase [you will have the sword upgrade]
+		jump blacksmith_greeting
 	- "I don't have that much money."
 		jump blacksmith_greeting
 - "The goblins are attacking!"
 	He looks out at the window at the peaceful town square, then back at you.
-	"You sure about that?"
-	"They're going to attack at sundown.\
+	Blacksmith: "You sure about that?"
+	Doomsayer: "They're going to attack at sundown.\
 	Will you help me defend the town from the church?"
+	Blacksmith: "I have a lot of tools to finish repairing before tomorrow."
+	Doomsayer: "There might not be a tomorrow."
+	Blacksmith: "How about this..."
+	"If you can help me clear some orders off my plate, I'll be there tonight at the church.
+	What do you say?"
+	- "Yes" [You will lose 2 hours]
+		You spend 2 hours toiling over the forge.
+		By the end of it, the blacksmith's pile of repairs is looking considerably smaller.
+		He thanks you and promises to show up at the church tonight.
+		jump blacksmith_greeting
+	- "No"
+		jump blacksmith_greeting
 
 - Return to the square
-	jump timeline/Village
+	jump village/square

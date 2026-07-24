@@ -22,15 +22,20 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"Blacksmith": "res://characters/Blacksmith.dch",
+"Doomsayer": "res://characters/Doomsayer.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "blacksmith_timeline": "res://Timelines/blacksmith_timeline.dtl",
-"timeline": "res://Timelines/timeline.dtl"
+"village": "res://Timelines/village.dtl"
 }
-layout/style_directory={}
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_directory={
+"": "res://dialogue_style.tres",
+"dialogue_style": "res://dialogue_style.tres"
+}
+layout/style_list=["res://dialogue_style.tres"]
+layout/default_style="res://dialogue_style.tres"
 variables={}
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
