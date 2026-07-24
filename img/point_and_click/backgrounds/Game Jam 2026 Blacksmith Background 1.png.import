@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2ebtyu0yvkg"
-path="res://.godot/imported/017.png-bd0deda689831b89d40c044831443976.ctex"
+uid="uid://tyd7o4vasx1c"
+path="res://.godot/imported/Game Jam 2026 Blacksmith Background 1.png-07d7c91a4d7dd81c7798fc6d84b2a971.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/bald npc/bald npc frames/017.png"
-dest_files=["res://.godot/imported/017.png-bd0deda689831b89d40c044831443976.ctex"]
+source_file="res://img/point_and_click/backgrounds/Game Jam 2026 Blacksmith Background 1.png"
+dest_files=["res://.godot/imported/Game Jam 2026 Blacksmith Background 1.png-07d7c91a4d7dd81c7798fc6d84b2a971.ctex"]
 
 [params]
 

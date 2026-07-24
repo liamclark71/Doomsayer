@@ -708,11 +708,6 @@ tree_root = SubResource("AnimationNodeStateMachine_lja4b")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="ShootTimer" type="Timer" parent="." unique_id=793561188]
-process_callback = 0
-wait_time = 0.3
-one_shot = true
-
 [node name="SwingTimer" type="Timer" parent="." unique_id=1075684604]
 process_callback = 0
 one_shot = true
@@ -723,5 +718,4 @@ position_smoothing_enabled = true
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

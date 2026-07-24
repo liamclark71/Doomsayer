@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://nci2rkrbfc6t" path="res://sprites/bald npc/bald npc frames/010.png" id="16_54jp2"]
 [ext_resource type="Texture2D" uid="uid://dbppuf5g0xpu" path="res://sprites/bald npc/bald npc frames/011.png" id="17_qland"]
 [ext_resource type="Texture2D" uid="uid://lauxdipdbwnj" path="res://sprites/bald npc/bald npc frames/012.png" id="18_3ca2q"]
+[ext_resource type="Texture2D" uid="uid://b2sgfefxpvebn" path="res://sprites/bald npc/bald npc frames/014.png" id="18_bb20n"]
+[ext_resource type="Texture2D" uid="uid://rq25nh7v2nu0" path="res://sprites/bald npc/bald npc frames/015.png" id="19_8d7p2"]
 [ext_resource type="Texture2D" uid="uid://ddiys84ncjys4" path="res://sprites/bald npc/bald npc frames/013.png" id="19_m76c1"]
 [ext_resource type="Texture2D" uid="uid://bu0m7y8nxytrl" path="res://sprites/bald npc/bald npc frames/002.png" id="20_4y1uw"]
 [ext_resource type="Texture2D" uid="uid://btdr2d78xfjjd" path="res://sprites/bald npc/bald npc frames/003.png" id="21_fx3vs"]
@@ -114,6 +116,17 @@ animations = [{
 "loop": 1,
 "name": &"default",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_bb20n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8d7p2")
+}],
+"loop": 1,
+"name": &"die",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -363,6 +376,35 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_bb20n"]
+resource_name = "die"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="Animation" id="Animation_gp7sx"]
 resource_name = "sling_draw"
 length = 0.1667
@@ -515,6 +557,7 @@ _data = {
 &"bow_release": SubResource("Animation_d237o"),
 &"club_swing": SubResource("Animation_61nkb"),
 &"default": SubResource("Animation_q71mf"),
+&"die": SubResource("Animation_bb20n"),
 &"sling_draw": SubResource("Animation_gp7sx"),
 &"sling_hold": SubResource("Animation_s7gtl"),
 &"sling_release": SubResource("Animation_qnjh6"),
@@ -632,6 +675,7 @@ arrow_scene = ExtResource("2_pvame")
 rock_scene = ExtResource("3_1mjj1")
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]
+visible = false
 sprite_frames = SubResource("SpriteFrames_rskbl")
 animation = &"walk"
 offset = Vector2(1.9047621, -19.095242)
@@ -677,8 +721,14 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
+[node name="DeathTimer" type="Timer" parent="." unique_id=407054333]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]
 [connection signal="timeout" from="SwingingDurationTimer" to="." method="_on_swinging_duration_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

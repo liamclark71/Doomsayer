@@ -6,19 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://cwvgtrxdmy75o" path="res://goblin.tscn" id="3_b1r40"]
 [ext_resource type="PackedScene" uid="uid://pcrcyr8lcgnd" path="res://npc.tscn" id="4_b1r40"]
 [ext_resource type="AudioStream" uid="uid://cemer7oaxjo6g" path="res://soundtracks/doomsseeing.wav" id="5_7088l"]
+[ext_resource type="PackedScene" uid="uid://b70vdniwhssc1" path="res://game_over_box.tscn" id="7_feujx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
 size = Vector2(22, 1093.8914)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yikbh"]
-vertices = PackedVector2Array(845.0469, 460, 843.0469, -258.21094, 1465.0625, -231.75, 1468.9297, 863.1719, 486.9375, 872.8203, 727.9531, 460, 484.9375, 257.53906, 729.9375, -249.77344, -135.92969, -239.21094, 369.90625, 260.45313, -132.0625, 866.21875, 372.90625, 872.7578)
+vertices = PackedVector2Array(845.0469, 460, 843.0469, -258.21094, 1465.0625, -231.75, 1468.9297, 863.1719, 486.9375, 872.8203, 728.03125, 460, 484.9375, 257.53906, 727.02344, -241.92969, -135.92969, -239.0625, 369.90625, 260.45313, -132.0625, 866.21875, 372.90625, 872.7578)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 8, 9, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1487, 881, 469, 891, 467, 276, 388, 278, 391, 891, -150, 884, -154, -257, 748, -268, 746, 442, 827, 442, 825, -277, 1483, -249)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1487, 881, 469, 891, 467, 276, 388, 278, 391, 891, -150, 884, -154, -257, 745, -260, 746, 442, 827, 442, 825, -277, 1483, -249)])
 agent_radius = 18.0
 
 [node name="defense" type="Node2D" unique_id=391971717]
 
 [node name="Blacksmithguy" type="Sprite2D" parent="." unique_id=1262774571]
+z_index = -2
 position = Vector2(507, 233)
 texture = ExtResource("1_7088l")
 
@@ -60,6 +62,36 @@ navigation_polygon = SubResource("NavigationPolygon_yikbh")
 [node name="Goblin" parent="." unique_id=1828912522 instance=ExtResource("3_b1r40")]
 position = Vector2(514, 613)
 
+[node name="Goblin7" parent="." unique_id=1754597375 instance=ExtResource("3_b1r40")]
+position = Vector2(104, 137)
+
+[node name="Goblin8" parent="." unique_id=1987831717 instance=ExtResource("3_b1r40")]
+position = Vector2(-18, 79)
+
+[node name="Goblin9" parent="." unique_id=1203097173 instance=ExtResource("3_b1r40")]
+position = Vector2(-71, 133)
+
+[node name="Goblin10" parent="." unique_id=1163928889 instance=ExtResource("3_b1r40")]
+position = Vector2(-128, 62)
+
+[node name="Goblin11" parent="." unique_id=818444766 instance=ExtResource("3_b1r40")]
+position = Vector2(-90, -9)
+
+[node name="Goblin12" parent="." unique_id=1384632043 instance=ExtResource("3_b1r40")]
+position = Vector2(-103, -67)
+
+[node name="Goblin3" parent="." unique_id=1609423 instance=ExtResource("3_b1r40")]
+position = Vector2(139, 603)
+
+[node name="Goblin4" parent="." unique_id=1647376994 instance=ExtResource("3_b1r40")]
+position = Vector2(-40, 602)
+
+[node name="Goblin5" parent="." unique_id=1125305019 instance=ExtResource("3_b1r40")]
+position = Vector2(85, 447)
+
+[node name="Goblin6" parent="." unique_id=623671354 instance=ExtResource("3_b1r40")]
+position = Vector2(188, 457)
+
 [node name="Goblin2" parent="." unique_id=1079093776 instance=ExtResource("3_b1r40")]
 position = Vector2(1159, -34)
 
@@ -68,4 +100,10 @@ position = Vector2(58, 581)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=998408937]
 stream = ExtResource("5_7088l")
+volume_db = -80.0
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1557942526]
+
+[node name="GameOverBox" parent="CanvasLayer" unique_id=88980822 instance=ExtResource("7_feujx")]
+visible = false
