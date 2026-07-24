@@ -74,6 +74,7 @@ func take_damage(dam):
 
 func game_over():
 	print("Oh no! I have been defeated by the Goblins")
+	
 
 
 func _shoot_projectile():
