@@ -5,16 +5,18 @@ extends CharacterBody2D
 @export var has_sword = false
 @export var arrow_scene: PackedScene
 @export var rock_scene: PackedScene
+@export var hitpoints = 5
 
 @onready var legs = $Legs
 @onready var torso = $Torso
 @onready var anim_tree = $AnimationTree
 @onready var proj_spawn = $Torso/ProjectileSpawn
+@onready var hitbox = $Torso/HitBox/CollisionShape2D
 
 var damage = 1
 var drawing = false
 var swinging = false
-var hitbox_array: Array[Enemy] = []
+var hit_enemies := {}
 
 func _ready():
 	legs.play("stand")
@@ -22,6 +24,7 @@ func _ready():
 	if has_sword:
 		damage = 2
 	z_index = 1
+	hitbox.disabled = true
 
 func _physics_process(_delta):
 	get_input()
@@ -47,9 +50,25 @@ func get_input():
 	else:
 		swinging = false
 
-func _hit_enemies():
-	for enemy in hitbox_array:
-		enemy.take_damage(damage)
+func _start_swing():
+	hit_enemies.clear()
+	hitbox.disabled = false
+
+func _end_swing():
+	hitbox.disabled = true
+
+func take_damage(dam):
+	hitpoints -= dam
+	print("hp: ", hitpoints)
+	if hitpoints <= 0:
+		game_over()
+	else:
+		print("OOUUWWWOUWOWOUUWWWWUU")
+	
+
+
+func game_over():
+	print("Oh no! I have been defeated by the Goblins")
 
 func _shoot_projectile():
 	if has_bow:
@@ -65,11 +84,8 @@ func _shoot_projectile():
 		rock.global_position = proj_spawn.global_position
 		rock.global_rotation = torso.global_rotation
 
-func _on_hit_box_area_body_entered(body):
-	if body is Enemy:
-		hitbox_array.append(body)
-
-
-func _on_hit_box_area_body_exited(body):
-	if body is Enemy:
-		hitbox_array.erase(body)
+func _on_hit_box_area_entered(area):
+	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
+		hit_enemies[area.get_parent()] = true
+		area.get_parent().take_damage(damage)
+		area.get_parent().apply_knockback(torso.global_position, 400)
