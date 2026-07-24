@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://suwqsn8xm3rg"]
 
+[ext_resource type="Texture2D" uid="uid://c01jlseb0l8i0" path="res://img/point_and_click/sprites/blacksmithguy.png" id="1_7088l"]
 [ext_resource type="PackedScene" uid="uid://v6h063iyep0p" path="res://peasant.tscn" id="1_p2qeu"]
 [ext_resource type="Texture2D" uid="uid://2qyqn0nlmd55" path="res://sprites/peasant/victory.png" id="3_1mt72"]
 [ext_resource type="PackedScene" uid="uid://cwvgtrxdmy75o" path="res://goblin.tscn" id="3_b1r40"]
@@ -16,6 +17,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(1487, 881, 469, 891, 46
 agent_radius = 18.0
 
 [node name="defense" type="Node2D" unique_id=391971717]
+
+[node name="Blacksmithguy" type="Sprite2D" parent="." unique_id=1262774571]
+position = Vector2(507, 233)
+texture = ExtResource("1_7088l")
 
 [node name="Peasant" parent="." unique_id=772900983 instance=ExtResource("1_p2qeu")]
 position = Vector2(331, 195)
