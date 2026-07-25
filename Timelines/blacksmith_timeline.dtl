@@ -4,10 +4,10 @@ label blacksmith_greeting
 Blacksmith: "How can I help you?"
 - "I'd like to buy a sword." | [if {sword} == false]
 	Blacksmith: "That'll be 6 Gold"
-	- Purchase [you will have the sword upgrade]
+	- Purchase [You will have the sword upgrade]
 		set {sword} = true
-		jump blacksmith_greeting
 		You now have the sword upgrade.
+		jump blacksmith_greeting
 	- "I don't have that much money."
 		jump blacksmith_greeting
 - "The goblins are attacking!" | [if {blacksmith_recruited} == false]
