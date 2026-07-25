@@ -56,6 +56,9 @@ var shoot_on_cooldown = false
 var interact_object = null
 var max_hitpoints = 8
 
+var interact_scene = preload("res://interact_text.tscn")
+var interact_label = null  # track the current instance
+
 
 func _ready():
 	max_hitpoints = hitpoints
@@ -194,8 +197,10 @@ func play_ranged_charge_audio():
 
 
 func interact():
-	if interact_object.is_in_group("barricades"):
-		interact_object.repair_barricade()
+	if interact_object:
+		if interact_object.is_in_group("barricades"):
+			if interact_object.glass_intact == false:
+				interact_object.repair_barricade()
 
 
 func _on_hit_box_area_entered(area):
@@ -221,7 +226,19 @@ func _on_hit_box_body_entered(body):
 
 
 func _on_interact_box_body_entered(body):
-	if body.is_in_group("barricades"):
+	if body.is_in_group("barricades"): #or body.is_in_group("characters"):
 		interact_object = body
-	elif body.is_in_group("characters") :
-		interact_object = body
+		if interact_label == null:
+			interact_label = interact_scene.instantiate()
+			interact_object.add_child(interact_label)
+			if body.is_in_group("barricades"):
+				interact_label.text = "Press E to repair barricade"
+	
+
+
+func _on_interact_box_body_exited(body):
+	if body == interact_object:
+		if interact_label:
+			interact_label.queue_free()
+			interact_label = null
+		interact_object = null

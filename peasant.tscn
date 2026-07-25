@@ -705,6 +705,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_3u1pd")
 arrow_scene = ExtResource("2_p0nvd")
 rock_scene = ExtResource("3_d237o")
+has_revive = true
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]
 position = Vector2(3.3881318e-21, 4.7683716e-07)
@@ -758,6 +759,7 @@ process_callback = 0
 one_shot = true
 
 [node name="Camera" type="Camera2D" parent="." unique_id=78403538]
+zoom = Vector2(0.8, 0.8)
 process_callback = 0
 position_smoothing_enabled = true
 
@@ -769,5 +771,6 @@ stream = ExtResource("26_gp7sx")
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="Torso/InteractBox" to="." method="_on_interact_box_body_entered"]
+[connection signal="body_exited" from="Torso/InteractBox" to="." method="_on_interact_box_body_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

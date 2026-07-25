@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://iplk4uh21ikx"]
+
+[node name="GoblinCounter" type="Control" unique_id=1684856688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=140888413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1405070992]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.66763264, 0.8010265, 0.91413707, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Goblins Left: 0"

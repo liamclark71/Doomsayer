@@ -18,7 +18,6 @@ extends Enemy
 	load("res://sound_assets/goblin_death4.wav"),
 	load("res://sound_assets/goblin_death5.wav"),
 	load("res://sound_assets/goblin_death6.wav"),
-	load("res://sound_assets/goblin_death7.wav"),
 	load("res://sound_assets/goblin_death8.wav"),
 	load("res://sound_assets/goblin_death9.wav"),
 ]
