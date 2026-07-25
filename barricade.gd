@@ -31,9 +31,7 @@ func get_global_rect() -> Rect2:
 	return Rect2(global_position - extents, extents * 2)
 
 func handle_board_damage_audio():
-	print(hitpoints)
 	if hitpoints <= 1:
-		
 		$BoardDamageAudioController.stream = barricade_broken_sound
 		$BoardDamageAudioController.pitch_scale = randf_range(0.7, 1.3)
 	$BoardDamageAudioController.play()
