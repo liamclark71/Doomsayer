@@ -29,8 +29,12 @@ class_name Character extends CharacterBody2D
 	load("res://sound_assets/bathit4.wav"),
 	load("res://sound_assets/bathit5.wav")
 ]
-
-
+@onready var whiff_melee_sounds: Array[AudioStream] = [
+load("res://sound_assets/whiff1.wav"),
+load("res://sound_assets/whiff2.wav"),
+load("res://sound_assets/whiff3.wav"),
+load("res://sound_assets/whiff4.wav")
+]
 
 var camera 
 
@@ -116,6 +120,8 @@ func _start_dodge(input_direction: Vector2):
 	can_dodge = true
 
 func _start_swing():
+	$MeleeAudioController.stream = whiff_melee_sounds.pick_random()
+	$MeleeAudioController.play()
 	hit_enemies.clear()
 	hitbox.disabled = false
 
@@ -182,7 +188,7 @@ func _on_hit_box_area_entered(area):
 		_handleMeleeHitAudio()
 		area.get_parent().take_damage(damage, 'club' if not has_sword else 'sword')
 		area.get_parent().apply_knockback(torso.global_position, 400)
-
+		
 func _on_swing_timer_timeout():
 	swing_on_cooldown = false
 
