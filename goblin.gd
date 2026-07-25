@@ -78,7 +78,6 @@ func _physics_process(_delta):
 
 
 func get_closest_character() -> Node2D:
-	#wait a couple seconds after death, then walk away
 	var candidates = []
 	
 	for character in get_tree().get_nodes_in_group("characters"):
@@ -92,9 +91,11 @@ func get_closest_character() -> Node2D:
 			< global_position.distance_squared_to(b.global_position)
 	)
 
+	var barricades = get_tree().get_nodes_in_group("barricades")
 	var closest: Node2D = null
 	var shortest_path := INF
 	var map = agent.get_navigation_map()
+	var chosen_path: PackedVector2Array = []
 
 	for character in candidates.slice(0, 3):
 		var path = NavigationServer2D.map_get_path(map, global_position, character.global_position, true)
@@ -104,6 +105,17 @@ func get_closest_character() -> Node2D:
 		if length < shortest_path:
 			shortest_path = length
 			closest = character
+			chosen_path = path
+	
+	if closest == null:
+		return null
+	
+	for barricade in barricades:
+		var rect = barricade.get_global_rect()
+		for i in range(chosen_path.size() - 1):
+			if _segment_intersects_rect(chosen_path[i], chosen_path[i + 1], rect):
+				return barricade
+	
 	return closest
 
 
@@ -119,14 +131,12 @@ func hit():
 func take_damage(dam, damageType):
 	hitpoints = hitpoints - dam
 	var tween = get_tree().create_tween()
-	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
+	tween.tween_property($Torso, "modulate", Color(1.0, 0.35, 0.35), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 
 func play_death_sound():
 	$DeathAudioController.stream = corpse_thud_sounds.pick_random()
 	$DeathAudioController.play()
-
-
 
 func die():
 	alive = false
@@ -146,6 +156,23 @@ func die():
 	tween.tween_callback(queue_free)
 
 
+func _segment_intersects_rect(p1: Vector2, p2: Vector2, rect: Rect2) -> bool:
+	if rect.has_point(p1) or rect.has_point(p2):
+		return true
+	var corners = [
+		rect.position,
+		rect.position + Vector2(rect.size.x, 0),
+		rect.position + rect.size,
+		rect.position + Vector2(0, rect.size.y)
+	]
+	for i in range(4):
+		var edge_start = corners[i]
+		var edge_end = corners[(i + 1) % 4]
+		if Geometry2D.segment_intersects_segment(p1, p2, edge_start, edge_end):
+			return true
+	return false
+
+
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	if not alive:
 		return
@@ -154,7 +181,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 
 func _on_hit_box_body_entered(body):
-	if body.is_in_group("characters"): # if player or NPC
+	if body.is_in_group("characters") or body.is_in_group("barricades"):
 		hitbox_array.append(body)
 
 
