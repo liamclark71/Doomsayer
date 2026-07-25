@@ -9,7 +9,7 @@ Hale and hearty by the looks of it, heehee."
 	Doctor: "They just might save your life, heehee."
 	Doctor: "But I don't give them out for free.\
 	That'll be 2 gold."
-	- Purchase [You will have 1 revive] | [if {gold} >= 2.0]
+	- Purchase [gain 1 revive] | [if {gold} >= 2.0]
 		set {items.revive} = true
 		set {gold} -= 2.0
 		You now have one revive.
@@ -28,14 +28,24 @@ Hale and hearty by the looks of it, heehee."
 	There wouldn't be enough to go around."
 	Doctor: "Ohoho, but...\
 	I could join you if you gathered some herbs for me first."
-	- Gather herbs [You lose 3 hours] | [if {hours} >= 3.0]
-		set {recruitment.doctor_recruited} = true
-		set {hours} -= 3.0
-		set {recruitment.recruitees} += 1.0
-		The doctor describes the herbs needed. You spend three hours wandering around the woods, gathering as much as you can find.
-		You bring the herbs to him, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
-		jump doctor_greeting
-	- "I can't right now."
+	- Gather herbs [lose 3 hours, or lose 2 hours with dodge] | [if {hours} >= 3.0]
+		if {items.dodge} == false:
+			set {recruitment.doctor_recruited} = true
+			set {hours} -= 3.0
+			set {recruitment.recruitees} += 1.0
+			The doctor describes the herbs needed. You spend hours wandering around the woods, gathering as much as you can find.
+			You have a harrowing experience with hidden goblin trap, and end up dropping much of what you've already gathered. It takes you a while to pick it all back up.
+			You bring the herbs to him after three hours, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
+			jump doctor_greeting
+		elif {items.dodge} == true:
+			set {recruitment.doctor_recruited} = true
+			set {hours} -= 2.0
+			set {recruitment.recruitees} += 1.0
+			The doctor describes the herbs needed. You spend hours wandering around the woods, gathering as much as you can find.
+			You just barely avoid a hidden goblin trap. You stand still for a moment, heart beating wildly, and then decide it's probably a good time to go back...
+			You bring the herbs to him after two hours, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
+			jump doctor_greeting
+	- "Maybe later."
 		jump doctor_greeting
 - Return to the town square
 	leave Doctor

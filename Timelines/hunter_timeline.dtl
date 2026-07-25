@@ -4,7 +4,7 @@ label hunter_greeting
 Hunter: "What are you doing out here?"
 - "I'd like to buy a bow." | [if {items.bow} == false]
 	Hunter: "That'll be 6 gold."
-	- Purchase [You will have the bow upgrade] | [if {gold} >= 6.0]
+	- Purchase [obtain bow upgrade] | [if {gold} >= 6.0]
 		set {items.bow} = true
 		set {gold} -= 6.0
 		You now have the bow upgrade.
@@ -17,14 +17,23 @@ Hunter: "What are you doing out here?"
 	Hunter: "Goblins..."
 	Hunter: "Feisty little creatures...\
 	Not much good for eating."
+	label hunter_choice
 	Hunter: "If you help me set up traps in the area, I'll join you at the church."
-	- Agree to help [You will lose 3 hours] | [if {hours} >= 3.0]
+	- Agree to help [lose 3 hours] | [if {hours} >= 3.0]
 		set {recruitment.hunter_recruited} = true
 		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend three hours setting up traps around the perimeter of the village. You hope that some of the goblins will get caught.
 		The hunter shakes your hand and stalks off.
 		jump hunter_greeting
+	- Offer to go hunting instead [locked - bow required] | [if {items.bow} == false]
+		jump hunter_choice
+	- Offer to go hunting instead [lose 2 hours] | [if {items.bow} == true]
+		set {recruitment.hunter_recruited} = true
+		set {hours} -= 2.0
+		set {recruitment.recruitees} += 1.0
+		You and the hunter spend two hours stalking deer in the forest. In the end, you manage to shoot one. The hunter is pleased with your marksmanship.
+		The hunter shakes your hand and stalks off.
 	- "I can't do that right now."
 		jump hunter_greeting
 - Return to the town square
