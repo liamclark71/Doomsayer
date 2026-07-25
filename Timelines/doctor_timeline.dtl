@@ -17,7 +17,7 @@ Hale and hearty by the looks of it, heehee."
 	- "Nevermind."
 		Doctor: "Hmmm... Your loss."
 		jump doctor_greeting
-- "Goblins are attacking the town at nightfall."
+- "Goblins are attacking the town at nightfall." | [if {recruitment.doctor_recruited} == false]
 	Doomsayer: "I'm planning to gather people at the church to defend the village.\
 	Will you join me?"
 	Doctor: "Hmmm...\

@@ -15,14 +15,14 @@ if {hours} > 0.0:
 		set {conversation.yell} = true
 		jump square
 	- Visit the...
+		- Carpenter
+			jump carpenter_timeline/
 		- Blacksmith
 			jump blacksmith_timeline/
 		- Hunter
 			jump hunter_timeline/
 		- Doctor
 			jump doctor_timeline/
-		- Carpenter
-			jump carpenter_timeline/
 		- Acrobat
 			jump acrobat_timeline/
 	- Go to the church [forfeit remaining hours]

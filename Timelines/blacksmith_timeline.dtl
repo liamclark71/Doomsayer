@@ -3,7 +3,7 @@ join Blacksmith center [mirrored="true"]
 label blacksmith_greeting
 Blacksmith: "How can I help you?"
 - "I'd like to buy a sword." | [if {items.sword} == false]
-	Blacksmith: "That'll be 6 gold"
+	Blacksmith: "That'll be 6 gold."
 	- Purchase [You will have the sword upgrade] | [if {gold} >= 6.0]
 		set {items.sword} = true
 		set {gold} -= 6.0
