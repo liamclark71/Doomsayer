@@ -31,31 +31,15 @@ anchor_left = 0.5
 anchor_top = 0.51100004
 anchor_right = 0.5
 anchor_bottom = 0.51100004
-offset_left = -440.0
-offset_top = -98.12802
-offset_right = -223.0
-offset_bottom = -22.128021
+offset_left = -442.0
+offset_top = -44.12802
+offset_right = -225.0
+offset_bottom = 31.871979
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Start Game"
 icon = SubResource("CanvasTexture_t3pau")
-
-[node name="settings" type="Button" parent="." unique_id=988634597]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.51100004
-anchor_right = 0.5
-anchor_bottom = 0.51100004
-offset_left = -440.0
-offset_top = 1.8719788
-offset_right = -223.0
-offset_bottom = 77.87198
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "Settings"
 
 [connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="start_game" to="." method="_on_button_pressed"]

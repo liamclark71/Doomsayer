@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c3uyb61skhtk5"]
+
+[ext_resource type="Script" uid="uid://dcammuqouc65u" path="res://settings_menu/settings_menu.gd" id="1_vlimw"]
+
+[node name="SettingsMenu" type="Control" unique_id=26934273]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vlimw")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=343612741]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1541063784]
+layout_mode = 2
+
+[node name="vol_label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=449860793]
+layout_mode = 2
+text = "Volume"
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=792045279]
+layout_mode = 2
+
+[node name="mute_label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=895098885]
+layout_mode = 2
+text = "Mute"
+
+[node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=1316576979]
+layout_mode = 2
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
