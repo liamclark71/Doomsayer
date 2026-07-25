@@ -22,6 +22,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"Acrobat": "res://characters/Acrobat.dch",
 "Blacksmith": "res://characters/Blacksmith.dch",
 "Carpenter": "res://characters/Carpenter.dch",
 "Doctor": "res://characters/Doctor.dch",
@@ -30,6 +31,7 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"acrobat_timeline": "res://Timelines/acrobat_timeline.dtl",
 "blacksmith_timeline": "res://Timelines/blacksmith_timeline.dtl",
 "carpenter_timeline": "res://Timelines/carpenter_timeline.dtl",
 "doctor_timeline": "res://Timelines/doctor_timeline.dtl",
@@ -43,15 +45,26 @@ layout/style_directory={
 layout/style_list=["res://dialogue_style.tres"]
 layout/default_style="res://dialogue_style.tres"
 variables={
-"blacksmith_recruited": false,
-"bow": false,
-"doctor_recruited": false,
+"conversation": {
+"performances": 0,
+"yell": false
+},
 "gold": 0,
 "hours": 10,
-"hunter_recruited": false,
+"items": {
+"bow": false,
+"dodge": false,
 "revive": false,
-"sword": false,
-"yell": false
+"sword": false
+},
+"recruitment": {
+"acrobat_recruited": false,
+"blacksmith_recruited": false,
+"carpenter_recruited": false,
+"doctor_recruited": false,
+"hunter_recruited": false,
+"recruitees": 0
+}
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

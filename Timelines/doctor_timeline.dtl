@@ -3,14 +3,14 @@ join Doctor center
 label doctor_greeting
 Doctor: "Ohoho, a customer.\
 Hale and hearty by the looks of it, heehee."
-- "I'd like to buy some medicine." | [if {revive} == false]
+- "I'd like to buy some medicine." | [if {items.revive} == false]
 	Doctor: "You mean my glorious, delicious, tinctures?\
 	Why, of course you can!"
 	Doctor: "They just might save your life, heehee."
 	Doctor: "But I don't give them out for free.\
 	That'll be 2 Gold."
 	- Purchase [You will have 1 revive] | [if {gold} >= 2.0]
-		set {revive} = true
+		set {items.revive} = true
 		set {gold} -= 2.0
 		You now have one revive.
 		jump doctor_greeting
@@ -29,8 +29,9 @@ Hale and hearty by the looks of it, heehee."
 	Doctor: "Ohoho, but...\
 	I could join you if you gathered some herbs for me first."
 	- Gather herbs [You lose 2 hours]
-		set {doctor_recruited} = true
+		set {recruitment.doctor_recruited} = true
 		set {hours} -= 2.0
+		set {recruitment.recruitees} += 1.0
 		The doctor describes the herbs needed. You spend 2 hours wandering around the woods, gathering as much as you can find.
 		You bring the herbs to him, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
 		jump doctor_greeting
