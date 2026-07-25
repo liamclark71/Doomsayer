@@ -24,12 +24,13 @@ func _ready():
 	agent.target_desired_distance = 80
 	legs.play("stand")
 	anim_tree.active = true
-	$SpearAudioController.pitch_scale = randf_range(0.8, 1.2)
 	
 	target = get_closest_character()
 	if target:
 		agent.target_position = target.global_position
 
+func randomize_audio():
+	$SpearAudioController.pitch_scale = randf_range(0.8, 1.2)
 
 func _physics_process(_delta):
 	if alive:

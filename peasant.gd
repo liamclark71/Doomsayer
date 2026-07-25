@@ -22,6 +22,16 @@ class_name Character extends CharacterBody2D
 @onready var shoot_timer = $ShootTimer
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
 
+@onready var bat_melee_sounds: Array[AudioStream] = [
+	load("res://sound_assets/bathit1.wav"),
+	load("res://sound_assets/bathit2.wav"),
+	load("res://sound_assets/bathit3.wav"),
+	load("res://sound_assets/bathit4.wav"),
+	load("res://sound_assets/bathit5.wav")
+]
+
+
+
 var camera 
 
 var damage = 1
@@ -159,10 +169,16 @@ func _shoot_projectile():
 		rock.global_position = proj_spawn.global_position
 		rock.global_rotation = torso.global_rotation
 
+func _handleMeleeHitAudio():
+	if not has_sword:
+		$MeleeAudioController.stream = bat_melee_sounds.pick_random()
+	$MeleeAudioController.play()
+	
 
 func _on_hit_box_area_entered(area):
 	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
 		hit_enemies[area.get_parent()] = true
+		_handleMeleeHitAudio()
 		area.get_parent().take_damage(damage, 'club' if not has_sword else 'sword')
 		area.get_parent().apply_knockback(torso.global_position, 400)
 
