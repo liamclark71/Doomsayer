@@ -28,7 +28,7 @@ Hale and hearty by the looks of it, heehee."
 	There wouldn't be enough to go around."
 	Doctor: "Ohoho, but...\
 	I could join you if you gathered some herbs for me first."
-	- Gather herbs [lose 3 hours, or lose 2 hours with dodge] | [if {hours} >= 3.0]
+	- Gather herbs [lose 3 hours, or lose 2 hours with dodge upgrade] | [if {hours} >= 3.0]
 		if {items.dodge} == false:
 			set {recruitment.doctor_recruited} = true
 			set {hours} -= 3.0
