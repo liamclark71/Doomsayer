@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://u7eksd4vogrj"
-path="res://.godot/imported/corpse_thud2.wav-75b71d47b8b859a050c8707e998eca43.sample"
+path="res://.godot/imported/thud2.wav-7894148d7343687b0c7fe53e2566e6b2.sample"
 
 [deps]
 
-source_file="res://sound_assets/corpse_thud2.wav"
-dest_files=["res://.godot/imported/corpse_thud2.wav-75b71d47b8b859a050c8707e998eca43.sample"]
+source_file="res://sound_assets/thud2.wav"
+dest_files=["res://.godot/imported/thud2.wav-7894148d7343687b0c7fe53e2566e6b2.sample"]
 
 [params]
 
