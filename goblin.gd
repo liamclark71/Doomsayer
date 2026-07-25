@@ -11,10 +11,29 @@ extends Enemy
 @export var attack_range = 110
 @export var damage = 1
 @export var knockback_friction := 1500.0
-@onready var corpse_thud_sounds: Array[AudioStream] = [
-	load("res://sound_assets/corpse_thud1.wav"),
-	load("res://sound_assets/corpse_thud2.wav"),
+@onready var death_sounds: Array[AudioStream] = [
+	load("res://sound_assets/goblin_death1.wav"),
+	load("res://sound_assets/goblin_death2.wav"),
+	load("res://sound_assets/goblin_death3.wav"),
+	load("res://sound_assets/goblin_death4.wav"),
+	load("res://sound_assets/goblin_death5.wav"),
+	load("res://sound_assets/goblin_death6.wav"),
+	load("res://sound_assets/goblin_death7.wav"),
+	load("res://sound_assets/goblin_death8.wav"),
+	load("res://sound_assets/goblin_death9.wav"),
 ]
+@onready var hit_sounds: Array[AudioStream] = [
+	load("res://sound_assets/goblin_hit1.wav"),
+	load("res://sound_assets/goblin_hit2.wav"),
+	load("res://sound_assets/goblin_hit3.wav"),
+	load("res://sound_assets/goblin_hit4.wav"),
+	load("res://sound_assets/goblin_hit5.wav"),
+	load("res://sound_assets/goblin_hit6.wav"),
+	load("res://sound_assets/goblin_hit7.wav"),
+	load("res://sound_assets/goblin_hit8.wav"),
+	load("res://sound_assets/goblin_hit9.wav"),
+]
+
 
 var knockback_velocity := Vector2.ZERO
 var in_range = false
@@ -130,22 +149,30 @@ func hit():
 	for body in hitbox_array:
 		body.take_damage(damage, 'test')
 
+func handle_damage_audio():
+	$DamageAudioController.pitch_scale = randf_range(0.8, 1.2)
+	var delay_time = randf_range(0.0, 0.25)
+	await get_tree().create_timer(delay_time).timeout
+	
+	if hitpoints > 0:
+		$DamageAudioController.stream = hit_sounds.pick_random()
+	else:
+		$DamageAudioController.stream = death_sounds.pick_random()
+
+	$DamageAudioController.play()
 
 func take_damage(dam, damageType):
 	hitpoints = hitpoints - dam
+	handle_damage_audio()
+		
 	var tween = get_tree().create_tween()
 	tween.tween_property($Torso, "modulate", Color(1.0, 0.35, 0.35), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
-
-func play_death_sound():
-	$DeathAudioController.stream = corpse_thud_sounds.pick_random()
-	$DeathAudioController.play()
 
 func die():
 	alive = false
 	anim_tree.active = false
 	legs.visible = false
-	play_death_sound()
 	hurtbox.disabled = true
 	set_collision_layer_value(4, false)
 	set_collision_mask_value(2, false)

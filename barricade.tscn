@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhf0ha26jc1oi"]
 
 [ext_resource type="Script" uid="uid://ckny31jewy3o0" path="res://barricade.gd" id="1_imrbv"]
+[ext_resource type="AudioStream" uid="uid://bqnpflg5iuqjd" path="res://sound_assets/glass_shatter.wav" id="2_4w3go"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
 size = Vector2(102, 98)
@@ -12,3 +13,7 @@ script = ExtResource("1_imrbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=766280224]
 shape = SubResource("RectangleShape2D_5gpkp")
+
+[node name="GlassShatterAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1273280220]
+stream = ExtResource("2_4w3go")
+attenuation = 4.438277

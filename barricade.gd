@@ -52,9 +52,13 @@ func repair_barricade():
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 		targetable = true
 
-
+func break_glass_audio():
+	$GlassShatterAudioController.pitch_scale = randf_range(0.8, 1.2)
+	$GlassShatterAudioController.play()
+	
 func break_glass():
-		if boarded_up:
-			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
-		else:
-			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
+	break_glass_audio()
+	if boarded_up:
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
+	else:
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
