@@ -6,6 +6,7 @@
 size = Vector2(102, 98)
 
 [node name="Barricade" type="StaticBody2D" unique_id=1223366485 groups=["barricades"]]
+collision_layer = 17
 collision_mask = 15
 script = ExtResource("1_imrbv")
 

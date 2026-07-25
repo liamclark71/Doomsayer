@@ -90,8 +90,11 @@ func get_closest_character() -> Node2D:
 		return global_position.distance_squared_to(a.global_position) \
 			< global_position.distance_squared_to(b.global_position)
 	)
-
-	var barricades = get_tree().get_nodes_in_group("barricades")
+	
+	var barricades = []
+	for barricade in get_tree().get_nodes_in_group("barricades"):
+		if barricade.targetable:
+			barricades.append(barricade)
 	var closest: Node2D = null
 	var shortest_path := INF
 	var map = agent.get_navigation_map()

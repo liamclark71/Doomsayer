@@ -10,16 +10,18 @@ var glass_intact = true
 var walls_layer: TileMapLayer
 var cell
 var current_source_id
-var current_atlas_coords
+var window_atlas_coords
+var max_hitpoints = 8
 
 func _ready():
+	max_hitpoints = hitpoints
 	walls_layer = get_tree().get_first_node_in_group("walls")
 	if walls_layer:
 		cell = walls_layer.local_to_map(walls_layer.to_local(global_position))
 		current_source_id = walls_layer.get_cell_source_id(cell)
-		current_atlas_coords = walls_layer.get_cell_atlas_coords(cell)
+		window_atlas_coords = walls_layer.get_cell_atlas_coords(cell)
 		if boarded_up:
-			walls_layer.set_cell(cell, current_source_id, current_atlas_coords + Vector2i(-5, 1))
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
 
 
 func get_global_rect() -> Rect2:
@@ -32,14 +34,27 @@ func take_damage(dam, damage_type):
 		break_glass()
 		glass_intact = false
 		if not boarded_up:
-			queue_free()
+			break_barricade()
 	else:
 		hitpoints -= dam
 		if hitpoints <= 0:
-			queue_free()
+			break_barricade()
+
+func break_barricade():
+	set_collision_layer_value(1, false)
+	targetable = false
+	walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
+
+func repair_barricade():
+	if boarded_up:
+		set_collision_layer_value(1, true)
+		hitpoints = max_hitpoints
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
+		targetable = true
+
 
 func break_glass():
 		if boarded_up:
-			walls_layer.set_cell(cell, current_source_id, current_atlas_coords + Vector2i(-5, 3))
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 		else:
-			walls_layer.set_cell(cell, current_source_id, current_atlas_coords + Vector2i(-1, 1))
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))

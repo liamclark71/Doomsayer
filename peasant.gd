@@ -1,9 +1,6 @@
 class_name Character extends CharacterBody2D
 
 @export var speed = 400
-@export var has_bow = false
-@export var has_sword = false
-@export var dodge_unlocked = false
 @export var arrow_scene: PackedScene
 @export var rock_scene: PackedScene
 @export var hitpoints = 5
@@ -11,6 +8,11 @@ class_name Character extends CharacterBody2D
 @export var dodge_duration = 0.1
 @export var dodge_cooldown = 0.5
 @export var camera_lookahead = 0.15
+
+@export var has_bow = false
+@export var has_sword = false
+@export var dodge_unlocked = false
+@export var has_revive = false
 
 @onready var legs = $Legs
 @onready var torso = $Torso
@@ -30,10 +32,10 @@ class_name Character extends CharacterBody2D
 	load("res://sound_assets/bathit5.wav")
 ]
 @onready var whiff_melee_sounds: Array[AudioStream] = [
-load("res://sound_assets/whiff1.wav"),
-load("res://sound_assets/whiff2.wav"),
-load("res://sound_assets/whiff3.wav"),
-load("res://sound_assets/whiff4.wav")
+	load("res://sound_assets/whiff1.wav"),
+	load("res://sound_assets/whiff2.wav"),
+	load("res://sound_assets/whiff3.wav"),
+	load("res://sound_assets/whiff4.wav")
 ]
 
 var camera 
@@ -45,15 +47,18 @@ var hit_enemies := {}
 var alive = true
 var targetable = true
 
-var dodging = false
 var can_dodge = true
+var dodging = false
 var dodge_direction = Vector2.ZERO
 var last_move_direction = Vector2.DOWN
 var swing_on_cooldown = false
 var shoot_on_cooldown = false
+var interact_object = null
+var max_hitpoints = 8
 
 
 func _ready():
+	max_hitpoints = hitpoints
 	camera = $Camera
 	legs.play("stand")
 	anim_tree.active = true
@@ -104,6 +109,8 @@ func get_input():
 		swing_timer.start()
 	else:
 		swinging = false
+	if Input.is_action_just_pressed("interact"):
+		interact()
 
 func _start_dodge(input_direction: Vector2):
 	if input_direction != Vector2.ZERO:
@@ -184,7 +191,13 @@ func _handleMeleeHitAudio():
 func play_ranged_charge_audio():
 	$AttackAudioController.stream = ranged_charge_sound
 	$AttackAudioController.play()
-	
+
+
+func interact():
+	if interact_object.is_in_group("barricades"):
+		interact_object.repair_barricade()
+
+
 func _on_hit_box_area_entered(area):
 	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
 		hit_enemies[area.get_parent()] = true
@@ -205,3 +218,10 @@ func _on_hit_box_body_entered(body):
 		if body.glass_intact == true:
 			body.take_damage(damage, 'test')
 			hit_enemies[body] = true
+
+
+func _on_interact_box_body_entered(body):
+	if body.is_in_group("barricades"):
+		interact_object = body
+	elif body.is_in_group("characters") :
+		interact_object = body
