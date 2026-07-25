@@ -57,6 +57,7 @@ var swing_on_cooldown = false
 var shoot_on_cooldown = false
 var interact_object = null
 var max_hitpoints = 8
+var showing_blocked_message = false
 
 var interact_scene = preload("res://interact_text.tscn")
 var interact_label = null  # track the current instance
@@ -95,15 +96,16 @@ func _physics_process(_delta):
 		camera.position = mouse_offset
 		
 		var needs_label = interact_object != null and interact_object.is_in_group("barricades") \
-			and interact_object.hitpoints < interact_object.max_hitpoints
+			and interact_object.can_repair()
 
-		if needs_label and interact_label == null:
-			interact_label = interact_scene.instantiate()
-			interact_object.add_child(interact_label)
-			interact_label.text = "Press E to repair barricade"
-		elif not needs_label and interact_label:
-			interact_label.queue_free()
-			interact_label = null
+		if not showing_blocked_message:
+			if needs_label and interact_label == null:
+				interact_label = interact_scene.instantiate()
+				interact_object.add_child(interact_label)
+				interact_label.text = "Press E to repair barricade"
+			elif not needs_label and interact_label:
+				interact_label.queue_free()
+				interact_label = null
 
 func handle_ranged_release_audio():
 	$AttackAudioController.stop()
@@ -241,8 +243,31 @@ func play_ranged_charge_audio():
 func interact():
 	if interact_object:
 		if interact_object.is_in_group("barricades"):
-			if interact_object.glass_intact == false:
-				interact_object.repair_barricade()
+			if interact_object.needs_repair():
+				if interact_object.can_repair():
+					interact_object.repair_barricade()
+				else:
+					_show_blocked_repair_message()
+
+
+func _show_blocked_repair_message():
+	if interact_label:
+		interact_label.queue_free()
+		interact_label = null
+
+	showing_blocked_message = true
+	interact_label = interact_scene.instantiate()
+	interact_object.add_child(interact_label)
+	interact_label.text = "Cannot repair: goblins nearby!"
+
+	var tween = get_tree().create_tween()
+	tween.tween_interval(1.5)
+	tween.tween_callback(func():
+		showing_blocked_message = false
+		if interact_label:
+			interact_label.queue_free()
+			interact_label = null
+	)
 
 
 func _on_hit_box_area_entered(area):

@@ -71,9 +71,11 @@ func repair_barricade():
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 		targetable = true
 
+
 func break_glass_audio():
 	$GlassShatterAudioController.pitch_scale = randf_range(0.8, 1.2)
 	$GlassShatterAudioController.play()
+	
 	
 func break_glass():
 	break_glass_audio()
@@ -81,3 +83,13 @@ func break_glass():
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 	else:
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
+
+
+func _on_goblin_detector_body_entered(body):
+	if body.is_in_group("goblin"):
+		nearby_goblins[body] = true
+
+
+func _on_goblin_detector_body_exited(body):
+	if body.is_in_group("goblin"):
+		nearby_goblins.erase(body)
