@@ -31,6 +31,11 @@ func _ready():
 			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
 
 
+func get_global_rect() -> Rect2:
+	var extents = collision_shape.shape.extents
+	return Rect2(global_position - extents, extents * 2)
+
+
 func set_boarded_up(value: bool):
 	boarded_up = value
 	if walls_layer:
@@ -38,11 +43,6 @@ func set_boarded_up(value: bool):
 			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
 		else:
 			walls_layer.set_cell(cell, current_source_id, window_atlas_coords)
-
-
-func get_global_rect() -> Rect2:
-	var extents = collision_shape.shape.extents
-	return Rect2(global_position - extents, extents * 2)
 
 
 func needs_repair() -> bool:
@@ -87,10 +87,33 @@ func handle_board_repair_audio():
 func repair_barricade():
 	handle_board_repair_audio()
 	if boarded_up:
-		set_collision_layer_value(1, true)
 		hitpoints = max_hitpoints
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 		targetable = true
+		_enable_collision_when_clear()
+
+
+func _enable_collision_when_clear():
+	if _is_body_overlapping():
+		await get_tree().create_timer(0.1).timeout
+		_enable_collision_when_clear()
+	else:
+		set_collision_layer_value(1, true)
+
+
+func _is_body_overlapping() -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape = collision_shape.shape
+	query.transform = collision_shape.global_transform
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+	var results = space_state.intersect_shape(query)
+	
+	for r in results:
+		if r.collider.is_in_group("characters"):
+			return true
+	return false
 
 
 func break_glass_audio():
