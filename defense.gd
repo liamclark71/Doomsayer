@@ -86,7 +86,7 @@ func _ready():
 func assign_variables():
 	peasant.has_bow = has_bow
 	peasant.has_dodge = has_dodge
-	peasant.has_revive = true
+	peasant.has_revive = has_revive
 	peasant.has_sword = has_sword
 
 

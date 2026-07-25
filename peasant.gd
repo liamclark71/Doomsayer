@@ -92,6 +92,17 @@ func _physics_process(_delta):
 		
 		var mouse_offset = (get_global_mouse_position() - global_position) * camera_lookahead
 		camera.position = mouse_offset
+		
+		var needs_label = interact_object != null and interact_object.is_in_group("barricades") \
+			and interact_object.hitpoints < interact_object.max_hitpoints
+
+		if needs_label and interact_label == null:
+			interact_label = interact_scene.instantiate()
+			interact_object.add_child(interact_label)
+			interact_label.text = "Press E to repair barricade"
+		elif not needs_label and interact_label:
+			interact_label.queue_free()
+			interact_label = null
 
 func handle_ranged_release_audio():
 	$AttackAudioController.stop()
@@ -99,16 +110,6 @@ func handle_ranged_release_audio():
 		$AttackAudioController.stream = bow_ranged_release_sound
 	
 	$AttackAudioController.play()
-	var needs_label = interact_object != null and interact_object.is_in_group("barricades") \
-		and interact_object.hitpoints < interact_object.max_hitpoints
-
-	if needs_label and interact_label == null:
-		interact_label = interact_scene.instantiate()
-		interact_object.add_child(interact_label)
-		interact_label.text = "Press E to repair barricade"
-	elif not needs_label and interact_label:
-		interact_label.queue_free()
-		interact_label = null
 
 
 func get_input():
