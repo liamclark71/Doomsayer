@@ -33,6 +33,7 @@ extends Enemy
 	load("res://sound_assets/goblin_hit9.wav"),
 ]
 
+signal goblin_died
 
 var knockback_velocity := Vector2.ZERO
 var in_range = false
@@ -169,6 +170,7 @@ func take_damage(dam, damageType):
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 
 func die():
+	goblin_died.emit()
 	alive = false
 	anim_tree.active = false
 	legs.visible = false

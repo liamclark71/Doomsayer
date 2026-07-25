@@ -761,6 +761,10 @@ attenuation = 7.4642572
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
 stream = ExtResource("26_8d7p2")
 
+[node name="PotionLabel" type="Label" parent="." unique_id=308662403]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
