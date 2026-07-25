@@ -726,6 +726,8 @@ process_callback = 0
 wait_time = 3.0
 one_shot = true
 
+[node name="MeleeAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
+
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
