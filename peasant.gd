@@ -125,6 +125,7 @@ func _end_swing():
 
 
 func take_damage(dam, damageType):
+	$GotStabbedAudioController.play()
 	if not alive:
 		return
 	var tween = get_tree().create_tween()

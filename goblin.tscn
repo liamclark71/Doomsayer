@@ -356,6 +356,8 @@ autostart = true
 [node name="SpearAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1102054912]
 attenuation = 5.856333
 
+[node name="DeathAudioController" type="AudioStreamPlayer2D" parent="." unique_id=876903028]
+
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
