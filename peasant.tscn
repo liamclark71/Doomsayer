@@ -714,7 +714,7 @@ has_revive = true
 position = Vector2(3.3881318e-21, 4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_rskbl")
 animation = &"walk"
-frame_progress = 0.026681026
+frame_progress = 0.7962989
 offset = Vector2(1.9047621, -30.095242)
 
 [node name="Torso" type="AnimatedSprite2D" parent="." unique_id=1289831435]

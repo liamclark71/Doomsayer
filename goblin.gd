@@ -33,6 +33,33 @@ extends Enemy
 	load("res://sound_assets/goblin_hit9.wav"),
 ]
 
+@onready var chatter_sound: Array[AudioStream] = [
+	load("res://sound_assets/goblin_chatter/goblin_chatter-00.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-01.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-02.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-03.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-04.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-05.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-06.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-07.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-09.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-10.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-11.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-12.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-13.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-14.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-15.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-16.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-08.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-17.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-18.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-19.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-20.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-21.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-22.wav"),
+	load("res://sound_assets/goblin_chatter/goblin_chatter-23.wav"),
+]
+
 signal goblin_died
 
 var knockback_velocity := Vector2.ZERO
@@ -55,11 +82,18 @@ func _ready():
 func randomize_audio():
 	$SpearAudioController.pitch_scale = randf_range(0.8, 1.2)
 
+func handle_chatter():
+	if randf() < 0.005:
+		$ChatterAudioController.stream = chatter_sound.pick_random()
+		$ChatterAudioController.pitch_scale = randf_range(0.75, 1.4)
+		$ChatterAudioController.play()
+
 func _physics_process(_delta):
 	if alive:
 		if hitpoints <= 0:
 			die()
 		
+		handle_chatter()
 		if knockback_velocity.length() > 0:
 			velocity = knockback_velocity
 			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * _delta)
