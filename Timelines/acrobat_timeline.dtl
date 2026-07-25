@@ -17,6 +17,7 @@ if {items.dodge} == false:
 		Acrobat: "Would you like to learn some tricks?"
 		- "Yes" [Train for 1 hour to earn the dodge upgrade]
 			set {items.dodge} = true
+			set {hours} -= 1.0
 			You spend an hour training with the acrobat. He seems pleased with how quickly you learn. By the end of the lesson, you feel much lighter on your feet.
 			You now have the dodge ability.
 			jump acrobat_greeting
