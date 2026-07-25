@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://ddiys84ncjys4" path="res://sprites/bald npc/bald npc frames/013.png" id="19_m76c1"]
 [ext_resource type="Texture2D" uid="uid://bu0m7y8nxytrl" path="res://sprites/bald npc/bald npc frames/002.png" id="20_4y1uw"]
 [ext_resource type="Texture2D" uid="uid://btdr2d78xfjjd" path="res://sprites/bald npc/bald npc frames/003.png" id="21_fx3vs"]
+[ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_8d7p2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
 animations = [{
@@ -230,6 +231,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_ranged_charge_audio"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_p0nvd"]
 resource_name = "bow_hold"
@@ -431,6 +446,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_ranged_charge_audio"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_s7gtl"]
@@ -726,7 +755,11 @@ process_callback = 0
 wait_time = 3.0
 one_shot = true
 
-[node name="MeleeAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
+[node name="AttackAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
+attenuation = 7.4642572
+
+[node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
+stream = ExtResource("26_8d7p2")
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]

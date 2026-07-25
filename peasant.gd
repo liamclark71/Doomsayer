@@ -1,9 +1,6 @@
 class_name Character extends CharacterBody2D
 
 @export var speed = 400
-@export var has_bow = false
-@export var has_sword = false
-@export var dodge_unlocked = false
 @export var arrow_scene: PackedScene
 @export var rock_scene: PackedScene
 @export var hitpoints = 5
@@ -11,6 +8,11 @@ class_name Character extends CharacterBody2D
 @export var dodge_duration = 0.1
 @export var dodge_cooldown = 0.5
 @export var camera_lookahead = 0.15
+
+@export var has_bow = false
+@export var has_sword = false
+@export var has_dodge = false
+@export var has_revive = false
 
 @onready var legs = $Legs
 @onready var torso = $Torso
@@ -21,7 +23,7 @@ class_name Character extends CharacterBody2D
 @onready var swing_timer = $SwingTimer
 @onready var shoot_timer = $ShootTimer
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
-
+@onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
 @onready var bat_melee_sounds: Array[AudioStream] = [
 	load("res://sound_assets/bathit1.wav"),
 	load("res://sound_assets/bathit2.wav"),
@@ -29,8 +31,12 @@ class_name Character extends CharacterBody2D
 	load("res://sound_assets/bathit4.wav"),
 	load("res://sound_assets/bathit5.wav")
 ]
-
-
+@onready var whiff_melee_sounds: Array[AudioStream] = [
+	load("res://sound_assets/whiff1.wav"),
+	load("res://sound_assets/whiff2.wav"),
+	load("res://sound_assets/whiff3.wav"),
+	load("res://sound_assets/whiff4.wav")
+]
 
 var camera 
 
@@ -41,15 +47,21 @@ var hit_enemies := {}
 var alive = true
 var targetable = true
 
-var dodging = false
 var can_dodge = true
+var dodging = false
 var dodge_direction = Vector2.ZERO
 var last_move_direction = Vector2.DOWN
 var swing_on_cooldown = false
 var shoot_on_cooldown = false
+var interact_object = null
+var max_hitpoints = 8
+
+var interact_scene = preload("res://interact_text.tscn")
+var interact_label = null  # track the current instance
 
 
 func _ready():
+	max_hitpoints = hitpoints
 	camera = $Camera
 	legs.play("stand")
 	anim_tree.active = true
@@ -87,7 +99,7 @@ func get_input():
 	if not dodging:
 		velocity = input_direction * speed
 	
-	if Input.is_action_just_pressed("dodge") and can_dodge and not dodging:
+	if Input.is_action_just_pressed("dodge") and can_dodge and not dodging and has_dodge:
 		_start_dodge(input_direction)
 	
 	if Input.is_action_pressed("draw") and shoot_on_cooldown == false:
@@ -100,6 +112,8 @@ func get_input():
 		swing_timer.start()
 	else:
 		swinging = false
+	if Input.is_action_just_pressed("interact"):
+		interact()
 
 func _start_dodge(input_direction: Vector2):
 	if input_direction != Vector2.ZERO:
@@ -116,6 +130,8 @@ func _start_dodge(input_direction: Vector2):
 	can_dodge = true
 
 func _start_swing():
+	$AttackAudioController.stream = whiff_melee_sounds.pick_random()
+	$AttackAudioController.play()
 	hit_enemies.clear()
 	hitbox.disabled = false
 
@@ -125,10 +141,11 @@ func _end_swing():
 
 
 func take_damage(dam, damageType):
+	$GotStabbedAudioController.play()
 	if not alive:
 		return
 	var tween = get_tree().create_tween()
-	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
+	tween.tween_property($Torso, "modulate", Color(1.0, 0.35, 0.35), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 	hitpoints -= dam
 	print("hp: ", hitpoints)
@@ -171,9 +188,20 @@ func _shoot_projectile():
 
 func _handleMeleeHitAudio():
 	if not has_sword:
-		$MeleeAudioController.stream = bat_melee_sounds.pick_random()
-	$MeleeAudioController.play()
+		$AttackAudioController.stream = bat_melee_sounds.pick_random()
+	$AttackAudioController.play()
 	
+func play_ranged_charge_audio():
+	$AttackAudioController.stream = ranged_charge_sound
+	$AttackAudioController.play()
+
+
+func interact():
+	if interact_object:
+		if interact_object.is_in_group("barricades"):
+			if interact_object.glass_intact == false:
+				interact_object.repair_barricade()
+
 
 func _on_hit_box_area_entered(area):
 	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
@@ -181,10 +209,36 @@ func _on_hit_box_area_entered(area):
 		_handleMeleeHitAudio()
 		area.get_parent().take_damage(damage, 'club' if not has_sword else 'sword')
 		area.get_parent().apply_knockback(torso.global_position, 400)
-
+		
 func _on_swing_timer_timeout():
 	swing_on_cooldown = false
 
 
 func _on_shoot_timer_timeout():
 	shoot_on_cooldown = false
+
+
+func _on_hit_box_body_entered(body):
+	if body.is_in_group("barricades"):
+		if body.glass_intact == true:
+			body.take_damage(damage, 'test')
+			hit_enemies[body] = true
+
+
+func _on_interact_box_body_entered(body):
+	if body.is_in_group("barricades"): #or body.is_in_group("characters"):
+		interact_object = body
+		if interact_label == null:
+			interact_label = interact_scene.instantiate()
+			interact_object.add_child(interact_label)
+			if body.is_in_group("barricades"):
+				interact_label.text = "Press E to repair barricade"
+	
+
+
+func _on_interact_box_body_exited(body):
+	if body == interact_object:
+		if interact_label:
+			interact_label.queue_free()
+			interact_label = null
+		interact_object = null

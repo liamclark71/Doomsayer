@@ -1,0 +1,52 @@
+[background fade="0.0"]
+join Acrobat center
+label acrobat_greeting
+Acrobat: "Hello there!"
+if {items.dodge} == false:
+	- "The goblins are attacking!"
+		Acrobat: "What??"
+		Acrobat: "Where??"
+		He starts peering around as if goblins could pop out from anywhere anytime.
+		Doomsayer: "They're not attacking right now."
+		Doomsayer: "The goblins will attack the town at sundown.\
+		I was wondering if you could help us defend the church?"
+		Acrobat: "I'm flattered you'd ask, but...\
+		I'm more of a dancer than a fighter."
+		He looks you up and down.
+		Acrobat: "Maybe..."
+		Acrobat: "Would you like to learn some tricks?"
+		- "Yes" [Train for 1 hour to earn the dodge upgrade] | [if {hours} >= 1.0]
+			set {items.dodge} = true
+			set {hours} -= 1.0
+			You spend an hour training with the acrobat. He seems pleased with how quickly you learn. By the end of the lesson, you feel much lighter on your feet.
+			You now have the dodge ability.
+			jump acrobat_greeting
+		- "No"
+			Acrobat: "Another time, then."
+			jump acrobat_greeting
+	- Return to town square
+	leave Acrobat
+	jump village/square
+elif {items.dodge} == true:
+	- "Can I perform with you?" [Spend 2 hours to gain 8 gold] | [if {recruitment.acrobat_recruited} == false and {hours} >= 2.0]
+		set {conversation.performances} += 1.0
+		set {gold} += 8.0
+		set {hours} -= 2.0
+		You perform with the acrobat for 2 hours. You feel sweaty, but gratified.
+		The acrobat was generous enough to split the earnings evenly, so now your pocket is 8 gold heavier.
+		if {conversation.performances} == 2.0:
+			Acrobat: "It's been nice to perform with someone else. It can get lonely on the stage..."
+			Acrobat: "I'd hate to lose my new dance partner...\
+			Where did you need me to go tonight?"
+			Doomsayer: "The church."
+			Acrobat: "I'll be there."
+			set {recruitment.acrobat_recruited} = true
+			set {recruitment.recruitees} += 1.0
+		jump acrobat_greeting
+	- Return to town square
+	leave Acrobat
+	jump village/square
+elif {recruitment.acrobat_recruited} == true:
+	- Return to town square
+	leave Acrobat
+	jump village/square

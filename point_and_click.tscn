@@ -1,65 +1,59 @@
 [gd_scene format=3 uid="uid://br3y3lagqwqt6"]
 
 [ext_resource type="Script" uid="uid://crmd2suricbd3" path="res://point_and_click.gd" id="1_0odkp"]
-[ext_resource type="Texture2D" uid="uid://bn4yygammo2qi" path="res://img/point_and_click/backgrounds/village_square.png" id="2_udbnj"]
-[ext_resource type="Texture2D" uid="uid://cf08ky077ip2j" path="res://img/point_and_click/sprites/blacksmith.png" id="3_6oia1"]
-[ext_resource type="Texture2D" uid="uid://bf3t2wku3mix6" path="res://img/point_and_click/sprites/market.png" id="4_6s0rv"]
+[ext_resource type="Script" uid="uid://dj6wb3kkfkf5m" path="res://status_display.gd" id="3_aea43"]
 [ext_resource type="AudioStream" uid="uid://lpab2ubf3l5u" path="res://soundtracks/doomssay.wav" id="6_6oia1"]
 
 [node name="point_and_click" type="Node" unique_id=1708095002]
 script = ExtResource("1_0odkp")
 
-[node name="Village" type="Control" parent="." unique_id=944579839]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1008169357]
+stream = ExtResource("6_6oia1")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=807090422]
+layer = 2
+
+[node name="status_display" type="Control" parent="CanvasLayer" unique_id=1476097636]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_aea43")
 
-[node name="Village Background" type="TextureRect" parent="Village" unique_id=2036778605]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/status_display" unique_id=1206443597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_udbnj")
-expand_mode = 1
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 900
+theme_override_constants/margin_bottom = 600
 
-[node name="Blacksmith" type="TextureButton" parent="Village" unique_id=727795636]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 813.0
-offset_top = 414.0
-offset_right = -33.947876
-offset_bottom = -20.96698
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("3_6oia1")
-ignore_texture_size = true
-stretch_mode = 0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/status_display/MarginContainer" unique_id=1587506892]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.27058825)
 
-[node name="Market" type="TextureButton" parent="Village" unique_id=775425073]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 485.0
-offset_top = 455.0
-offset_right = -456.0
-offset_bottom = -43.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_6s0rv")
-ignore_texture_size = true
-stretch_mode = 0
+[node name="BoxContainer" type="HBoxContainer" parent="CanvasLayer/status_display/MarginContainer" unique_id=2119278579]
+layout_mode = 2
+mouse_filter = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1008169357]
-stream = ExtResource("6_6oia1")
-autoplay = true
+[node name="Hours_label" type="Label" parent="CanvasLayer/status_display/MarginContainer/BoxContainer" unique_id=1991696710]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Gold_label" type="Label" parent="CanvasLayer/status_display/MarginContainer/BoxContainer" unique_id=33030036]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1

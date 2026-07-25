@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b04hgll0ks6k7"]
+
+[node name="InteractText" type="Label" unique_id=1930736476]
+offset_left = -280.0
+offset_top = -140.0
+offset_right = 294.0
+offset_bottom = -4.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 22
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1

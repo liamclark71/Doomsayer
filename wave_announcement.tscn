@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://br5k1rjq1fl0l"]
+
+[node name="WaveAnnouncement" type="Control" unique_id=391923152]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1113865767]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 235
+theme_override_constants/margin_top = 74
+theme_override_constants/margin_right = 235
+theme_override_constants/margin_bottom = 178
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=605847978]
+layout_mode = 2
+
+[node name="WaveLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1803787450]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.5019608, 0.85490197, 0.34901962, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 143
+text = "Wave 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2105439902]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.5019608, 0.85490197, 0.34901962, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 34
+text = "They come from the North!"
+horizontal_alignment = 1
