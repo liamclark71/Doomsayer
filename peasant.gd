@@ -135,7 +135,7 @@ func take_damage(dam, damageType):
 	if not alive:
 		return
 	var tween = get_tree().create_tween()
-	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
+	tween.tween_property($Torso, "modulate", Color(1.0, 0.35, 0.35), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 	hitpoints -= dam
 	print("hp: ", hitpoints)
@@ -198,3 +198,10 @@ func _on_swing_timer_timeout():
 
 func _on_shoot_timer_timeout():
 	shoot_on_cooldown = false
+
+
+func _on_hit_box_body_entered(body):
+	if body.is_in_group("barricades"):
+		if body.glass_intact == true:
+			body.take_damage(damage, 'test')
+			hit_enemies[body] = true

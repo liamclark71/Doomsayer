@@ -1,8 +1,28 @@
-[background fade="0.0"]
+[background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Carpenter Background 1.png" fade="0.0"]
 join Carpenter center
 label carpenter_greeting
 Carpenter: "If you're here to buy a new table, I'm fresh out."
-- Ask about barricades
+- "Actually, I was wondering if you could build some barricades." | [if {recruitment.carpenter_recruited} == false]
+	Carpenter: "Barricades for what?"
+	Doomsayer: "The town is going to be attacked by goblins tonight, and we're going to try to defend from the church."
+	Doomsayer: "Barricades would be useful if you'd be willing to build them."
+	Carpenter: "Who's we?"
+	if {recruitment.recruitees} == 0.0:
+		Doomsayer: ...
+		Carpenter: "Come back when you've got some more helping hands.\
+		I'm not moving all this wood by myself."
+		jump carpenter_greeting
+	elif {recruitment.recruitees} == 1.0:
+		Doomsayer: "I've got one person willing to help."
+		Carpenter: "Come back when you've got a couple of folks.\
+		Wood's heavier than you think."
+		jump carpenter_greeting
+	elif {recruitment.recruitees} >= 2.0:
+		Doomsayer: "I found a few people willing to help."
+		Carpenter: "Alright, I'll build those barricades."
+		set {recruitment.carpenter_recruited} = true
+		set {recruitment.recruitees} += 1.0
+		jump carpenter_greeting
 - Return to town square
 	leave Carpenter
 	jump village/square

@@ -2,16 +2,16 @@
 join Hunter center
 label hunter_greeting
 Hunter: "What are you doing out here?"
-- "I'd like to buy a bow." | [if {bow} == false]
-	Hunter: "That'll be 6 Gold."
+- "I'd like to buy a bow." | [if {items.bow} == false]
+	Hunter: "That'll be 6 gold."
 	- Purchase [You will have the bow upgrade] | [if {gold} >= 6.0]
-		set {bow} = true
+		set {items.bow} = true
 		set {gold} -= 6.0
 		You now have the bow upgrade.
 		jump hunter_greeting
 	- "I don't have that much money."
 		jump hunter_greeting
-- "Goblins will attack the town at nightfall." | [if {hunter_recruited} == false]
+- "Goblins will attack the town at nightfall." | [if {recruitment.hunter_recruited} == false]
 	Doomsayer: "I'm planning to mount a defense from the church.\
 	Will you join me?"
 	Hunter: Goblins...
@@ -19,9 +19,10 @@ Hunter: "What are you doing out here?"
 	Not much good for eating.
 	[wait time="1.0" hide_text="false"]
 	Hunter: "If you help me set up traps in the area, I'll join you at the church."
-	- Agree to help [You will lose 2 hours]
-		set {hunter_recruited} = true
+	- Agree to help [You will lose 2 hours] | [if {hours} >= 2.0]
+		set {recruitment.hunter_recruited} = true
 		set {hours} -= 2.0
+		set {recruitment.recruitees} += 1.0
 		You and the hunter spend two hours setting up traps around the perimeter of the village. You hope that some of the goblins will get caught.
 		The hunter shakes your hand and stalks off.
 		jump hunter_greeting
