@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://br3y3lagqwqt6"]
 
 [ext_resource type="Script" uid="uid://crmd2suricbd3" path="res://point_and_click.gd" id="1_0odkp"]
-[ext_resource type="Texture2D" uid="uid://bn4yygammo2qi" path="res://img/point_and_click/backgrounds/village_square.png" id="2_udbnj"]
-[ext_resource type="Texture2D" uid="uid://cf08ky077ip2j" path="res://img/point_and_click/sprites/blacksmith.png" id="3_6oia1"]
-[ext_resource type="Texture2D" uid="uid://bf3t2wku3mix6" path="res://img/point_and_click/sprites/market.png" id="4_6s0rv"]
 [ext_resource type="AudioStream" uid="uid://lpab2ubf3l5u" path="res://soundtracks/doomssay.wav" id="6_6oia1"]
 
 [node name="point_and_click" type="Node" unique_id=1708095002]
@@ -16,49 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Village Background" type="TextureRect" parent="Village" unique_id=2036778605]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_udbnj")
-expand_mode = 1
-
-[node name="Blacksmith" type="TextureButton" parent="Village" unique_id=727795636]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 813.0
-offset_top = 414.0
-offset_right = -33.947876
-offset_bottom = -20.96698
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("3_6oia1")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Market" type="TextureButton" parent="Village" unique_id=775425073]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 485.0
-offset_top = 455.0
-offset_right = -456.0
-offset_bottom = -43.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_6s0rv")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1008169357]
 stream = ExtResource("6_6oia1")

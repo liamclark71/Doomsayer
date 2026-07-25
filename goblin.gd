@@ -11,6 +11,10 @@ extends Enemy
 @export var attack_range = 110
 @export var damage = 1
 @export var knockback_friction := 1500.0
+@onready var corpse_thud_sounds: Array[AudioStream] = [
+	load("res://sound_assets/corpse_thud1.wav"),
+	load("res://sound_assets/corpse_thud2.wav"),
+]
 
 var knockback_velocity := Vector2.ZERO
 var in_range = false
@@ -118,6 +122,9 @@ func take_damage(dam, damageType):
 	tween.tween_property($Torso, "modulate", Color(1.0, 0.65, 0.65), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 
+func play_death_sound():
+	$DeathAudioController.stream = corpse_thud_sounds.pick_random()
+	$DeathAudioController.play()
 
 
 
@@ -125,7 +132,7 @@ func die():
 	alive = false
 	anim_tree.active = false
 	legs.visible = false
-	
+	play_death_sound()
 	hurtbox.disabled = true
 	set_collision_layer_value(4, false)
 	set_collision_mask_value(2, false)

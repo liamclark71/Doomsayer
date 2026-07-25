@@ -2,15 +2,16 @@
 join Blacksmith center [mirrored="true"]
 label blacksmith_greeting
 Blacksmith: "How can I help you?"
-- "I'd like to buy a sword." | [if {sword} == false]
+- "I'd like to buy a sword." | [if {items.sword} == false]
 	Blacksmith: "That'll be 6 Gold"
-	- Purchase [You will have the sword upgrade]
-		set {sword} = true
+	- Purchase [You will have the sword upgrade] | [if {gold} >= 6.0]
+		set {items.sword} = true
+		set {gold} -= 6.0
 		You now have the sword upgrade.
 		jump blacksmith_greeting
 	- "I don't have that much money."
 		jump blacksmith_greeting
-- "The goblins are attacking!" | [if {blacksmith_recruited} == false]
+- "The goblins are attacking!" | [if {recruitment.blacksmith_recruited} == false]
 	He looks out at the window at the peaceful town square, then back at you.
 	Blacksmith: "You sure about that?"
 	Doomsayer: "They're going to attack at sundown.\
@@ -21,7 +22,9 @@ Blacksmith: "How can I help you?"
 	Blacksmith: "If you can help me clear some orders off my plate, I'll be there tonight at the church."
 	Blacksmith: "What do you say?"
 	- "Yes" [You will lose 2 hours]
-		set {blacksmith_recruited} = true
+		set {recruitment.blacksmith_recruited} = true
+		set {hours} -= 2.0
+		set {recruitment.recruitees} += 1.0
 		You spend 2 hours toiling over the forge.
 		By the end of it, the blacksmith's pile of repairs is looking considerably smaller.
 		He thanks you and promises to show up at the church tonight.
@@ -29,6 +32,6 @@ Blacksmith: "How can I help you?"
 	- "No"
 		jump blacksmith_greeting
 
-- Return to the square
+- Return to the town square
 	leave Blacksmith
 	jump village/square
