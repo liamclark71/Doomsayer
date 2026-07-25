@@ -17,7 +17,7 @@ func _on_body_entered(body):
 	$CollisionAudioController.play()
 	visible = false
 	$CollisionShape2D.queue_free()
-	$RockSprite.queue_free()
+	
 	
 	await get_tree().create_timer(4.0).timeout
 
@@ -32,7 +32,6 @@ func _on_area_entered(area):
 		
 	visible = false
 	$CollisionShape2D.queue_free()
-	$RockSprite.queue_free()
 	
 	await get_tree().create_timer(4.0).timeout
 	queue_free()

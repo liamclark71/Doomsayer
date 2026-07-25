@@ -1,0 +1,29 @@
+#+title: Sound Notes
+
+* TODO Combat
+** TODO Barricades
+*** TODO Board barricade fixing
+
+** TODO Melee
+*** TODO Collides with wall
+**** TODO Club
+**** TODO Sword
+*** TODO Sword
+
+** TODO Ranged
+*** TODO Ranged sling release cutoff
+*** TODO Bow
+
+** TODO Character
+*** TODO Walking
+
+** TODO Goblin
+*** TODO Walking Chatter
+
+* TODO Settings
+** TODO Music
+*** TODO On/Off
+*** TODO Slider
+** TODO Sound Effects
+*** TODO On/Off
+*** TODO Slider

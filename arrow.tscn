@@ -20,7 +20,7 @@ shape = SubResource("RectangleShape2D_5gpkp")
 position = Vector2(1, -26)
 texture = ExtResource("1_l5ahi")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=354087726]
+[node name="CollisionAudioController" type="AudioStreamPlayer2D" parent="." unique_id=354087726]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
