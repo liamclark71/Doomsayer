@@ -1,0 +1,8 @@
+[background fade="0.0"]
+join Carpenter center
+label carpenter_greeting
+Carpenter: "If you're here to buy a new table, I'm fresh out."
+- Ask about barricades
+- Return to town square
+	leave Carpenter
+	jump village/square
