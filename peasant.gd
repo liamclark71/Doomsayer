@@ -22,6 +22,7 @@ class_name Character extends CharacterBody2D
 @onready var hitbox = $Torso/HitBox/CollisionShape2D
 @onready var swing_timer = $SwingTimer
 @onready var shoot_timer = $ShootTimer
+@onready var potion_label = $PotionLabel
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
 @onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
 @onready var bow_ranged_release_sound = load("res://sound_assets/arrow_release.wav")
@@ -162,6 +163,12 @@ func take_damage(dam, damageType):
 
 
 func game_over():
+	if has_revive == true:
+		has_revive = false
+		hitpoints = max_hitpoints
+		_show_potion_label()
+		return
+	
 	print("Oh no! I have been defeated by the Goblins")
 	anim_tree.active = false
 	anim_player.play("die")
@@ -174,6 +181,17 @@ func game_over():
 		var tween = get_tree().create_tween()
 		tween.tween_interval(1.5)
 		tween.tween_property(game_over_menu, "modulate", Color(1,1,1,.9), 1)
+
+
+func _show_potion_label():
+	potion_label.visible = true
+	potion_label.modulate = Color.TRANSPARENT
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(potion_label, "modulate", Color(1,1,1,1), 0.05)
+	tween.tween_interval(1)
+	tween.tween_property(potion_label, "modulate", Color.TRANSPARENT, 0.05)
+	tween.tween_callback(func(): potion_label.visible = false)
 
 
 func _shoot_projectile():

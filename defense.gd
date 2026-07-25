@@ -15,7 +15,7 @@ extends Node2D
 @export var min_spawn_interval: float = 0.3
 @export var interval_decrease_per_wave: float = 0.15
 
-@export var base_goblins_per_wave: int = 10
+@export var base_goblins_per_wave: int = 1
 @export var goblins_per_wave_increase: int = 3
 
 # after this each wave will be from all directions
@@ -44,15 +44,15 @@ var goblins_spawned_this_wave := 0
 var goblins_remaining := 0
 var goblins_left_label
 
-@export var has_bow = false
-@export var has_dodge = false
-@export var has_revive = false
-@export var has_sword = false
-@export var recruited_blacksmith = false
-@export var recruited_carpenter = false
-@export var recruited_acrobat = false
-@export var recruited_doctor = false
-@export var recruited_hunter = false
+var has_bow = false
+var has_dodge = false
+var has_revive = false
+var has_sword = false
+var recruited_blacksmith = false
+var recruited_carpenter = false
+var recruited_acrobat = false
+var recruited_doctor = false
+var recruited_hunter = false
 
 
 func _ready():
@@ -86,7 +86,7 @@ func _ready():
 func assign_variables():
 	peasant.has_bow = has_bow
 	peasant.has_dodge = has_dodge
-	peasant.has_revive = has_revive
+	peasant.has_revive = true
 	peasant.has_sword = has_sword
 
 
@@ -176,6 +176,14 @@ func _begin_wave():
 
 
 func _end_wave():
+	wave_label.text = "Wave Finished"
+	subtitle_label.text = ""
+	wave_announcement.visible = true 
+	wave_announcement.modulate = Color.TRANSPARENT
+	var wave_text_fade = get_tree().create_tween()
+	wave_text_fade.tween_property(wave_announcement, "modulate", Color(1, 1, 1, .9), 0.3)
+	wave_text_fade.tween_interval(1)
+	wave_text_fade.tween_property(wave_announcement, "modulate", Color.TRANSPARENT, 0.3)
 	state = State.WAVE_BREAK
 	spawn_timer.stop()
 	goblins_left_label.visible = false
@@ -207,7 +215,7 @@ func _spawn_goblin():
 	goblins_spawned_this_wave += 1
 	goblins_remaining += 1
 	_update_goblins_left_label()
-	goblin.tree_exited.connect(_on_goblin_died)
+	goblin.goblin_died.connect(_on_goblin_died)
 
 
 func _on_goblin_died():

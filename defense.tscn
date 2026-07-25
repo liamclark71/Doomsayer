@@ -233,12 +233,18 @@ tile_set = SubResource("TileSet_b3t6k")
 
 [node name="Blacksmithguy" type="Sprite2D" parent="." unique_id=1262774571]
 z_index = -2
-position = Vector2(507, 233)
+position = Vector2(2193, 2060)
 texture = ExtResource("1_7088l")
+
+[node name="Label" type="Label" parent="Blacksmithguy" unique_id=1245708771]
+offset_left = -237.0
+offset_top = -247.0
+offset_right = -2.0
+offset_bottom = -224.0
+text = "What are you doing out here ;)"
 
 [node name="Peasant" parent="." unique_id=772900983 instance=ExtResource("1_p2qeu")]
 position = Vector2(331, 195)
-has_dodge = true
 
 [node name="NPC" parent="." unique_id=512784346 instance=ExtResource("4_b1r40")]
 position = Vector2(58, 581)

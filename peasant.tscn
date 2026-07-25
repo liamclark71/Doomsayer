@@ -771,6 +771,20 @@ position_smoothing_enabled = true
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1714116962]
 stream = ExtResource("26_gp7sx")
 
+[node name="PotionLabel" type="Label" parent="." unique_id=437665011]
+visible = false
+offset_left = -197.0
+offset_top = -127.0
+offset_right = 209.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.76712143, 0.09798708, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 37
+text = "Tincture Consumed
+You Revived!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="Torso/InteractBox" to="." method="_on_interact_box_body_entered"]
