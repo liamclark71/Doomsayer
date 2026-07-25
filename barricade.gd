@@ -14,8 +14,11 @@ var window_atlas_coords
 var max_hitpoints = 8
 
 @onready var barricade_broken_sound = preload("res://sound_assets/barricade_destroyed.wav")
+var barricade_damage_sound_controller
+
 
 func _ready():
+	barricade_damage_sound_controller = $BoardDamageAudioController.stream
 	max_hitpoints = hitpoints
 	walls_layer = get_tree().get_first_node_in_group("walls")
 	if walls_layer:
@@ -34,6 +37,8 @@ func handle_board_damage_audio():
 	if hitpoints <= 1:
 		$BoardDamageAudioController.stream = barricade_broken_sound
 		$BoardDamageAudioController.pitch_scale = randf_range(0.7, 1.3)
+	else:
+		$BoardDamageAudioController.stream = barricade_damage_sound_controller
 	$BoardDamageAudioController.play()
 	
 
