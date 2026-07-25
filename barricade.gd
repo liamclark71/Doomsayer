@@ -59,7 +59,12 @@ func break_barricade():
 	targetable = false
 	walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
 
+func handle_board_repair_audio():
+	if hitpoints < max_hitpoints:
+		$FixAudioController.play()
+
 func repair_barricade():
+	handle_board_repair_audio()
 	if boarded_up:
 		set_collision_layer_value(1, true)
 		hitpoints = max_hitpoints

@@ -25,6 +25,7 @@ class_name Character extends CharacterBody2D
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
 @onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
 @onready var bow_ranged_release_sound = load("res://sound_assets/arrow_release.wav")
+@onready var slingshot_release_sound = load('res://sound_assets/slingshot_release.wav')
 @onready var bat_melee_sounds: Array[AudioStream] = [
 	load("res://sound_assets/bathit1.wav"),
 	load("res://sound_assets/bathit2.wav"),
@@ -108,7 +109,8 @@ func handle_ranged_release_audio():
 	$AttackAudioController.stop()
 	if has_bow:
 		$AttackAudioController.stream = bow_ranged_release_sound
-	
+	else:
+		$AttackAudioController.stream = slingshot_release_sound
 	$AttackAudioController.play()
 
 

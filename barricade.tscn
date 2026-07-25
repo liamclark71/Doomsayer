@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bqnpflg5iuqjd" path="res://sound_assets/glass_shatter.wav" id="2_4w3go"]
 [ext_resource type="AudioStream" uid="uid://ide3q6t8eu84" path="res://sound_assets/thud1.wav" id="3_4mmjl"]
 [ext_resource type="AudioStream" uid="uid://u7eksd4vogrj" path="res://sound_assets/thud2.wav" id="4_c0sxi"]
+[ext_resource type="AudioStream" uid="uid://dgmdfe16vidig" path="res://sound_assets/barricade_hammer.wav" id="5_c0sxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
 size = Vector2(112, 99)
@@ -29,3 +30,6 @@ attenuation = 4.438277
 
 [node name="BoardDamageAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1497483823]
 stream = SubResource("AudioStreamRandomizer_vc6nf")
+
+[node name="FixAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1343004737]
+stream = ExtResource("5_c0sxi")

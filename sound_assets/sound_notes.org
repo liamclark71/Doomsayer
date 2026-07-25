@@ -10,12 +10,16 @@
 **** TODO Sword
 *** TODO Sword
 
-** TODO Ranged
-*** TODO Ranged sling release cutoff :logic:
-*** TODO Arrow
+** DONE Ranged
+*** DONE Arrow
 **** DONE Crashing game when arrow collides
-**** TODO Hitting enemy :wav:
-**** TODO Hitting wall :wav:
+**** DONE Hitting enemy :wav:
+**** DONE Hitting wall :wav:
+**** DONE Release
+**** DONE Ranged sling release cutoff :logic:
+*** DONE Rock
+**** DONE Ranged sling release cutoff
+**** DONE release :wav:
 
 
 
