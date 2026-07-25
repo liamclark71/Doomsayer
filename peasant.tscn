@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://ur45vxhp7oqv" path="res://sprites/peasant/peasant body frames/002.png" id="19_p0nvd"]
 [ext_resource type="Texture2D" uid="uid://cgmvbhooc4bov" path="res://sprites/peasant/peasant body frames/003.png" id="20_d237o"]
 [ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_gp7sx"]
+[ext_resource type="AudioStream" uid="uid://hl3kgyfsskgg" path="res://sound_assets/footsteps.wav" id="27_s7gtl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
 animations = [{
@@ -713,6 +714,7 @@ has_revive = true
 position = Vector2(3.3881318e-21, 4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_rskbl")
 animation = &"walk"
+frame_progress = 0.026681026
 offset = Vector2(1.9047621, -30.095242)
 
 [node name="Torso" type="AnimatedSprite2D" parent="." unique_id=1289831435]
@@ -783,6 +785,10 @@ text = "Tincture Consumed
 You Revived!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WalkingAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1672019903]
+stream = ExtResource("27_s7gtl")
+autoplay = true
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]

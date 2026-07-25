@@ -79,6 +79,12 @@ func _ready():
 	hitbox.disabled = true
 
 
+func walking_audio_on():
+	$WalkingAudioController.volume_db = 0
+
+func walking_audio_off():
+	$WalkingAudioController.volume_db = -999
+
 func _physics_process(_delta):
 	if alive:
 		get_input()
@@ -87,7 +93,9 @@ func _physics_process(_delta):
 		else:
 			if velocity != Vector2(0, 0):
 				legs.play("walk")
+				walking_audio_on()
 			else:
+				walking_audio_off()
 				legs.play("stand")
 		legs.rotation = velocity.angle() + PI / 2
 		torso.look_at(get_global_mouse_position())
@@ -189,8 +197,9 @@ func game_over():
 		hitpoints = max_hitpoints
 		_show_potion_label()
 		return
-	
+		
 	print("Oh no! I have been defeated by the Goblins")
+	walking_audio_off()
 	anim_tree.active = false
 	anim_player.play("die")
 	legs.visible = false

@@ -4,10 +4,6 @@
 ** DONE Barricades
 *** DONE Board barricade fixing
 
-** TODO Dodge
-
-** TODO Revive
-
 ** DONE Melee
 *** DONE Collides with wall
 **** DONE Club
@@ -29,6 +25,9 @@
 
 ** TODO Character
 *** TODO Walking
+*** TODO Dodge
+*** TODO Revive
+
 
 ** TODO Goblin
 *** TODO Walking Chatter
