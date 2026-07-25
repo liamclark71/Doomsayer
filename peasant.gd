@@ -25,6 +25,7 @@ class_name Character extends CharacterBody2D
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
 @onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
 @onready var bow_ranged_release_sound = load("res://sound_assets/arrow_release.wav")
+@onready var slingshot_release_sound = load('res://sound_assets/slingshot_release.wav')
 @onready var bat_melee_sounds: Array[AudioStream] = [
 	load("res://sound_assets/bathit1.wav"),
 	load("res://sound_assets/bathit2.wav"),
@@ -38,7 +39,9 @@ class_name Character extends CharacterBody2D
 	load("res://sound_assets/whiff3.wav"),
 	load("res://sound_assets/whiff4.wav")
 ]
-
+@onready var slash_sound = load("res://sound_assets/stabbed.wav")
+@onready var sword_wall_hit_sound = load("res://sound_assets/sword_hit_wall.wav") 
+@onready var bat_wall_hit_sound = load("res://sound_assets/club_hit_wall.wav")
 var camera 
 
 var damage = 1
@@ -56,6 +59,7 @@ var swing_on_cooldown = false
 var shoot_on_cooldown = false
 var interact_object = null
 var max_hitpoints = 8
+var showing_blocked_message = false
 
 var interact_scene = preload("res://interact_text.tscn")
 var interact_label = null  # track the current instance
@@ -75,6 +79,12 @@ func _ready():
 	hitbox.disabled = true
 
 
+func walking_audio_on():
+	$WalkingAudioController.volume_db = 0
+
+func walking_audio_off():
+	$WalkingAudioController.volume_db = -999
+
 func _physics_process(_delta):
 	if alive:
 		get_input()
@@ -83,7 +93,9 @@ func _physics_process(_delta):
 		else:
 			if velocity != Vector2(0, 0):
 				legs.play("walk")
+				walking_audio_on()
 			else:
+				walking_audio_off()
 				legs.play("stand")
 		legs.rotation = velocity.angle() + PI / 2
 		torso.look_at(get_global_mouse_position())
@@ -92,23 +104,26 @@ func _physics_process(_delta):
 		
 		var mouse_offset = (get_global_mouse_position() - global_position) * camera_lookahead
 		camera.position = mouse_offset
+		
+		var needs_label = interact_object != null and interact_object.is_in_group("barricades") \
+			and interact_object.can_repair()
+
+		if not showing_blocked_message:
+			if needs_label and interact_label == null:
+				interact_label = interact_scene.instantiate()
+				interact_object.add_child(interact_label)
+				interact_label.text = "Press E to repair barricade"
+			elif not needs_label and interact_label:
+				interact_label.queue_free()
+				interact_label = null
 
 func handle_ranged_release_audio():
 	$AttackAudioController.stop()
 	if has_bow:
 		$AttackAudioController.stream = bow_ranged_release_sound
-	
+	else:
+		$AttackAudioController.stream = slingshot_release_sound
 	$AttackAudioController.play()
-	var needs_label = interact_object != null and interact_object.is_in_group("barricades") \
-		and interact_object.hitpoints < interact_object.max_hitpoints
-
-	if needs_label and interact_label == null:
-		interact_label = interact_scene.instantiate()
-		interact_object.add_child(interact_label)
-		interact_label.text = "Press E to repair barricade"
-	elif not needs_label and interact_label:
-		interact_label.queue_free()
-		interact_label = null
 
 
 func get_input():
@@ -182,8 +197,9 @@ func game_over():
 		hitpoints = max_hitpoints
 		_show_potion_label()
 		return
-	
+		
 	print("Oh no! I have been defeated by the Goblins")
+	walking_audio_off()
 	anim_tree.active = false
 	anim_player.play("die")
 	legs.visible = false
@@ -225,9 +241,17 @@ func _shoot_projectile():
 		rock.global_position = proj_spawn.global_position
 		rock.global_rotation = torso.global_rotation
 
-func _handleMeleeHitAudio():
+func _handleMeleeHitAudio(hitting = 'goblin'):
 	if not has_sword:
-		$AttackAudioController.stream = bat_melee_sounds.pick_random()
+		if hitting == 'goblin':
+			$AttackAudioController.stream = bat_melee_sounds.pick_random()
+		else:
+			$AttackAudioController.stream = bat_wall_hit_sound
+	else:
+		if hitting == 'goblin':
+			$AttackAudioController.stream = slash_sound
+		else:
+			$AttackAudioController.stream = sword_wall_hit_sound
 	$AttackAudioController.play()
 	
 func play_ranged_charge_audio():
@@ -238,8 +262,31 @@ func play_ranged_charge_audio():
 func interact():
 	if interact_object:
 		if interact_object.is_in_group("barricades"):
-			if interact_object.glass_intact == false:
-				interact_object.repair_barricade()
+			if interact_object.needs_repair():
+				if interact_object.can_repair():
+					interact_object.repair_barricade()
+				else:
+					_show_blocked_repair_message()
+
+
+func _show_blocked_repair_message():
+	if interact_label:
+		interact_label.queue_free()
+		interact_label = null
+
+	showing_blocked_message = true
+	interact_label = interact_scene.instantiate()
+	interact_object.add_child(interact_label)
+	interact_label.text = "Cannot repair: goblins nearby!"
+
+	var tween = get_tree().create_tween()
+	tween.tween_interval(1.5)
+	tween.tween_callback(func():
+		showing_blocked_message = false
+		if interact_label:
+			interact_label.queue_free()
+			interact_label = null
+	)
 
 
 func _on_hit_box_area_entered(area):
@@ -262,6 +309,8 @@ func _on_hit_box_body_entered(body):
 		if body.glass_intact == true:
 			body.take_damage(damage, 'test')
 			hit_enemies[body] = true
+	elif body.is_in_group("walls"):
+		_handleMeleeHitAudio('wall')
 
 
 func _on_interact_box_body_entered(body):

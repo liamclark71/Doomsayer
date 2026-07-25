@@ -1,4 +1,4 @@
-[background fade="0.0"]
+[background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Doctor Background 1.png" fade="0.0"]
 join Doctor center
 label doctor_greeting
 Doctor: "Ohoho, a customer.\

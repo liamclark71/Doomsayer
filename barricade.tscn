@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bqnpflg5iuqjd" path="res://sound_assets/glass_shatter.wav" id="2_4w3go"]
 [ext_resource type="AudioStream" uid="uid://ide3q6t8eu84" path="res://sound_assets/thud1.wav" id="3_4mmjl"]
 [ext_resource type="AudioStream" uid="uid://u7eksd4vogrj" path="res://sound_assets/thud2.wav" id="4_c0sxi"]
+[ext_resource type="AudioStream" uid="uid://dgmdfe16vidig" path="res://sound_assets/barricade_hammer.wav" id="5_c0sxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gpkp"]
 size = Vector2(112, 99)
@@ -13,6 +14,9 @@ random_pitch = 1.0654159
 streams_count = 2
 stream_0/stream = ExtResource("3_4mmjl")
 stream_1/stream = ExtResource("4_c0sxi")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gpkp"]
+radius = 152.21039
 
 [node name="Barricade" type="StaticBody2D" unique_id=1223366485 groups=["barricades"]]
 collision_layer = 17
@@ -29,3 +33,16 @@ attenuation = 4.438277
 
 [node name="BoardDamageAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1497483823]
 stream = SubResource("AudioStreamRandomizer_vc6nf")
+
+[node name="FixAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1343004737]
+stream = ExtResource("5_c0sxi")
+
+[node name="GoblinDetector" type="Area2D" parent="." unique_id=730210627]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoblinDetector" unique_id=815939108]
+shape = SubResource("CircleShape2D_5gpkp")
+
+[connection signal="body_entered" from="GoblinDetector" to="." method="_on_goblin_detector_body_entered"]
+[connection signal="body_exited" from="GoblinDetector" to="." method="_on_goblin_detector_body_exited"]

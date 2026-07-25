@@ -1,26 +1,33 @@
 #+title: Sound Notes
 
 * TODO Combat
-** TODO Barricades
-*** TODO Board barricade fixing
+** DONE Barricades
+*** DONE Board barricade fixing
 
-** TODO Melee
-*** TODO Collides with wall
-**** TODO Club
-**** TODO Sword
-*** TODO Sword
+** DONE Melee
+*** DONE Collides with wall
+**** DONE Club
+**** DONE Sword
+*** DONE Sword
 
-** TODO Ranged
-*** TODO Ranged sling release cutoff :logic:
-*** TODO Arrow
+** DONE Ranged
+*** DONE Arrow
 **** DONE Crashing game when arrow collides
-**** TODO Hitting enemy :wav:
-**** TODO Hitting wall :wav:
+**** DONE Hitting enemy :wav:
+**** DONE Hitting wall :wav:
+**** DONE Release
+**** DONE Ranged sling release cutoff :logic:
+*** DONE Rock
+**** DONE Ranged sling release cutoff
+**** DONE release :wav:
 
 
 
 ** TODO Character
 *** TODO Walking
+*** TODO Dodge
+*** TODO Revive
+
 
 ** TODO Goblin
 *** TODO Walking Chatter

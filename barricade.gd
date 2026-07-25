@@ -1,7 +1,7 @@
 extends StaticBody2D
 
-@export var hitpoints = 8
-@export var boarded_up = true
+@export var hitpoints := 8
+@export var boarded_up = false
 
 @onready var collision_shape = $CollisionShape2D
 
@@ -11,7 +11,9 @@ var walls_layer: TileMapLayer
 var cell
 var current_source_id
 var window_atlas_coords
-var max_hitpoints = 8
+var max_hitpoints := 8
+
+var nearby_goblins := {}
 
 @onready var barricade_broken_sound = preload("res://sound_assets/barricade_destroyed.wav")
 var barricade_damage_sound_controller
@@ -29,9 +31,27 @@ func _ready():
 			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
 
 
+func set_boarded_up(value: bool):
+	boarded_up = value
+	if walls_layer:
+		if boarded_up:
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
+		else:
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords)
+
+
 func get_global_rect() -> Rect2:
 	var extents = collision_shape.shape.extents
 	return Rect2(global_position - extents, extents * 2)
+
+
+func needs_repair() -> bool:
+	return hitpoints < max_hitpoints
+
+
+func can_repair() -> bool:
+	return needs_repair() and nearby_goblins.is_empty()
+
 
 func handle_board_damage_audio():
 	if hitpoints <= 1:
@@ -54,21 +74,29 @@ func take_damage(dam, _damage_type):
 		if hitpoints <= 0:
 			break_barricade()
 
+
 func break_barricade():
 	set_collision_layer_value(1, false)
 	targetable = false
 	walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
 
+func handle_board_repair_audio():
+	if hitpoints < max_hitpoints:
+		$FixAudioController.play()
+
 func repair_barricade():
+	handle_board_repair_audio()
 	if boarded_up:
 		set_collision_layer_value(1, true)
 		hitpoints = max_hitpoints
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 		targetable = true
 
+
 func break_glass_audio():
 	$GlassShatterAudioController.pitch_scale = randf_range(0.8, 1.2)
 	$GlassShatterAudioController.play()
+	
 	
 func break_glass():
 	break_glass_audio()
@@ -76,3 +104,13 @@ func break_glass():
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
 	else:
 		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
+
+
+func _on_goblin_detector_body_entered(body):
+	if body.is_in_group("goblin"):
+		nearby_goblins[body] = true
+
+
+func _on_goblin_detector_body_exited(body):
+	if body.is_in_group("goblin"):
+		nearby_goblins.erase(body)

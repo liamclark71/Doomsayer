@@ -1,4 +1,4 @@
-[background fade="0.0"]
+[background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Acrobat Background 1.png" fade="0.0"]
 join Acrobat center
 label acrobat_greeting
 Acrobat: "Hello there!"

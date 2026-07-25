@@ -41,5 +41,5 @@ theme_override_font_sizes/font_size = 25
 text = "Start Game"
 icon = SubResource("CanvasTexture_t3pau")
 
-[connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="start_game" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]

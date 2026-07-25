@@ -56,6 +56,9 @@ var recruited_hunter = false
 
 
 func _ready():
+	# This must be commented out!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	_apply_debug_overrides()
+	
 	has_bow = Dialogic.VAR.items.bow
 	has_dodge = Dialogic.VAR.items.dodge
 	has_revive = Dialogic.VAR.items.revive
@@ -86,8 +89,20 @@ func _ready():
 func assign_variables():
 	peasant.has_bow = has_bow
 	peasant.has_dodge = has_dodge
-	peasant.has_revive = true
+	peasant.has_revive = has_revive
 	peasant.has_sword = has_sword
+
+
+func _apply_debug_overrides():
+	Dialogic.VAR.items.bow = true
+	Dialogic.VAR.items.dodge = true
+	Dialogic.VAR.items.revive = true
+	Dialogic.VAR.items.sword = true
+	Dialogic.VAR.recruitment.blacksmith_recruited = true
+	Dialogic.VAR.recruitment.carpenter_recruited = true
+	Dialogic.VAR.recruitment.acrobat_recruited = true
+	Dialogic.VAR.recruitment.doctor_recruited = true
+	Dialogic.VAR.recruitment.hunter_recruited = true
 
 
 func cull_unwanted():
@@ -95,6 +110,9 @@ func cull_unwanted():
 		$Blacksmith.queue_free()
 	if !recruited_carpenter:
 		$Carpenter.queue_free()
+	else:
+		for barricade in get_tree().get_nodes_in_group("barricades"):
+			barricade.set_boarded_up(true)
 	if !recruited_acrobat:
 		$Acrobat.queue_free()
 	if !recruited_doctor:

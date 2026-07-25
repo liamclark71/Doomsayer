@@ -245,14 +245,14 @@ offset_left = -237.0
 offset_top = -247.0
 offset_right = -2.0
 offset_bottom = -224.0
-text = "What are you doing out here ;)"
+text = "what are you doing out here ;)"
 
 [node name="Peasant" parent="." unique_id=772900983 instance=ExtResource("1_p2qeu")]
 position = Vector2(-278, 205)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=998408937]
 stream = ExtResource("5_7088l")
-volume_db = -21.015
+volume_db = -26.606
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1557942526]
@@ -336,6 +336,9 @@ position = Vector2(-72, 334)
 
 [node name="Goblin2" parent="." unique_id=291356877 instance=ExtResource("3_b1r40")]
 position = Vector2(-146, 143)
+
+[node name="Goblin3" parent="." unique_id=1019054948 instance=ExtResource("3_b1r40")]
+position = Vector2(-294, -435)
 
 [node name="ControlsLabel" type="Label" parent="." unique_id=979308864]
 offset_left = -610.0
