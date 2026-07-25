@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfjs0rgniqk0f"]
 
 [ext_resource type="Script" uid="uid://6rsqqogcxwn6" path="res://loading_screen/loading_screen.gd" id="1_knpss"]
-[ext_resource type="Texture2D" uid="uid://craymox8syvlc" path="res://loading_screen/menu_art_game_jam_2026.png" id="2_c2t5a"]
+[ext_resource type="Texture2D" uid="uid://dixw5pouxexuf" path="res://loading_screen/graysclae_menu_art.png" id="2_c2t5a"]
 
 [sub_resource type="Animation" id="Animation_knpss"]
 length = 0.001

@@ -4,7 +4,7 @@ label blacksmith_greeting
 Blacksmith: "How can I help you?"
 - "I'd like to buy a sword." | [if {items.sword} == false]
 	Blacksmith: "That'll be 6 gold."
-	- Purchase [You will have the sword upgrade] | [if {gold} >= 6.0]
+	- Purchase [gain sword upgrade] | [if {gold} >= 6.0]
 		set {items.sword} = true
 		set {gold} -= 6.0
 		You now have the sword upgrade.
@@ -21,7 +21,7 @@ Blacksmith: "How can I help you?"
 	Blacksmith: "How about this..."
 	Blacksmith: "If you can help me clear some orders off my plate, I'll be there tonight at the church."
 	Blacksmith: "What do you say?"
-	- "Yes" [You will lose 3 hours] | [if {hours} >= 3.0]
+	- "Yes" [lose 3 hours] | [if {hours} >= 3.0]
 		set {recruitment.blacksmith_recruited} = true
 		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
