@@ -11,8 +11,13 @@
 *** TODO Sword
 
 ** TODO Ranged
-*** TODO Ranged sling release cutoff
-*** TODO Bow
+*** TODO Ranged sling release cutoff :logic:
+*** TODO Arrow
+**** DONE Crashing game when arrow collides
+**** TODO Hitting enemy :wav:
+**** TODO Hitting wall :wav:
+
+
 
 ** TODO Character
 *** TODO Walking

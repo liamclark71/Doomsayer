@@ -24,6 +24,7 @@ class_name Character extends CharacterBody2D
 @onready var shoot_timer = $ShootTimer
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
 @onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
+@onready var bow_ranged_release_sound = load("res://sound_assets/arrow_release.wav")
 @onready var bat_melee_sounds: Array[AudioStream] = [
 	load("res://sound_assets/bathit1.wav"),
 	load("res://sound_assets/bathit2.wav"),
@@ -89,7 +90,12 @@ func _physics_process(_delta):
 		var mouse_offset = (get_global_mouse_position() - global_position) * camera_lookahead
 		camera.position = mouse_offset
 
-
+func handle_ranged_release_audio():
+	$AttackAudioController.stop()
+	if has_bow:
+		$AttackAudioController.stream = bow_ranged_release_sound
+	
+	$AttackAudioController.play()
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
@@ -173,6 +179,7 @@ func game_over():
 func _shoot_projectile():
 	shoot_on_cooldown = true
 	shoot_timer.start()
+	handle_ranged_release_audio()
 	if has_bow:
 		var arrow = arrow_scene.instantiate()
 		get_parent().add_child(arrow)
