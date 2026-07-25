@@ -15,7 +15,7 @@ if {items.dodge} == false:
 		He looks you up and down.
 		Acrobat: "Maybe..."
 		Acrobat: "Would you like to learn some tricks?"
-		- "Yes" [Train for 1 hour to earn the dodge upgrade]
+		- "Yes" [Train for 1 hour to earn the dodge upgrade] | [if {hours} >= 1.0]
 			set {items.dodge} = true
 			set {hours} -= 1.0
 			You spend an hour training with the acrobat. He seems pleased with how quickly you learn. By the end of the lesson, you feel much lighter on your feet.
@@ -25,10 +25,10 @@ if {items.dodge} == false:
 			Acrobat: "Another time, then."
 			jump acrobat_greeting
 	- Return to town square
-	leave Acrobat 
+	leave Acrobat
 	jump village/square
 elif {items.dodge} == true:
-	- "Can I perform with you?" [spend 2 hours to gain 8 gold] | [if {recruitment.acrobat_recruited} == false]
+	- "Can I perform with you?" [Spend 2 hours to gain 8 gold] | [if {recruitment.acrobat_recruited} == false and {hours} >= 2.0]
 		set {conversation.performances} += 1.0
 		set {gold} += 8.0
 		set {hours} -= 2.0
@@ -44,9 +44,9 @@ elif {items.dodge} == true:
 			set {recruitment.recruitees} += 1.0
 		jump acrobat_greeting
 	- Return to town square
-	leave Acrobat 
+	leave Acrobat
 	jump village/square
 elif {recruitment.acrobat_recruited} == true:
 	- Return to town square
-	leave Acrobat 
+	leave Acrobat
 	jump village/square

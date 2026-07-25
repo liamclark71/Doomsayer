@@ -6,5 +6,5 @@ extends Control
 
 
 func _process(delta: float) -> void:
-	Hours_label.text = "Hours: " + str(Dialogic.VAR.hours)
-	Gold_label.text = "Gold: " + str(Dialogic.VAR.gold)
+	Hours_label.text = "Hours: " + str(int(Dialogic.VAR.hours))
+	Gold_label.text = "Gold: " + str(int(Dialogic.VAR.gold))

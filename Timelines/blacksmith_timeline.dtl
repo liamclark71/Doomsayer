@@ -21,11 +21,11 @@ Blacksmith: "How can I help you?"
 	Blacksmith: "How about this..."
 	Blacksmith: "If you can help me clear some orders off my plate, I'll be there tonight at the church."
 	Blacksmith: "What do you say?"
-	- "Yes" [You will lose 2 hours] | [if {hours} >= 2.0]
+	- "Yes" [You will lose 3 hours] | [if {hours} >= 3.0]
 		set {recruitment.blacksmith_recruited} = true
-		set {hours} -= 2.0
+		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
-		You spend 2 hours toiling over the forge.
+		You spend three hours toiling over the forge.
 		By the end of it, the blacksmith's pile of repairs is looking considerably smaller.
 		He thanks you and promises to show up at the church tonight.
 		jump blacksmith_greeting

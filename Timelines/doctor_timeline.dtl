@@ -28,11 +28,11 @@ Hale and hearty by the looks of it, heehee."
 	There wouldn't be enough to go around."
 	Doctor: "Ohoho, but...\
 	I could join you if you gathered some herbs for me first."
-	- Gather herbs [You lose 2 hours] | [if {hours} >= 2.0]
+	- Gather herbs [You lose 3 hours] | [if {hours} >= 3.0]
 		set {recruitment.doctor_recruited} = true
-		set {hours} -= 2.0
+		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
-		The doctor describes the herbs needed. You spend 2 hours wandering around the woods, gathering as much as you can find.
+		The doctor describes the herbs needed. You spend three hours wandering around the woods, gathering as much as you can find.
 		You bring the herbs to him, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
 		jump doctor_greeting
 	- "I can't right now."
