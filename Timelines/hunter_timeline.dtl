@@ -3,7 +3,7 @@ join Hunter center
 label hunter_greeting
 Hunter: "What are you doing out here?"
 - "I'd like to buy a bow." | [if {items.bow} == false]
-	Hunter: "That'll be 6 Gold."
+	Hunter: "That'll be 6 gold."
 	- Purchase [You will have the bow upgrade] | [if {gold} >= 6.0]
 		set {items.bow} = true
 		set {gold} -= 6.0
@@ -19,7 +19,7 @@ Hunter: "What are you doing out here?"
 	Not much good for eating.
 	[wait time="1.0" hide_text="false"]
 	Hunter: "If you help me set up traps in the area, I'll join you at the church."
-	- Agree to help [You will lose 2 hours]
+	- Agree to help [You will lose 2 hours] | [if {hours} >= 2.0]
 		set {recruitment.hunter_recruited} = true
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0

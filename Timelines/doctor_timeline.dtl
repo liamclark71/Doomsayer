@@ -8,7 +8,7 @@ Hale and hearty by the looks of it, heehee."
 	Why, of course you can!"
 	Doctor: "They just might save your life, heehee."
 	Doctor: "But I don't give them out for free.\
-	That'll be 2 Gold."
+	That'll be 2 gold."
 	- Purchase [You will have 1 revive] | [if {gold} >= 2.0]
 		set {items.revive} = true
 		set {gold} -= 2.0
@@ -28,7 +28,7 @@ Hale and hearty by the looks of it, heehee."
 	There wouldn't be enough to go around."
 	Doctor: "Ohoho, but...\
 	I could join you if you gathered some herbs for me first."
-	- Gather herbs [You lose 2 hours]
+	- Gather herbs [You lose 2 hours] | [if {hours} >= 2.0]
 		set {recruitment.doctor_recruited} = true
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0
@@ -38,5 +38,5 @@ Hale and hearty by the looks of it, heehee."
 	- "I can't right now."
 		jump doctor_greeting
 - Return to the town square
-	leave Doctor 
+	leave Doctor
 	jump village/square

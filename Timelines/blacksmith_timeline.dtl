@@ -3,7 +3,7 @@ join Blacksmith center [mirrored="true"]
 label blacksmith_greeting
 Blacksmith: "How can I help you?"
 - "I'd like to buy a sword." | [if {items.sword} == false]
-	Blacksmith: "That'll be 6 Gold"
+	Blacksmith: "That'll be 6 gold"
 	- Purchase [You will have the sword upgrade] | [if {gold} >= 6.0]
 		set {items.sword} = true
 		set {gold} -= 6.0
@@ -21,7 +21,7 @@ Blacksmith: "How can I help you?"
 	Blacksmith: "How about this..."
 	Blacksmith: "If you can help me clear some orders off my plate, I'll be there tonight at the church."
 	Blacksmith: "What do you say?"
-	- "Yes" [You will lose 2 hours]
+	- "Yes" [You will lose 2 hours] | [if {hours} >= 2.0]
 		set {recruitment.blacksmith_recruited} = true
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0

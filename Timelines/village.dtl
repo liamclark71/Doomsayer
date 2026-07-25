@@ -9,16 +9,23 @@ set {hours} = 10
 label square
 [background arg="res://img/point_and_click/backgrounds/village_square.png" fade="0.0"]
 What a peaceful place.
-- Yell about the imminent goblin attack | [if {conversation.yell} == false]
-	No one seems to believe you. Within a few minutes, they start keeping their distance.
-	set {conversation.yell} = true
-	jump square
-- Visit the...
-	- Blacksmith
-		jump blacksmith_timeline/
-	- Hunter
-		jump hunter_timeline/
-	- Doctor
-		jump doctor_timeline/
-	- Carpenter
-	- Acrobat
+if {hours} > 0.0:
+	- Yell about the imminent goblin attack | [if {conversation.yell} == false]
+		No one seems to believe you. Within a few minutes, they start keeping their distance.
+		set {conversation.yell} = true
+		jump square
+	- Visit the...
+		- Blacksmith
+			jump blacksmith_timeline/
+		- Hunter
+			jump hunter_timeline/
+		- Doctor
+			jump doctor_timeline/
+		- Carpenter
+			jump carpenter_timeline/
+		- Acrobat
+			jump acrobat_timeline/
+	- Go to the church [forfeit remaining hours]
+elif {hours} <= 0.0:
+	The sun has started to go down.
+	- Go to the church
