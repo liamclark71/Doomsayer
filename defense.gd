@@ -2,7 +2,7 @@ extends Node2D
 
 @export var goblin_scene: PackedScene
 @export var min_spawn_interval: float = 0.5
-@export var spawn_interval: float = 0.25
+@export var spawn_interval: float = 3.0
 @export var interval_decrease_rate: float = 0.03  # per second
 
 var spawn_points: Array[Node2D] = []
