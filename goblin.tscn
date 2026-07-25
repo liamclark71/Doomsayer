@@ -10,9 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://g42ov0574hna" path="res://sprites/goblin/goblin body frames/000.png" id="8_gut4f"]
 [ext_resource type="Texture2D" uid="uid://c3ynl6u4uw36g" path="res://sprites/goblin/goblin body frames/001.png" id="9_vqqyg"]
 [ext_resource type="Texture2D" uid="uid://cfrwn544e3otj" path="res://sprites/goblin/goblin body frames/002.png" id="10_lon5w"]
+[ext_resource type="Texture2D" uid="uid://unaay1olxujr" path="res://sprites/goblin/goblin body frames/006.png" id="10_lqvpw"]
 [ext_resource type="Texture2D" uid="uid://dgw7c6df6oeie" path="res://sprites/goblin/goblin body frames/003.png" id="11_lqvpw"]
+[ext_resource type="Texture2D" uid="uid://vvnwdagfdt2f" path="res://sprites/goblin/goblin body frames/007.png" id="11_sm8he"]
 [ext_resource type="Texture2D" uid="uid://ceycjw0xp7o18" path="res://sprites/goblin/goblin body frames/004.png" id="12_sm8he"]
 [ext_resource type="Texture2D" uid="uid://bqblf87o838gb" path="res://sprites/goblin/goblin body frames/005.png" id="13_8m2n1"]
+[ext_resource type="AudioStream" uid="uid://d4ihhmpxvi2og" path="res://sound_assets/swing.wav" id="16_lqvpw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lja4b"]
 animations = [{
@@ -62,6 +65,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_lqvpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sm8he")
+}],
+"loop": 1,
+"name": &"die",
 "speed": 6.0
 }, {
 "frames": [{
@@ -148,6 +162,35 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_8m2n1"]
+resource_name = "die"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="Animation" id="Animation_lon5w"]
 resource_name = "stab"
 length = 0.5833
@@ -189,11 +232,27 @@ tracks/2/keys = {
 "method": &"hit"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpearAudioController")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_lqvpw")
+}],
+"times": PackedFloat32Array(0.33333334)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqvpw"]
 _data = {
 &"RESET": SubResource("Animation_gut4f"),
 &"default": SubResource("Animation_vqqyg"),
+&"die": SubResource("Animation_8m2n1"),
 &"stab": SubResource("Animation_lon5w")
 }
 
@@ -217,7 +276,7 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gut4f"]
 states/Start/position = Vector2(200, 99.840004)
 states/default/node = SubResource("AnimationNodeAnimation_gut4f")
-states/default/position = Vector2(361.19998, 89.4976)
+states/default/position = Vector2(361.19998, 89.57952)
 states/stab/node = SubResource("AnimationNodeAnimation_vqqyg")
 states/stab/position = Vector2(549.2, 89.6)
 transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_lon5w"), "default", "stab", SubResource("AnimationNodeStateMachineTransition_lqvpw"), "stab", "default", SubResource("AnimationNodeStateMachineTransition_sm8he")]
@@ -244,7 +303,7 @@ offset = Vector2(1, -18)
 
 [node name="HitBox" type="Area2D" parent="Torso" unique_id=954167266]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torso/HitBox" unique_id=1660546805]
 position = Vector2(3.5, -58.75)
@@ -279,6 +338,9 @@ anim_player = NodePath("../AnimationPlayer")
 process_callback = 0
 wait_time = 0.5
 autostart = true
+
+[node name="SpearAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1102054912]
+attenuation = 5.856333
 
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]

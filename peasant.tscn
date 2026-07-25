@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://b5aq3dtg61lwf" path="res://sprites/peasant/peasant body frames/011.png" id="14_plvwj"]
 [ext_resource type="Texture2D" uid="uid://dycwdmk1v8hi8" path="res://sprites/peasant/peasant body frames/012.png" id="15_dcrm0"]
 [ext_resource type="Texture2D" uid="uid://daspts1xrqga2" path="res://sprites/peasant/peasant body frames/013.png" id="16_1kt68"]
+[ext_resource type="Texture2D" uid="uid://bgu5dt4ptc5gi" path="res://sprites/peasant/peasant body frames/014.png" id="18_q71mf"]
+[ext_resource type="Texture2D" uid="uid://bkgjn1phicaof" path="res://sprites/peasant/peasant body frames/015.png" id="19_gp7sx"]
 [ext_resource type="Texture2D" uid="uid://ur45vxhp7oqv" path="res://sprites/peasant/peasant body frames/002.png" id="19_p0nvd"]
 [ext_resource type="Texture2D" uid="uid://cgmvbhooc4bov" path="res://sprites/peasant/peasant body frames/003.png" id="20_d237o"]
 
@@ -113,6 +115,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_q71mf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gp7sx")
+}],
+"loop": 1,
+"name": &"die",
 "speed": 6.0
 }, {
 "frames": [{
@@ -363,6 +376,35 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_dcrm0"]
+resource_name = "die"
+length = 0.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="Animation" id="Animation_gp7sx"]
 resource_name = "sling_draw"
 length = 0.1667
@@ -515,6 +557,7 @@ _data = {
 &"bow_release": SubResource("Animation_d237o"),
 &"club_swing": SubResource("Animation_61nkb"),
 &"default": SubResource("Animation_q71mf"),
+&"die": SubResource("Animation_dcrm0"),
 &"sling_draw": SubResource("Animation_gp7sx"),
 &"sling_hold": SubResource("Animation_s7gtl"),
 &"sling_release": SubResource("Animation_qnjh6"),
@@ -665,5 +708,20 @@ tree_root = SubResource("AnimationNodeStateMachine_lja4b")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="ShootTimer" type="Timer" parent="." unique_id=793561188]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="SwingTimer" type="Timer" parent="." unique_id=1075684604]
+process_callback = 0
+one_shot = true
+
+[node name="Camera" type="Camera2D" parent="." unique_id=78403538]
+process_callback = 0
+position_smoothing_enabled = true
+
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

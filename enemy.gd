@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	rotation = velocity.angle() + PI / 2
 	#move_and_slide()
 
-func take_damage(damage):
+func take_damage(damage, _damageType):
 	hitpoints = hitpoints - damage
 
 func die():
