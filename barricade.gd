@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @export var hitpoints := 8
-@export var boarded_up = true
+@export var boarded_up = false
 
 @onready var collision_shape = $CollisionShape2D
 
@@ -29,6 +29,15 @@ func _ready():
 		window_atlas_coords = walls_layer.get_cell_atlas_coords(cell)
 		if boarded_up:
 			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
+
+
+func set_boarded_up(value: bool):
+	boarded_up = value
+	if walls_layer:
+		if boarded_up:
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
+		else:
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords)
 
 
 func get_global_rect() -> Rect2:
