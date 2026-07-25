@@ -1,14 +1,18 @@
 #+title: Sound Notes
 
 * TODO Combat
-** TODO Barricades
-*** TODO Board barricade fixing
+** DONE Barricades
+*** DONE Board barricade fixing
 
-** TODO Melee
-*** TODO Collides with wall
-**** TODO Club
-**** TODO Sword
-*** TODO Sword
+** TODO Dodge
+
+** TODO Revive
+
+** DONE Melee
+*** DONE Collides with wall
+**** DONE Club
+**** DONE Sword
+*** DONE Sword
 
 ** DONE Ranged
 *** DONE Arrow

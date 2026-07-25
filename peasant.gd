@@ -39,7 +39,9 @@ class_name Character extends CharacterBody2D
 	load("res://sound_assets/whiff3.wav"),
 	load("res://sound_assets/whiff4.wav")
 ]
-
+@onready var slash_sound = load("res://sound_assets/stabbed.wav")
+@onready var sword_wall_hit_sound = load("res://sound_assets/sword_hit_wall.wav") 
+@onready var bat_wall_hit_sound = load("res://sound_assets/club_hit_wall.wav")
 var camera 
 
 var damage = 1
@@ -228,9 +230,17 @@ func _shoot_projectile():
 		rock.global_position = proj_spawn.global_position
 		rock.global_rotation = torso.global_rotation
 
-func _handleMeleeHitAudio():
+func _handleMeleeHitAudio(hitting = 'goblin'):
 	if not has_sword:
-		$AttackAudioController.stream = bat_melee_sounds.pick_random()
+		if hitting == 'goblin':
+			$AttackAudioController.stream = bat_melee_sounds.pick_random()
+		else:
+			$AttackAudioController.stream = bat_wall_hit_sound
+	else:
+		if hitting == 'goblin':
+			$AttackAudioController.stream = slash_sound
+		else:
+			$AttackAudioController.stream = sword_wall_hit_sound
 	$AttackAudioController.play()
 	
 func play_ranged_charge_audio():
@@ -265,6 +275,8 @@ func _on_hit_box_body_entered(body):
 		if body.glass_intact == true:
 			body.take_damage(damage, 'test')
 			hit_enemies[body] = true
+	elif body.is_in_group("walls"):
+		_handleMeleeHitAudio('wall')
 
 
 func _on_interact_box_body_entered(body):
