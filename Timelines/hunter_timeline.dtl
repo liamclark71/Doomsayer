@@ -4,8 +4,9 @@ label hunter_greeting
 Hunter: "What are you doing out here?"
 - "I'd like to buy a bow." | [if {bow} == false]
 	Hunter: "That'll be 6 Gold."
-	- Purchase [You will have the bow upgrade]
+	- Purchase [You will have the bow upgrade] | [if {gold} >= 6.0]
 		set {bow} = true
+		set {gold} -= 6.0
 		You now have the bow upgrade.
 		jump hunter_greeting
 	- "I don't have that much money."
@@ -20,11 +21,12 @@ Hunter: "What are you doing out here?"
 	Hunter: "If you help me set up traps in the area, I'll join you at the church."
 	- Agree to help [You will lose 2 hours]
 		set {hunter_recruited} = true
+		set {hours} -= 2.0
 		You and the hunter spend two hours setting up traps around the perimeter of the village. You hope that some of the goblins will get caught.
 		The hunter shakes your hand and stalks off.
 		jump hunter_greeting
 	- "I can't do that right now."
 		jump hunter_greeting
-- Return to the square
+- Return to the town square
 	leave Hunter
 	jump village/square

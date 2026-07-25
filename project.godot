@@ -23,6 +23,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 directories/dch_directory={
 "Blacksmith": "res://characters/Blacksmith.dch",
+"Carpenter": "res://characters/Carpenter.dch",
 "Doctor": "res://characters/Doctor.dch",
 "Doomsayer": "res://characters/Doomsayer.dch",
 "Hunter": "res://characters/Hunter.dch",
@@ -30,6 +31,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "blacksmith_timeline": "res://Timelines/blacksmith_timeline.dtl",
+"carpenter_timeline": "res://Timelines/carpenter_timeline.dtl",
 "doctor_timeline": "res://Timelines/doctor_timeline.dtl",
 "hunter_timeline": "res://Timelines/hunter_timeline.dtl",
 "village": "res://Timelines/village.dtl"
@@ -44,9 +46,11 @@ variables={
 "blacksmith_recruited": false,
 "bow": false,
 "doctor_recruited": false,
+"gold": 0,
+"hours": 10,
 "hunter_recruited": false,
+"revive": false,
 "sword": false,
-"tincture": false,
 "yell": false
 }
 text/letter_speed=0.01

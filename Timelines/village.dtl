@@ -4,6 +4,7 @@ They'll attack at sundown and you need to be prepared.
 How will you save this village?
 Who can you convince to help?
 All you know is, you have 10 hours left.
+set {hours} = 10
 - Enter village square
 label square
 [background arg="res://img/point_and_click/backgrounds/village_square.png" fade="0.0"]
@@ -18,5 +19,6 @@ What a peaceful place.
 	- Hunter
 		jump hunter_timeline/
 	- Doctor
+		jump doctor_timeline/
 	- Carpenter
 	- Acrobat
