@@ -26,6 +26,8 @@ if {hours} > 0.0:
 		- Acrobat
 			jump acrobat_timeline/
 	- Go to the church [forfeit remaining hours]
+		[signal arg="res://defense.tscn"]
 elif {hours} <= 0.0:
 	The sun has started to go down.
 	- Go to the church
+		[signal arg="res://defense.tscn"]

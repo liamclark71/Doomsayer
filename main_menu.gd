@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_start_game_pressed() -> void:
-	LoadManager.load_scene("res://defense.tscn")
+	LoadManager.load_scene("res://point_and_click.tscn")

@@ -26,5 +26,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Start Game"
 
-[connection signal="pressed" from="start_game" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="start_game" to="." method="_on_button_pressed"]
