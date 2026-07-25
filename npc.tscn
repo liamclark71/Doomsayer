@@ -231,6 +231,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_ranged_charge_audio"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_p0nvd"]
 resource_name = "bow_hold"
@@ -432,6 +446,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_ranged_charge_audio"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_s7gtl"]
@@ -727,7 +755,8 @@ process_callback = 0
 wait_time = 3.0
 one_shot = true
 
-[node name="MeleeAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
+[node name="AttackAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
+attenuation = 7.4642572
 
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
 stream = ExtResource("26_8d7p2")

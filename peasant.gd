@@ -21,7 +21,7 @@ class_name Character extends CharacterBody2D
 @onready var swing_timer = $SwingTimer
 @onready var shoot_timer = $ShootTimer
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
-
+@onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
 @onready var bat_melee_sounds: Array[AudioStream] = [
 	load("res://sound_assets/bathit1.wav"),
 	load("res://sound_assets/bathit2.wav"),
@@ -120,8 +120,8 @@ func _start_dodge(input_direction: Vector2):
 	can_dodge = true
 
 func _start_swing():
-	$MeleeAudioController.stream = whiff_melee_sounds.pick_random()
-	$MeleeAudioController.play()
+	$AttackAudioController.stream = whiff_melee_sounds.pick_random()
+	$AttackAudioController.play()
 	hit_enemies.clear()
 	hitbox.disabled = false
 
@@ -178,10 +178,13 @@ func _shoot_projectile():
 
 func _handleMeleeHitAudio():
 	if not has_sword:
-		$MeleeAudioController.stream = bat_melee_sounds.pick_random()
-	$MeleeAudioController.play()
+		$AttackAudioController.stream = bat_melee_sounds.pick_random()
+	$AttackAudioController.play()
 	
-
+func play_ranged_charge_audio():
+	$AttackAudioController.stream = ranged_charge_sound
+	$AttackAudioController.play()
+	
 func _on_hit_box_area_entered(area):
 	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
 		hit_enemies[area.get_parent()] = true
