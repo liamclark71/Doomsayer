@@ -705,6 +705,9 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_3u1pd")
 arrow_scene = ExtResource("2_p0nvd")
 rock_scene = ExtResource("3_d237o")
+has_bow = true
+has_sword = true
+has_dodge = true
 has_revive = true
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]

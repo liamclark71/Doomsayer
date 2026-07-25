@@ -4,6 +4,7 @@ extends Node2D
 @onready var wave_label: Label = wave_announcement.get_node("MarginContainer/VBoxContainer/WaveLabel")
 @onready var subtitle_label: Label = wave_announcement.get_node("MarginContainer/VBoxContainer/Subtitle")
 @onready var goblin_counter: Control = $CanvasLayer/GoblinCounter
+@onready var peasant = $Peasant
 
 @export var goblin_scene: PackedScene
 
@@ -17,7 +18,8 @@ extends Node2D
 @export var base_goblins_per_wave: int = 10
 @export var goblins_per_wave_increase: int = 3
 
-@export var wave_directions: Array[Array] = [["north"]]
+# after this each wave will be from all directions
+var wave_directions: Array[Array] = [["north"], ["south"], ["east"], ["north", "south"], ["south", "east"]]
 
 var direction_messages := {
 	"north": "They come from the north!",
@@ -42,8 +44,31 @@ var goblins_spawned_this_wave := 0
 var goblins_remaining := 0
 var goblins_left_label
 
+@export var has_bow = false
+@export var has_dodge = false
+@export var has_revive = false
+@export var has_sword = false
+@export var recruited_blacksmith = false
+@export var recruited_carpenter = false
+@export var recruited_acrobat = false
+@export var recruited_doctor = false
+@export var recruited_hunter = false
+
 
 func _ready():
+	
+	has_bow = Dialogic.VAR.items.bow
+	has_dodge = Dialogic.VAR.items.dodge
+	has_revive = Dialogic.VAR.items.revive
+	has_sword = Dialogic.VAR.items.sword
+	recruited_blacksmith = Dialogic.VAR.recruitment.blacksmith_recruited
+	recruited_carpenter = Dialogic.VAR.recruitment.carpenter_recruited
+	recruited_acrobat = Dialogic.VAR.recruitment.acrobat_recruited
+	recruited_doctor = Dialogic.VAR.recruitment.doctor_recruited
+	recruited_hunter = Dialogic.VAR.recruitment.hunter_recruited
+	
+	assign_variables()
+	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
 	for dir in direction_messages.keys():
 		spawn_points_by_direction[dir] = get_tree().get_nodes_in_group("spawners_%s" % dir)
@@ -56,6 +81,13 @@ func _ready():
 	wave_announcement.visible = false
 	subtitle_label.modulate = Color.TRANSPARENT
 	goblins_left_label.visible = false
+
+
+func assign_variables():
+	peasant.has_bow = has_bow
+	peasant.has_dodge = has_dodge
+	peasant.has_revive = has_revive
+	peasant.has_sword = has_sword
 
 
 func _unhandled_input(event):
@@ -83,6 +115,8 @@ func _build_subtitle_text(dirs: Array) -> String:
 	var names = []
 	for d in dirs:
 		names.append(d)
+	if dirs.size() == 3:
+		return "They come from all sides!"
 	return "They come from the %s!" % " and ".join(names)
 
 
@@ -117,7 +151,7 @@ func _show_countdown() -> void:
 	await wave_text_fade.finished
 
 	var subtitle_fade = get_tree().create_tween()
-	subtitle_fade.tween_property(subtitle_label, "modulate", Color(1, 1, 1, .9), 0.5)
+	subtitle_fade.tween_property(subtitle_label, "modulate", Color(1, 1, 1, .9), 0.3)
 	await subtitle_fade.finished
 
 
@@ -135,7 +169,7 @@ func _begin_wave():
 	spawn_timer.start()
 
 	var fade_out = get_tree().create_tween()
-	fade_out.tween_interval(1.0)
+	fade_out.tween_interval(1.8)
 	fade_out.tween_property(wave_announcement, "modulate", Color.TRANSPARENT, 1.0)
 	await fade_out.finished
 	wave_announcement.visible = false

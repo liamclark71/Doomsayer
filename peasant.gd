@@ -11,7 +11,7 @@ class_name Character extends CharacterBody2D
 
 @export var has_bow = false
 @export var has_sword = false
-@export var dodge_unlocked = false
+@export var has_dodge = false
 @export var has_revive = false
 
 @onready var legs = $Legs
@@ -99,7 +99,7 @@ func get_input():
 	if not dodging:
 		velocity = input_direction * speed
 	
-	if Input.is_action_just_pressed("dodge") and can_dodge and not dodging:
+	if Input.is_action_just_pressed("dodge") and can_dodge and not dodging and has_dodge:
 		_start_dodge(input_direction)
 	
 	if Input.is_action_pressed("draw") and shoot_on_cooldown == false:
