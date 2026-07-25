@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bkgjn1phicaof" path="res://sprites/peasant/peasant body frames/015.png" id="19_gp7sx"]
 [ext_resource type="Texture2D" uid="uid://ur45vxhp7oqv" path="res://sprites/peasant/peasant body frames/002.png" id="19_p0nvd"]
 [ext_resource type="Texture2D" uid="uid://cgmvbhooc4bov" path="res://sprites/peasant/peasant body frames/003.png" id="20_d237o"]
+[ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_gp7sx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
 animations = [{
@@ -722,6 +723,9 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [node name="MeleeAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1735331458]
+
+[node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1714116962]
+stream = ExtResource("26_gp7sx")
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_body_entered"]
