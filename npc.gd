@@ -3,6 +3,7 @@ extends Character
 @onready var death_timer = $DeathTimer
 @onready var swinging_duration_timer = $SwingingDurationTimer
 
+
 func _ready():
 	legs.play("stand")
 	anim_tree.active = true
