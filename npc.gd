@@ -1,4 +1,4 @@
-extends Character
+class_name NPC extends Character
 
 @onready var death_timer = $DeathTimer
 @onready var swinging_duration_timer = $SwingingDurationTimer
@@ -45,6 +45,8 @@ func get_nearest_visible_goblin() -> Enemy:
 	
 	var space_state = get_world_2d().direct_space_state
 	for goblin in get_tree().get_nodes_in_group("goblin"):
+		if not goblin.alive:
+			continue
 		var query = PhysicsRayQueryParameters2D.create(
 			global_position,
 			goblin.global_position
@@ -61,6 +63,13 @@ func get_nearest_visible_goblin() -> Enemy:
 				nearest = goblin
 	
 	return nearest
+
+func _on_hit_box_area_entered(area):
+	if area.get_parent() is Enemy and !hit_enemies.has(area.get_parent()):
+		hit_enemies[area.get_parent()] = true
+		_handleMeleeHitAudio()
+		area.get_parent().take_damage(damage, 'club' if not has_sword else 'sword')
+		area.get_parent().apply_knockback(torso.global_position, 400)
 
 func game_over():
 	anim_tree.active = false

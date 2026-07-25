@@ -56,7 +56,6 @@ var recruited_hunter = false
 
 
 func _ready():
-	
 	has_bow = Dialogic.VAR.items.bow
 	has_dodge = Dialogic.VAR.items.dodge
 	has_revive = Dialogic.VAR.items.revive
@@ -68,6 +67,7 @@ func _ready():
 	recruited_hunter = Dialogic.VAR.recruitment.hunter_recruited
 	
 	assign_variables()
+	cull_unwanted()
 	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
 	for dir in direction_messages.keys():
@@ -88,6 +88,19 @@ func assign_variables():
 	peasant.has_dodge = has_dodge
 	peasant.has_revive = true
 	peasant.has_sword = has_sword
+
+
+func cull_unwanted():
+	if !recruited_blacksmith:
+		$Blacksmith.queue_free()
+	if !recruited_carpenter:
+		$Carpenter.queue_free()
+	if !recruited_acrobat:
+		$Acrobat.queue_free()
+	if !recruited_doctor:
+		$Doctor.queue_free()
+	if !recruited_hunter:
+		$Hunter.queue_free()
 
 
 func _unhandled_input(event):
@@ -160,7 +173,7 @@ func _begin_wave():
 
 	wave_goblins_total = base_goblins_per_wave + goblins_per_wave_increase * (wave - 1)
 	goblins_spawned_this_wave = 0
-	goblins_remaining = 0
+	goblins_remaining = wave_goblins_total
 	_update_goblins_left_label()
 	goblins_left_label.visible = true
 
@@ -213,8 +226,6 @@ func _spawn_goblin():
 	goblin.global_position = point.global_position
 
 	goblins_spawned_this_wave += 1
-	goblins_remaining += 1
-	_update_goblins_left_label()
 	goblin.goblin_died.connect(_on_goblin_died)
 
 

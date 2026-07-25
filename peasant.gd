@@ -10,7 +10,6 @@ class_name Character extends CharacterBody2D
 @export var camera_lookahead = 0.15
 
 @export var has_bow = false
-@export var has_sword = false
 @export var has_dodge = false
 @export var has_revive = false
 
@@ -61,14 +60,17 @@ var max_hitpoints = 8
 var interact_scene = preload("res://interact_text.tscn")
 var interact_label = null  # track the current instance
 
+var has_sword: bool = false:
+	set(value):
+		has_sword = value
+		damage = 2 if value else 1
+
 
 func _ready():
 	max_hitpoints = hitpoints
 	camera = $Camera
 	legs.play("stand")
 	anim_tree.active = true
-	if has_sword:
-		damage = 2
 	z_index = 1
 	hitbox.disabled = true
 
@@ -97,6 +99,18 @@ func handle_ranged_release_audio():
 		$AttackAudioController.stream = bow_ranged_release_sound
 	
 	$AttackAudioController.play()
+	var needs_label = interact_object != null and interact_object.is_in_group("barricades") \
+		and interact_object.hitpoints < interact_object.max_hitpoints
+
+	if needs_label and interact_label == null:
+		interact_label = interact_scene.instantiate()
+		interact_object.add_child(interact_label)
+		interact_label.text = "Press E to repair barricade"
+	elif not needs_label and interact_label:
+		interact_label.queue_free()
+		interact_label = null
+
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
@@ -147,7 +161,7 @@ func _end_swing():
 	hitbox.disabled = true
 
 
-func take_damage(dam, damageType):
+func take_damage(dam, _damageType):
 	$GotStabbedAudioController.play()
 	if not alive:
 		return
@@ -251,19 +265,13 @@ func _on_hit_box_body_entered(body):
 
 
 func _on_interact_box_body_entered(body):
-	if body.is_in_group("barricades"): #or body.is_in_group("characters"):
+	if body.is_in_group("barricades") or body.is_in_group("characters"):
 		interact_object = body
-		if interact_label == null:
-			interact_label = interact_scene.instantiate()
-			interact_object.add_child(interact_label)
-			if body.is_in_group("barricades"):
-				interact_label.text = "Press E to repair barricade"
-	
 
 
 func _on_interact_box_body_exited(body):
 	if body == interact_object:
+		interact_object = null
 		if interact_label:
 			interact_label.queue_free()
 			interact_label = null
-		interact_object = null

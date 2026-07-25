@@ -336,17 +336,3 @@ position = Vector2(-72, 334)
 
 [node name="Goblin2" parent="." unique_id=291356877 instance=ExtResource("3_b1r40")]
 position = Vector2(-146, 143)
-
-[node name="ControlsLabel" type="Label" parent="." unique_id=979308864]
-offset_left = -610.0
-offset_top = -172.0
-offset_right = -241.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0.88525444, 0.5733664, 0.30013528, 1)
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 34
-text = "WASD to Move
-Left click to shoot
-Right click to swing
-Space to dodge
-E to interact"

@@ -42,7 +42,7 @@ func handle_board_damage_audio():
 	$BoardDamageAudioController.play()
 	
 
-func take_damage(dam, damage_type):
+func take_damage(dam, _damage_type):
 	if glass_intact:
 		break_glass()
 		glass_intact = false

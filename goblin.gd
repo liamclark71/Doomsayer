@@ -161,7 +161,8 @@ func handle_damage_audio():
 
 	$DamageAudioController.play()
 
-func take_damage(dam, damageType):
+func take_damage(dam, _damageType):
+	print("I'm a goblin and I've taken %s damage!!!! OuCH!" % dam)
 	hitpoints = hitpoints - dam
 	handle_damage_audio()
 		
