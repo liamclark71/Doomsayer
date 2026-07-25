@@ -22,7 +22,6 @@ func _ready():
 func _physics_process(delta):
 	elapsed_time += delta
 	_ramp_difficulty(delta)
-	print(spawn_interval)
 
 
 func _ramp_difficulty(delta):

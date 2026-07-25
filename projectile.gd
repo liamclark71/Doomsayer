@@ -9,11 +9,12 @@ func _physics_process(delta):
 	position += -transform.y * speed * delta
 
 func _on_body_entered(body):
+	if body.is_in_group("barricades"):
+		if body.glass_intact == true:
+			body.take_damage(damage, 'test')
+		else:
+			return
 	$CollisionAudioController.play()
-
-	if not body.get_collision_mask_value(4):
-		body.take_damage(damage, damageType)
-		
 	visible = false
 	$CollisionShape2D.queue_free()
 	$RockSprite.queue_free()

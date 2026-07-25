@@ -317,7 +317,7 @@ offset = Vector2(1, -18)
 
 [node name="HitBox" type="Area2D" parent="Torso" unique_id=954167266]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torso/HitBox" unique_id=1660546805]
 position = Vector2(3.5, -58.75)

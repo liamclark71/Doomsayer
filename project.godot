@@ -115,6 +115,8 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 goblin=""
 characters=""
 spawners=""
+barricades=""
+walls=""
 
 [input]
 
