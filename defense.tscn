@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cemer7oaxjo6g" path="res://soundtracks/doomsseeing.wav" id="5_7088l"]
 [ext_resource type="PackedScene" uid="uid://b70vdniwhssc1" path="res://game_over_box.tscn" id="7_feujx"]
 [ext_resource type="PackedScene" uid="uid://bch2ub5veyofi" path="res://goblin_spawner.tscn" id="8_t4un6"]
+[ext_resource type="PackedScene" uid="uid://br5k1rjq1fl0l" path="res://wave_announcement.tscn" id="10_do84s"]
 [ext_resource type="PackedScene" uid="uid://bhf0ha26jc1oi" path="res://barricade.tscn" id="10_fcfsq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yikbh"]
@@ -242,6 +243,9 @@ autoplay = true
 [node name="GameOverBox" parent="CanvasLayer" unique_id=88980822 instance=ExtResource("7_feujx")]
 visible = false
 
+[node name="WaveAnnouncement" parent="CanvasLayer" unique_id=391923152 instance=ExtResource("10_do84s")]
+visible = false
+
 [node name="GoblinSpawner" parent="." unique_id=688616312 instance=ExtResource("8_t4un6")]
 position = Vector2(491, -270)
 
@@ -253,3 +257,21 @@ position = Vector2(-282, -236)
 
 [node name="Barricade2" parent="." unique_id=1662599552 instance=ExtResource("10_fcfsq")]
 position = Vector2(334, -31)
+
+[node name="Barricade3" parent="." unique_id=1383390324 instance=ExtResource("10_fcfsq")]
+position = Vector2(744, -29)
+
+[node name="Barricade4" parent="." unique_id=2089201554 instance=ExtResource("10_fcfsq")]
+position = Vector2(1152, -31)
+
+[node name="Barricade5" parent="." unique_id=2127295294 instance=ExtResource("10_fcfsq")]
+position = Vector2(-280, 1200)
+
+[node name="Barricade6" parent="." unique_id=2033214096 instance=ExtResource("10_fcfsq")]
+position = Vector2(332, 992)
+
+[node name="Barricade7" parent="." unique_id=2050025617 instance=ExtResource("10_fcfsq")]
+position = Vector2(742, 993)
+
+[node name="Barricade8" parent="." unique_id=328890764 instance=ExtResource("10_fcfsq")]
+position = Vector2(1152, 993)
