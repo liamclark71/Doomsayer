@@ -7,7 +7,6 @@ extends Node2D
 @onready var peasant = $Peasant
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var game_over_box = $CanvasLayer/GameOverBox
-@onready var pause_box = $CanvasLayer/PauseBox
 
 @export var goblin_scene: PackedScene
 
@@ -166,6 +165,7 @@ func _start_next_wave():
 		_trigger_victory()
 		return
 	
+	wave += 1
 	state = State.COUNTDOWN
 	await _show_countdown()
 	waves_left_label.visible = true
@@ -280,7 +280,6 @@ func _end_wave():
 	state = State.WAVE_BREAK
 	spawn_timer.stop()
 	goblins_left_label.visible = false
-	wave += 1
 	_update_waves_left_label()
 	await get_tree().create_timer(break_duration).timeout
 	_start_next_wave()
