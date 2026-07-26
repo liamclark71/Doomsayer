@@ -156,7 +156,11 @@ func get_input():
 	if Input.is_action_just_pressed("interact"):
 		interact()
 
+func _handle_dodge_audio():
+	$DashAudioController.play()
+
 func _start_dodge(input_direction: Vector2):
+	_handle_dodge_audio()
 	if input_direction != Vector2.ZERO:
 		dodge_direction = input_direction 
 	else: 
