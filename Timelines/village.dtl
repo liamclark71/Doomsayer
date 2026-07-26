@@ -17,14 +17,16 @@ if {hours} > 0.0:
 	- Visit the...
 		- Carpenter | [if {recruitment.carpenter_recruited} == false]
 			jump carpenter_timeline/
-		- Blacksmith | [if {recruitment.blacksmith_recruited} == false and {items.sword} == false]
+		- Blacksmith | [if {conversation.blacksmith} == false]
 			jump blacksmith_timeline/
-		- Hunter | [if {recruitment.hunter_recruited} == false and {items.bow} == false]
+		- Hunter | [if {conversation.hunter} == false]
 			jump hunter_timeline/
-		- Doctor | [if {recruitment.doctor_recruited} == false and {items.revive} == false]
+		- Doctor | [if {conversation.doctor} == false]
 			jump doctor_timeline/
 		- Acrobat | [if {recruitment.acrobat_recruited} == false]
 			jump acrobat_timeline/
+		- Return to the square
+			jump square
 	- Go to the church [forfeit remaining hours]
 		[signal arg="res://defense.tscn"]
 elif {hours} <= 0.0:

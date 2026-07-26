@@ -5,21 +5,30 @@ extends Node2D
 @onready var subtitle_label: Label = wave_announcement.get_node("MarginContainer/VBoxContainer/Subtitle")
 @onready var goblin_counter: Control = $CanvasLayer/GoblinCounter
 @onready var peasant = $Peasant
+@onready var health_bar = $CanvasLayer/HealthBar
+@onready var game_over_box = $CanvasLayer/GameOverBox
 
 @export var goblin_scene: PackedScene
 
+@export var first_wave_countdown_duration: float = 5.0
 @export var countdown_duration: float = 3.0
 @export var break_duration: float = 5.0
 
-@export var base_spawn_interval: float = 2.0
+@export var base_spawn_interval: float = 0.0001
 @export var min_spawn_interval: float = 0.3
 @export var interval_decrease_per_wave: float = 0.15
 
-@export var base_goblins_per_wave: int = 1
-@export var goblins_per_wave_increase: int = 3
+@export var base_goblins_per_wave: int = 10
+@export var goblins_per_wave_increase: int = 5
+@export var waves_total = 8
 
 # after this each wave will be from all directions
-var wave_directions: Array[Array] = [["north"], ["south"], ["east"], ["north", "south"], ["south", "east"]]
+var wave_directions: Array[Array] = [["north"],
+ 									["south"],
+ 									["east"],
+ 									["north", "south"],
+ 									["south", "east"],
+ 									["east"]]
 
 var direction_messages := {
 	"north": "They come from the north!",
@@ -54,6 +63,10 @@ var recruited_acrobat = false
 var recruited_doctor = false
 var recruited_hunter = false
 
+var goblins_killed = 0
+
+
+
 
 func _ready():
 	# This must be commented out!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -72,6 +85,10 @@ func _ready():
 	assign_variables()
 	cull_unwanted()
 	
+	health_bar.update_health(peasant.hitpoints, peasant.max_hitpoints)
+	peasant.hitpoints_changed.connect(health_bar.update_health)
+	peasant.player_defeated.connect(_on_player_defeated)
+	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
 	for dir in direction_messages.keys():
 		spawn_points_by_direction[dir] = get_tree().get_nodes_in_group("spawners_%s" % dir)
@@ -84,6 +101,17 @@ func _ready():
 	wave_announcement.visible = false
 	subtitle_label.modulate = Color.TRANSPARENT
 	goblins_left_label.visible = false
+	game_started = true
+	_start_next_wave()
+
+
+func _on_player_defeated():
+	var vbox = peasant.game_over_menu.get_node("Box/MarginContainer/VBoxContainer")
+	var title_label = vbox.get_child(0)
+	var goblin_label = vbox.get_child(1)
+	
+	title_label.text = "Game Over"
+	goblin_label.text = "Goblins Killed: %d" % goblins_killed
 
 
 func assign_variables():
@@ -121,6 +149,7 @@ func cull_unwanted():
 		$Hunter.queue_free()
 
 
+
 func _unhandled_input(event):
 	if not game_started and event.is_action_pressed("start"):
 		game_started = true
@@ -128,10 +157,33 @@ func _unhandled_input(event):
 
 
 func _start_next_wave():
+	if wave >= waves_total:
+		_trigger_victory()
+		return
+	
 	wave += 1
 	state = State.COUNTDOWN
 	await _show_countdown()
 	_begin_wave()
+
+
+func _trigger_victory():
+	state = State.IDLE
+	spawn_timer.stop()
+	
+	if game_over_box:
+		var vbox = game_over_box.get_node("Box/MarginContainer/VBoxContainer")
+		var title_label = vbox.get_child(0)
+		var goblin_label = vbox.get_child(1)
+		
+		title_label.text = "Victory"
+		goblin_label.text = "Goblins Killed: %d" % goblins_killed
+		
+		game_over_box.modulate = Color.TRANSPARENT
+		game_over_box.visible = true
+		var tween = get_tree().create_tween()
+		tween.tween_interval(1.0)
+		tween.tween_property(game_over_box, "modulate", Color(1, 1, 1, .9), 1)
 
 
 func _pick_wave_directions() -> Array:
@@ -164,7 +216,8 @@ func _show_countdown() -> void:
 	fade_in.tween_property(wave_announcement, "modulate", Color(1, 1, 1, .9), 0.4)
 	await fade_in.finished
 
-	var count = int(ceil(countdown_duration))
+	var this_countdown = first_wave_countdown_duration if wave == 1 else countdown_duration
+	var count = int(ceil(this_countdown))
 	for i in range(count, 0, -1):
 		wave_label.text = "%s" % i
 		wave_label.modulate = Color.TRANSPARENT
@@ -207,6 +260,7 @@ func _begin_wave():
 
 
 func _end_wave():
+	peasant.heal_to_full()
 	wave_label.text = "Wave Finished"
 	subtitle_label.text = ""
 	wave_announcement.visible = true 
@@ -248,6 +302,7 @@ func _spawn_goblin():
 
 
 func _on_goblin_died():
+	goblins_killed += 1
 	goblins_remaining -= 1
 	_update_goblins_left_label()
 	if goblins_remaining <= 0 and goblins_spawned_this_wave >= wave_goblins_total and state == State.WAVE_ACTIVE:

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dwtwbfea3ua6k"]
+
+[ext_resource type="Script" uid="uid://d3oumc7p3hrpd" path="res://health_bar.gd" id="1_m7ell"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gpkp"]
+bg_color = Color(0.24212673, 0.24212673, 0.24212673, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lja4b"]
+bg_color = Color(0.36892107, 0.051105455, 0.03155806, 1)
+corner_radius_top_left = 3
+corner_radius_bottom_left = 3
+
+[node name="HealthBar" type="Control" unique_id=1588093766]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_m7ell")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1031490390]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 736
+theme_override_constants/margin_bottom = 590
+
+[node name="Background" type="Panel" parent="MarginContainer" unique_id=226491564]
+custom_minimum_size = Vector2(380, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5gpkp")
+
+[node name="Fill" type="Panel" parent="MarginContainer/Background" unique_id=996386823]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013
+anchor_top = 0.21400002
+anchor_right = 0.98200005
+anchor_bottom = 0.82100004
+offset_left = -0.018000126
+offset_top = 0.00799942
+offset_right = -0.05203247
+offset_bottom = 0.01199913
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lja4b")
