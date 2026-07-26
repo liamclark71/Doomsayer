@@ -302,7 +302,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 platform_floor_layers = 4294967280
 script = ExtResource("1_u6mjv")
-speed = 250
+speed = 400
 metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=102870723]

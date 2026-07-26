@@ -194,6 +194,11 @@ func take_damage(dam, _damageType):
 		game_over()
 
 
+func heal_to_full():
+	hitpoints = max_hitpoints
+	hitpoints_changed.emit(hitpoints, max_hitpoints)
+
+
 func game_over():
 	if has_revive == true:
 		has_revive = false

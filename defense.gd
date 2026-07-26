@@ -9,6 +9,7 @@ extends Node2D
 
 @export var goblin_scene: PackedScene
 
+@export var first_wave_countdown_duration: float = 5.0
 @export var countdown_duration: float = 3.0
 @export var break_duration: float = 5.0
 
@@ -102,6 +103,8 @@ func _ready():
 	wave_announcement.visible = false
 	subtitle_label.modulate = Color.TRANSPARENT
 	goblins_left_label.visible = false
+	game_started = true
+	_start_next_wave()
 
 
 func assign_variables():
@@ -137,12 +140,6 @@ func cull_unwanted():
 		$Doctor.queue_free()
 	if !recruited_hunter:
 		$Hunter.queue_free()
-
-
-func _unhandled_input(event):
-	if not game_started and event.is_action_pressed("start"):
-		game_started = true
-		_start_next_wave()
 
 
 func _start_next_wave():
@@ -182,7 +179,8 @@ func _show_countdown() -> void:
 	fade_in.tween_property(wave_announcement, "modulate", Color(1, 1, 1, .9), 0.4)
 	await fade_in.finished
 
-	var count = int(ceil(countdown_duration))
+	var this_countdown = first_wave_countdown_duration if wave == 1 else countdown_duration
+	var count = int(ceil(this_countdown))
 	for i in range(count, 0, -1):
 		wave_label.text = "%s" % i
 		wave_label.modulate = Color.TRANSPARENT
@@ -225,6 +223,7 @@ func _begin_wave():
 
 
 func _end_wave():
+	peasant.heal_to_full()
 	wave_label.text = "Wave Finished"
 	subtitle_label.text = ""
 	wave_announcement.visible = true 
