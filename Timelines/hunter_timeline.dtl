@@ -12,7 +12,7 @@ Hunter: "What are you doing out here?"
 		set {items.bow} = true
 		set {gold} -= 6.0
 		You now have the bow upgrade.
-		Hunter: Remember, pointy side torwards enemy!
+		Hunter: "Remember, pointy side torwards enemy!"
 		jump hunter_greeting
 	- "I don't have that much money."
 		Hunter: "Thin ice buddy."
@@ -32,20 +32,20 @@ Hunter: "What are you doing out here?"
 		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend three hours setting up traps around the perimeter of the village. You hope that some of the goblins will get caught.
-		Hunter: I just love traps, don't you?
+		Hunter: "I just love traps, don't you?"
 		jump hunter_greeting
 	- Offer to go hunting instead [locked - bow required] | [if {items.bow} == false]
-		Hunter: Oh yeah? You're gonna chase down a deer and maul it to death? Come back when you've got a bow.
+		Hunter: "Oh yeah? You're gonna chase down a deer and maul it to death? Come back when you've got a bow."
 		jump hunter_choice
 	- Offer to go hunting instead [lose 2 hours] | [if {conversation.bow_and_hours} == true]
 		set {recruitment.hunter_recruited} = true
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend two hours stalking deer in the forest. In the end, you manage to shoot one. The hunter is pleased with your marksmanship.
-		Hunter: BAM right between the eyes. Got em good buddy.
+		Hunter: "BAM! Right between the eyes. Got em good, buddy."
 		jump hunter_greeting
 	- "I can't do that right now."
-		Hunter: Then take a hike.
+		Hunter: "Then take a hike."
 		jump hunter_greeting
 - Return to the town square
 	leave Hunter
