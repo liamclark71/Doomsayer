@@ -702,7 +702,6 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_vw3wp")
 arrow_scene = ExtResource("2_rrq65")
 rock_scene = ExtResource("3_pbwpx")
-has_sword = true
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]
 visible = false
@@ -758,9 +757,12 @@ one_shot = true
 
 [node name="AttackAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
 attenuation = 7.4642572
+bus = &"Sound Effects"
 
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
 stream = ExtResource("26_bqy37")
+attenuation = 3.4822013
+bus = &"Sound Effects"
 
 [node name="PotionLabel" type="Label" parent="." unique_id=308662403]
 offset_right = 40.0
