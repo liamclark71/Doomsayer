@@ -9,6 +9,7 @@ extends Node2D
 @onready var game_over_box = $CanvasLayer/GameOverBox
 @onready var pause_box = $CanvasLayer/PauseBox
 @onready var blood_splatter = $CanvasLayer/BloodSplatter
+@onready var revive_label = $CanvasLayer/Revive
 
 @export var goblin_scene: PackedScene
 
@@ -78,6 +79,10 @@ func _ready():
 	has_bow = Dialogic.VAR.items.bow
 	has_dodge = Dialogic.VAR.items.dodge
 	has_revive = Dialogic.VAR.items.revive
+	if has_revive:
+		revive_label.visible = true
+	else: 
+		revive_label.visible = false
 	has_sword = Dialogic.VAR.items.sword
 	recruited_blacksmith = Dialogic.VAR.recruitment.blacksmith_recruited
 	recruited_carpenter = Dialogic.VAR.recruitment.carpenter_recruited
@@ -114,6 +119,10 @@ func _ready():
 	blood_splatter.modulate = Color.TRANSPARENT
 	
 func _blood_splatter_animation(_a, _b):
+	if peasant.has_revive:
+		revive_label.visible = true
+	else: 
+		revive_label.visible = false
 	if _a < _b:
 		var tween = get_tree().create_tween()
 		tween.tween_property(blood_splatter, "modulate", Color.WHITE, 0.1)
@@ -336,4 +345,4 @@ func _update_goblins_left_label():
 	goblins_left_label.text = "Goblins left: %d" % max(goblins_remaining, 0)
 
 func _update_waves_left_label():
-	waves_left_label.text = "Waves Left: %d" % min(waves_total - wave + 1, 9)
+	waves_left_label.text = "Waves Left: %d" % min(waves_total - wave, 8)
