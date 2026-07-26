@@ -7,6 +7,7 @@ extends Node2D
 @onready var peasant = $Peasant
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var game_over_box = $CanvasLayer/GameOverBox
+@onready var pause_box = $CanvasLayer/PauseBox
 
 @export var goblin_scene: PackedScene
 
@@ -70,7 +71,7 @@ var goblins_killed = 0
 
 func _ready():
 	# This must be commented out!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	_apply_debug_overrides()
+	#_apply_debug_overrides()
 	
 	has_bow = Dialogic.VAR.items.bow
 	has_dodge = Dialogic.VAR.items.dodge

@@ -775,9 +775,11 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [node name="AttackAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1735331458]
+bus = &"Sound Effects"
 
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1714116962]
 stream = ExtResource("26_gp7sx")
+bus = &"Sound Effects"
 
 [node name="PotionLabel" type="Label" parent="." unique_id=437665011]
 visible = false
@@ -796,13 +798,16 @@ vertical_alignment = 1
 [node name="WalkingAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1672019903]
 stream = ExtResource("27_s7gtl")
 autoplay = true
+bus = &"Sound Effects"
 
 [node name="ReviveAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1637174821]
 stream = ExtResource("28_qnjh6")
+bus = &"Sound Effects"
 
 [node name="DashAudioController" type="AudioStreamPlayer2D" parent="." unique_id=2143909340]
 stream = SubResource("AudioStreamRandomizer_vc6nf")
 volume_db = -17.43
+bus = &"Sound Effects"
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
