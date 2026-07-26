@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var hitpoints := 8
+@export var hitpoints := 12
 @export var boarded_up := false
 
 @onready var collision_shape = $CollisionShape2D

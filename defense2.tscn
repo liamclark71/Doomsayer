@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cxx4r2t4g5cpm"]
+[gd_scene format=4 uid="uid://u11no7skl5p6"]
 
 [ext_resource type="Texture2D" uid="uid://c01jlseb0l8i0" path="res://img/point_and_click/sprites/blacksmithguy.png" id="1_7088l"]
 [ext_resource type="Script" uid="uid://ceee5uxapn6ph" path="res://defense.gd" id="1_l8iht"]
@@ -214,7 +214,7 @@ font_color = Color(0, 1, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="defense" type="Node2D" unique_id=391971717]
+[node name="defense2" type="Node2D" unique_id=391971717]
 script = ExtResource("1_l8iht")
 goblin_scene = ExtResource("3_b1r40")
 
@@ -260,7 +260,6 @@ position = Vector2(-278, 205)
 process_mode = 3
 stream = ExtResource("5_7088l")
 volume_db = -13.152
-bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1557942526]
 
@@ -388,25 +387,25 @@ position = Vector2(2385, 788)
 rotation = 1.5707964
 
 [node name="Blacksmith" parent="." unique_id=1519016829 instance=ExtResource("13_du5ti")]
-position = Vector2(1095, 490)
+position = Vector2(-922, 420)
 
 [node name="Carpenter" parent="." unique_id=360790538 instance=ExtResource("14_bt355")]
-position = Vector2(-248, 700)
+position = Vector2(-47, 757)
 
 [node name="Acrobat" parent="." unique_id=459724250 instance=ExtResource("15_gb10l")]
-position = Vector2(-486, 486)
+position = Vector2(963, 417)
 
 [node name="Doctor" parent="." unique_id=1661031149 instance=ExtResource("16_j4bm0")]
-position = Vector2(497, 599)
+position = Vector2(547, 618)
 
 [node name="Hunter" parent="." unique_id=1347582463 instance=ExtResource("17_3gunn")]
-position = Vector2(-72, 334)
+position = Vector2(528, 125)
 
 [node name="ControlsLabel" type="Label" parent="." unique_id=979308864]
-offset_left = -610.0
-offset_top = -172.0
-offset_right = -241.0
-offset_bottom = 100.0
+offset_left = -418.0
+offset_top = 268.0
+offset_right = -49.0
+offset_bottom = 565.0
 theme_override_colors/font_color = Color(0.88525444, 0.5733664, 0.30013528, 1)
 theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 34

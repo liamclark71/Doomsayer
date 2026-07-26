@@ -32,7 +32,7 @@ Hunter: "What are you doing out here?"
 		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend three hours setting up traps around the perimeter of the village. You hope that some of the goblins will get caught.
-		Hunter: "I just love traps, don't you?"
+		Hunter: "Isn't it great?"
 		jump hunter_greeting
 	- Offer to go hunting instead [locked - bow required] | [if {items.bow} == false]
 		Hunter: "Oh yeah? You're gonna chase down a deer and maul it to death? Come back when you've got a bow."
@@ -42,7 +42,7 @@ Hunter: "What are you doing out here?"
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend two hours stalking deer in the forest. In the end, you manage to shoot one. The hunter is pleased with your marksmanship.
-		Hunter: "BAM! Right between the eyes. Got em good, buddy."
+		Hunter: "BAM! Right between the eyes. We make a good team, you and I."
 		jump hunter_greeting
 	- "I can't do that right now."
 		Hunter: "Then take a hike."
