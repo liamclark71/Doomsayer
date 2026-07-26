@@ -214,7 +214,7 @@ font_color = Color(0, 1, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="defense2" type="Node2D" unique_id=391971717]
+[node name="defense" type="Node2D" unique_id=391971717]
 script = ExtResource("1_l8iht")
 goblin_scene = ExtResource("3_b1r40")
 
