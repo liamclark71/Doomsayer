@@ -1,6 +1,10 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Doctor Background 1.png" fade="0.0"]
 join Doctor center
 label doctor_greeting
+if {recruitment.doctor_recruited} == true and {items.revive} == true:
+	set {conversation.doctor} = true
+if {hours} >= 2.0 and {items.dodge} == true:
+	set {conversation.dodge_and_hours} = true
 Doctor: "Ohoho, a customer.\
 Hale and hearty by the looks of it, heehee."
 - "I'd like to buy some medicine." | [if {items.revive} == false]
@@ -26,25 +30,27 @@ Hale and hearty by the looks of it, heehee."
 	Doctor: "I wish I could help, but...\
 	I'm running low on supplies to make more tinctures.\
 	There wouldn't be enough to go around."
+	label doctor_choice
 	Doctor: "Ohoho, but...\
 	I could join you if you gathered some herbs for me first."
-	- Gather herbs [lose 3 hours, or lose 2 hours with dodge upgrade] | [if {hours} >= 3.0]
-		if {items.dodge} == false:
-			set {recruitment.doctor_recruited} = true
-			set {hours} -= 3.0
-			set {recruitment.recruitees} += 1.0
-			The doctor describes the herbs needed. You spend hours wandering around the woods, gathering as much as you can find.
-			You have a harrowing experience with hidden goblin trap, and end up dropping much of what you've already gathered. It takes you a while to pick it all back up.
-			You bring the herbs to him after three hours, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
-			jump doctor_greeting
-		elif {items.dodge} == true:
-			set {recruitment.doctor_recruited} = true
-			set {hours} -= 2.0
-			set {recruitment.recruitees} += 1.0
-			The doctor describes the herbs needed. You spend hours wandering around the woods, gathering as much as you can find.
-			You just barely avoid a hidden goblin trap. You stand still for a moment, heart beating wildly, and then decide it's probably a good time to go back...
-			You bring the herbs to him after two hours, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
-			jump doctor_greeting
+	- Gather herbs slowly [lose 3 hours] | [if {hours} >= 3.0]
+		set {recruitment.doctor_recruited} = true
+		set {hours} -= 3.0
+		set {recruitment.recruitees} += 1.0
+		The doctor describes the herbs needed. You spend hours wandering around the woods, gathering as much as you can find.
+		You have a harrowing experience with hidden goblin trap, and end up dropping much of what you've already gathered. It takes you a while to pick it all back up.
+		You bring the herbs to him after three hours, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
+		jump doctor_greeting
+	- Gather herbs quickly [lose 2 hours] | [if {conversation.dodge_and_hours} == true]
+		set {recruitment.doctor_recruited} = true
+		set {hours} -= 2.0
+		set {recruitment.recruitees} += 1.0
+		The doctor describes the herbs needed. You spend hours wandering around the woods, gathering as much as you can find.
+		You just barely avoid a hidden goblin trap. You stand still for a moment, heart beating wildly, and then decide it's probably a good time to go back...
+		You bring the herbs to him after two hours, and he disappears into the back room. You hear the sounds of glass vials clinking and the occasional mad chuckle.
+		jump doctor_greeting
+	- Gather herbs quickly [locked - dodge required] | [if {items.dodge} == false]
+		jump doctor_choice
 	- "Maybe later."
 		jump doctor_greeting
 - Return to the town square

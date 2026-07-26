@@ -1,6 +1,8 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Blacksmith Background 1.png" fade="0.0"]
 join Blacksmith center [mirrored="true"]
 label blacksmith_greeting
+if {recruitment.blacksmith_recruited} == true and {items.sword} == true:
+	set {conversation.blacksmith} = true
 Blacksmith: "How can I help you?"
 - "I'd like to buy a sword." | [if {items.sword} == false]
 	Blacksmith: "That'll be 6 gold."
