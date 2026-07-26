@@ -1,5 +1,5 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Hunter Background 1.png" fade="0.0"]
-join Hunter center
+join Hunter left
 label hunter_greeting
 if {recruitment.hunter_recruited} == true and {items.bow} == true:
 	set {conversation.hunter} = true

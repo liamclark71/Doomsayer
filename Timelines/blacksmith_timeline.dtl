@@ -1,5 +1,5 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Blacksmith Background 1.png" fade="0.0"]
-join Blacksmith center [mirrored="true"]
+join Blacksmith left [mirrored="true"]
 label blacksmith_greeting
 if {recruitment.blacksmith_recruited} == true and {items.sword} == true:
 	set {conversation.blacksmith} = true

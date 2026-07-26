@@ -1,5 +1,5 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Doctor Background 1.png" fade="0.0"]
-join Doctor center
+join Doctor left
 label doctor_greeting
 if {recruitment.doctor_recruited} == true and {items.revive} == true:
 	set {conversation.doctor} = true

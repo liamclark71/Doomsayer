@@ -1,5 +1,5 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Carpenter Background 1.png" fade="0.0"]
-join Carpenter center
+join Carpenter left
 label carpenter_greeting
 Carpenter: "If you're here to buy a new table, I'm fresh out."
 - "Actually, I was wondering if you could build some barricades." | [if {recruitment.carpenter_recruited} == false]
