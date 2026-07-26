@@ -308,8 +308,8 @@ metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=102870723]
 sprite_frames = SubResource("SpriteFrames_lja4b")
 animation = &"walk"
-autoplay = "stand"
-frame_progress = 0.69010854
+autoplay = "walk"
+frame_progress = 0.7020994
 offset = Vector2(3, -20)
 
 [node name="Torso" type="AnimatedSprite2D" parent="." unique_id=1319410262]
