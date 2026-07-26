@@ -24,15 +24,17 @@
 
 
 ** TODO Character
-*** TODO Walking
+*** DONE Walking
 *** TODO Dodge
 *** TODO Revive
 
 
-** TODO Goblin
-*** TODO Walking Chatter
+** DONE Goblin
+*** DONE Walking Chatter
 
-* TODO Settings
+** TODO revisit everything and determine normalization
+
+* TODO Pause Settings
 ** TODO Music
 *** TODO On/Off
 *** TODO Slider

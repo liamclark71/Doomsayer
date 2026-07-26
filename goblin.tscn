@@ -360,6 +360,10 @@ attenuation = 5.856333
 
 [node name="DamageAudioController" type="AudioStreamPlayer2D" parent="." unique_id=876903028]
 
+[node name="ChatterAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1363963632]
+volume_db = -0.58
+attenuation = 6.06286
+
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
