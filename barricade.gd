@@ -11,7 +11,7 @@ var walls_layer: TileMapLayer
 var cell
 var current_source_id
 var window_atlas_coords
-var max_hitpoints := 8
+var max_hitpoints := 12
 
 var nearby_goblins := {}
 
