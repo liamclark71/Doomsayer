@@ -9,16 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://c3fgswgqy20bf" path="res://sprites/bald npc/bald npc leg frames/001.png" id="7_86f6t"]
 [ext_resource type="Texture2D" uid="uid://b2skskg42jovx" path="res://sprites/bald npc/bald npc leg frames/003.png" id="8_aqgyd"]
 [ext_resource type="Texture2D" uid="uid://c3wex4ift5f4t" path="res://sprites/bald npc/bald npc leg frames/004.png" id="9_wbt4m"]
-[ext_resource type="Texture2D" uid="uid://dhfjp2js2ed7v" path="res://sprites/bald npc/bald npc frames/006.png" id="10_uw3t6"]
-[ext_resource type="Texture2D" uid="uid://dacm53oo4qu31" path="res://sprites/bald npc/bald npc frames/007.png" id="11_l687b"]
-[ext_resource type="Texture2D" uid="uid://dh25bppiaclbp" path="res://sprites/bald npc/bald npc frames/008.png" id="12_1y4k0"]
-[ext_resource type="Texture2D" uid="uid://ou2yrr1m72l2" path="res://sprites/bald npc/bald npc frames/009.png" id="13_org5k"]
-[ext_resource type="Texture2D" uid="uid://cl73igfaqabju" path="res://sprites/bald npc/bald npc frames/004.png" id="14_qgyw1"]
-[ext_resource type="Texture2D" uid="uid://ckl3cq7srskpe" path="res://sprites/bald npc/bald npc frames/005.png" id="15_g2kjq"]
+[ext_resource type="Texture2D" uid="uid://bf1kevq3grd8c" path="res://sprites/hunter frames/006.png" id="10_lk3w0"]
+[ext_resource type="Texture2D" uid="uid://casffspbares5" path="res://sprites/hunter frames/007.png" id="11_w7iwy"]
+[ext_resource type="Texture2D" uid="uid://cqqpe46pu7u37" path="res://sprites/hunter frames/008.png" id="12_kbx7n"]
+[ext_resource type="Texture2D" uid="uid://bp8illfno6mbq" path="res://sprites/hunter frames/009.png" id="13_u0j8w"]
+[ext_resource type="Texture2D" uid="uid://cq7tq75n0tlpc" path="res://sprites/hunter frames/004.png" id="14_0c1k3"]
+[ext_resource type="Texture2D" uid="uid://c7vpthpmhy7jn" path="res://sprites/hunter frames/005.png" id="15_86f6t"]
+[ext_resource type="Texture2D" uid="uid://dss7tmadgovl1" path="res://sprites/hunter frames/001.png" id="16_aqgyd"]
 [ext_resource type="Texture2D" uid="uid://cila0m7hy3c6x" path="res://sprites/bald npc/bald npc frames/001.png" id="16_g2po7"]
 [ext_resource type="Texture2D" uid="uid://d06oje7g4a72f" path="res://sprites/bald npc/bald npc frames/000.png" id="17_kybqt"]
-[ext_resource type="Texture2D" uid="uid://b2sgfefxpvebn" path="res://sprites/bald npc/bald npc frames/014.png" id="18_p8vit"]
-[ext_resource type="Texture2D" uid="uid://rq25nh7v2nu0" path="res://sprites/bald npc/bald npc frames/015.png" id="19_gsyox"]
+[ext_resource type="Texture2D" uid="uid://w6o37s1k8h58" path="res://sprites/hunter frames/014.png" id="19_wbt4m"]
+[ext_resource type="Texture2D" uid="uid://buboofqk51asd" path="res://sprites/hunter frames/015.png" id="20_uw3t6"]
 [ext_resource type="Texture2D" uid="uid://nci2rkrbfc6t" path="res://sprites/bald npc/bald npc frames/010.png" id="20_wvhtc"]
 [ext_resource type="Texture2D" uid="uid://dbppuf5g0xpu" path="res://sprites/bald npc/bald npc frames/011.png" id="21_4dlxw"]
 [ext_resource type="Texture2D" uid="uid://lauxdipdbwnj" path="res://sprites/bald npc/bald npc frames/012.png" id="22_6efck"]
@@ -68,7 +69,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_uw3t6")
+"texture": ExtResource("10_lk3w0")
 }],
 "loop": 1,
 "name": &"bow_draw",
@@ -76,10 +77,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_l687b")
+"texture": ExtResource("11_w7iwy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_1y4k0")
+"texture": ExtResource("12_kbx7n")
 }],
 "loop": 1,
 "name": &"bow_hold",
@@ -87,7 +88,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_org5k")
+"texture": ExtResource("13_u0j8w")
 }],
 "loop": 1,
 "name": &"bow_release",
@@ -95,13 +96,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_qgyw1")
+"texture": ExtResource("14_0c1k3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_g2kjq")
+"texture": ExtResource("15_86f6t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_g2po7")
+"texture": ExtResource("16_aqgyd")
 }],
 "loop": 1,
 "name": &"club_swing",
@@ -120,10 +121,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_p8vit")
+"texture": ExtResource("19_wbt4m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_gsyox")
+"texture": ExtResource("20_uw3t6")
 }],
 "loop": 1,
 "name": &"die",
