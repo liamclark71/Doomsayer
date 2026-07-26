@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dwtwbfea3ua6k" path="res://health_bar.tscn" id="11_j4bm0"]
 [ext_resource type="PackedScene" uid="uid://dq118eyepocf" path="res://pause_menu.tscn" id="12_3gunn"]
 [ext_resource type="PackedScene" uid="uid://cdsrt5ocmilts" path="res://blacksmith.tscn" id="13_du5ti"]
+[ext_resource type="Texture2D" uid="uid://dy8lp7daudpgi" path="res://img/point_and_click/backgrounds/blood_splatter.png" id="13_j7pii"]
 [ext_resource type="PackedScene" uid="uid://djou1lnqxbikv" path="res://carpenter.tscn" id="14_bt355"]
 [ext_resource type="PackedScene" uid="uid://jd6rlf07mbtr" path="res://acrobat.tscn" id="15_gb10l"]
 [ext_resource type="PackedScene" uid="uid://c858g83pbtxiq" path="res://doctor.tscn" id="16_j4bm0"]
@@ -269,7 +270,6 @@ process_mode = 3
 stream = ExtResource("5_7088l")
 volume_db = -13.152
 autoplay = true
-bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1557942526]
 
@@ -282,7 +282,6 @@ visible = false
 [node name="GoblinCounter" parent="CanvasLayer" unique_id=1684856688 instance=ExtResource("11_du5ti")]
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=1588093766 instance=ExtResource("11_j4bm0")]
-
 
 [node name="PauseBox" parent="CanvasLayer" unique_id=985386047 instance=ExtResource("12_3gunn")]
 process_mode = 3
@@ -300,6 +299,11 @@ offset_bottom = -524.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BloodSplatter" type="TextureRect" parent="CanvasLayer" unique_id=1363363879]
+offset_right = 1157.0
+offset_bottom = 651.0
+mouse_filter = 2
+texture = ExtResource("13_j7pii")
 
 [node name="NorthSpawner1" parent="." unique_id=688616312 groups=["spawners_north"] instance=ExtResource("8_t4un6")]
 position = Vector2(-557, -1117)
