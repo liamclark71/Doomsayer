@@ -330,21 +330,42 @@ position = Vector2(1357, -440)
 
 [node name="Barricade5" parent="." unique_id=2127295294 instance=ExtResource("10_fcfsq")]
 position = Vector2(133, 1405)
+rotation = 3.1415927
 
 [node name="Barricade6" parent="." unique_id=2033214096 instance=ExtResource("10_fcfsq")]
 position = Vector2(541, 1402)
+rotation = 3.1415927
 
 [node name="Barricade7" parent="." unique_id=2050025617 instance=ExtResource("10_fcfsq")]
 position = Vector2(1360, 1402)
+rotation = 3.1415927
 
 [node name="Barricade8" parent="." unique_id=328890764 instance=ExtResource("10_fcfsq")]
 position = Vector2(1773, 1408)
+rotation = 3.1415927
 
 [node name="Barricade9" parent="." unique_id=1665545156 instance=ExtResource("10_fcfsq")]
 position = Vector2(1770, -453)
 
 [node name="Barricade10" parent="." unique_id=1839745093 instance=ExtResource("10_fcfsq")]
 position = Vector2(-684, 1402)
+rotation = 3.1415927
+
+[node name="Barricade11" parent="." unique_id=1665481806 instance=ExtResource("10_fcfsq")]
+position = Vector2(-1712, 790)
+rotation = 4.712389
+
+[node name="Barricade12" parent="." unique_id=1039086007 instance=ExtResource("10_fcfsq")]
+position = Vector2(-1712, 172)
+rotation = 4.712389
+
+[node name="Barricade13" parent="." unique_id=1978588474 instance=ExtResource("10_fcfsq")]
+position = Vector2(2384, 175)
+rotation = 1.5707964
+
+[node name="Barricade14" parent="." unique_id=1137306715 instance=ExtResource("10_fcfsq")]
+position = Vector2(2385, 788)
+rotation = 1.5707964
 
 [node name="Blacksmith" parent="." unique_id=1519016829 instance=ExtResource("13_du5ti")]
 position = Vector2(1095, 490)
@@ -375,7 +396,3 @@ Right click to swing
 Space to dodge
 E to interact
 ESC or P to pause"
-
-[node name="Barricade11" parent="." unique_id=1665481806 instance=ExtResource("10_fcfsq")]
-position = Vector2(-1712, 790)
-rotation = 1.5707964
