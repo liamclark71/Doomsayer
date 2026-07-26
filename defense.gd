@@ -172,7 +172,7 @@ func _unhandled_input(event):
 
 
 func _start_next_wave():
-	if wave > waves_total:
+	if wave >= waves_total:
 		_trigger_victory()
 		return
 	
@@ -336,4 +336,4 @@ func _update_goblins_left_label():
 	goblins_left_label.text = "Goblins left: %d" % max(goblins_remaining, 0)
 
 func _update_waves_left_label():
-	waves_left_label.text = "Waves Left: %d" % min(waves_total - wave + 1, 8)
+	waves_left_label.text = "Waves Left: %d" % min(waves_total - wave + 1, 9)
