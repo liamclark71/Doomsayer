@@ -190,9 +190,12 @@ func take_damage(dam, _damageType):
 	else:
 		print("OOUUWWWOUWOWOUUWWWWUU")
 
-
+func handle_revive_audio():
+	$ReviveAudioController.play()
+	
 func game_over():
 	if has_revive == true:
+		handle_revive_audio()
 		has_revive = false
 		hitpoints = max_hitpoints
 		_show_potion_label()

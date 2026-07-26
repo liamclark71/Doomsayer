@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://cgmvbhooc4bov" path="res://sprites/peasant/peasant body frames/003.png" id="20_d237o"]
 [ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_gp7sx"]
 [ext_resource type="AudioStream" uid="uid://hl3kgyfsskgg" path="res://sound_assets/footsteps.wav" id="27_s7gtl"]
+[ext_resource type="AudioStream" uid="uid://458jqkxos17d" path="res://sound_assets/goblin_chatter/heal.wav" id="28_qnjh6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
 animations = [{
@@ -789,6 +790,9 @@ vertical_alignment = 1
 [node name="WalkingAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1672019903]
 stream = ExtResource("27_s7gtl")
 autoplay = true
+
+[node name="ReviveAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1637174821]
+stream = ExtResource("28_qnjh6")
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
