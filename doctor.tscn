@@ -9,22 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://c3fgswgqy20bf" path="res://sprites/bald npc/bald npc leg frames/001.png" id="7_dhy3b"]
 [ext_resource type="Texture2D" uid="uid://b2skskg42jovx" path="res://sprites/bald npc/bald npc leg frames/003.png" id="8_rbf0i"]
 [ext_resource type="Texture2D" uid="uid://c3wex4ift5f4t" path="res://sprites/bald npc/bald npc leg frames/004.png" id="9_l325u"]
-[ext_resource type="Texture2D" uid="uid://dhfjp2js2ed7v" path="res://sprites/bald npc/bald npc frames/006.png" id="10_x3cuw"]
-[ext_resource type="Texture2D" uid="uid://dacm53oo4qu31" path="res://sprites/bald npc/bald npc frames/007.png" id="11_dfnby"]
-[ext_resource type="Texture2D" uid="uid://dh25bppiaclbp" path="res://sprites/bald npc/bald npc frames/008.png" id="12_roat0"]
-[ext_resource type="Texture2D" uid="uid://ou2yrr1m72l2" path="res://sprites/bald npc/bald npc frames/009.png" id="13_n6fla"]
-[ext_resource type="Texture2D" uid="uid://cl73igfaqabju" path="res://sprites/bald npc/bald npc frames/004.png" id="14_v4idg"]
-[ext_resource type="Texture2D" uid="uid://ckl3cq7srskpe" path="res://sprites/bald npc/bald npc frames/005.png" id="15_n88oh"]
-[ext_resource type="Texture2D" uid="uid://cila0m7hy3c6x" path="res://sprites/bald npc/bald npc frames/001.png" id="16_42x88"]
-[ext_resource type="Texture2D" uid="uid://d06oje7g4a72f" path="res://sprites/bald npc/bald npc frames/000.png" id="17_ij2hh"]
-[ext_resource type="Texture2D" uid="uid://b2sgfefxpvebn" path="res://sprites/bald npc/bald npc frames/014.png" id="18_74b6f"]
-[ext_resource type="Texture2D" uid="uid://rq25nh7v2nu0" path="res://sprites/bald npc/bald npc frames/015.png" id="19_2t3s8"]
-[ext_resource type="Texture2D" uid="uid://nci2rkrbfc6t" path="res://sprites/bald npc/bald npc frames/010.png" id="20_5ohox"]
-[ext_resource type="Texture2D" uid="uid://dbppuf5g0xpu" path="res://sprites/bald npc/bald npc frames/011.png" id="21_4uo70"]
-[ext_resource type="Texture2D" uid="uid://lauxdipdbwnj" path="res://sprites/bald npc/bald npc frames/012.png" id="22_vpmnf"]
-[ext_resource type="Texture2D" uid="uid://ddiys84ncjys4" path="res://sprites/bald npc/bald npc frames/013.png" id="23_duisj"]
-[ext_resource type="Texture2D" uid="uid://bu0m7y8nxytrl" path="res://sprites/bald npc/bald npc frames/002.png" id="24_goow4"]
-[ext_resource type="Texture2D" uid="uid://btdr2d78xfjjd" path="res://sprites/bald npc/bald npc frames/003.png" id="25_e8kfc"]
+[ext_resource type="Texture2D" uid="uid://x5mtoox6wls1" path="res://sprites/doctor body frames/006.png" id="10_tta4o"]
+[ext_resource type="Texture2D" uid="uid://dsal8eosl7oaw" path="res://sprites/doctor body frames/007.png" id="11_tta4o"]
+[ext_resource type="Texture2D" uid="uid://bom3i6xskdvy8" path="res://sprites/doctor body frames/008.png" id="12_63eme"]
+[ext_resource type="Texture2D" uid="uid://c1yr05jd0cjbf" path="res://sprites/doctor body frames/009.png" id="13_tta4o"]
+[ext_resource type="Texture2D" uid="uid://csaueppqjyvyk" path="res://sprites/doctor body frames/004.png" id="14_tta4o"]
+[ext_resource type="Texture2D" uid="uid://dnfa227rbl0qu" path="res://sprites/doctor body frames/005.png" id="15_63eme"]
+[ext_resource type="Texture2D" uid="uid://5uws521ppp7u" path="res://sprites/doctor body frames/000.png" id="16_648cv"]
+[ext_resource type="Texture2D" uid="uid://b62qj2fsjwu4w" path="res://sprites/doctor body frames/001.png" id="17_y4u52"]
+[ext_resource type="Texture2D" uid="uid://l185wnkw1gjl" path="res://sprites/doctor body frames/014.png" id="18_tta4o"]
+[ext_resource type="Texture2D" uid="uid://bm78dht0sxgsg" path="res://sprites/doctor body frames/015.png" id="19_63eme"]
+[ext_resource type="Texture2D" uid="uid://bj2l38jluu8jo" path="res://sprites/doctor body frames/010.png" id="20_tta4o"]
+[ext_resource type="Texture2D" uid="uid://hft0kpgalipi" path="res://sprites/doctor body frames/011.png" id="21_63eme"]
+[ext_resource type="Texture2D" uid="uid://cxv7ogd86jjg" path="res://sprites/doctor body frames/012.png" id="22_648cv"]
+[ext_resource type="Texture2D" uid="uid://d0clcff28b8t6" path="res://sprites/doctor body frames/013.png" id="23_tta4o"]
+[ext_resource type="Texture2D" uid="uid://b0qwu6qcu8dig" path="res://sprites/doctor body frames/002.png" id="24_54cqg"]
+[ext_resource type="Texture2D" uid="uid://bm5td0q0g3vl0" path="res://sprites/doctor body frames/003.png" id="25_wpsb5"]
 [ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_baq1f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
@@ -68,7 +68,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_x3cuw")
+"texture": ExtResource("10_tta4o")
 }],
 "loop": 1,
 "name": &"bow_draw",
@@ -76,10 +76,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_dfnby")
+"texture": ExtResource("11_tta4o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_roat0")
+"texture": ExtResource("12_63eme")
 }],
 "loop": 1,
 "name": &"bow_hold",
@@ -87,7 +87,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_n6fla")
+"texture": ExtResource("13_tta4o")
 }],
 "loop": 1,
 "name": &"bow_release",
@@ -95,13 +95,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_v4idg")
+"texture": ExtResource("14_tta4o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_n88oh")
+"texture": ExtResource("15_63eme")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_42x88")
+"texture": ExtResource("16_648cv")
 }],
 "loop": 1,
 "name": &"club_swing",
@@ -109,10 +109,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_ij2hh")
+"texture": ExtResource("16_648cv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_42x88")
+"texture": ExtResource("17_y4u52")
 }],
 "loop": 1,
 "name": &"default",
@@ -120,10 +120,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_74b6f")
+"texture": ExtResource("18_tta4o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_2t3s8")
+"texture": ExtResource("19_63eme")
 }],
 "loop": 1,
 "name": &"die",
@@ -131,7 +131,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_5ohox")
+"texture": ExtResource("20_tta4o")
 }],
 "loop": 1,
 "name": &"sling_draw",
@@ -139,10 +139,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_4uo70")
+"texture": ExtResource("21_63eme")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_vpmnf")
+"texture": ExtResource("22_648cv")
 }],
 "loop": 1,
 "name": &"sling_hold",
@@ -150,7 +150,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_duisj")
+"texture": ExtResource("23_tta4o")
 }],
 "loop": 1,
 "name": &"sling_release",
@@ -158,13 +158,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("24_goow4")
+"texture": ExtResource("24_54cqg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_e8kfc")
+"texture": ExtResource("25_wpsb5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_42x88")
+"texture": ExtResource("16_648cv")
 }],
 "loop": 1,
 "name": &"sword_swing",
@@ -756,10 +756,14 @@ wait_time = 3.0
 one_shot = true
 
 [node name="AttackAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
+scale = Vector2(1, 0.97781056)
 attenuation = 7.4642572
+bus = &"Sound Effects"
 
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
 stream = ExtResource("26_baq1f")
+attenuation = 3.3635848
+bus = &"Sound Effects"
 
 [node name="PotionLabel" type="Label" parent="." unique_id=308662403]
 offset_right = 40.0
