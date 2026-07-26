@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://u11no7skl5p6"]
+[gd_scene format=4 uid="uid://suwqsn8xm3rg"]
 
 [ext_resource type="Texture2D" uid="uid://c01jlseb0l8i0" path="res://img/point_and_click/sprites/blacksmithguy.png" id="1_7088l"]
 [ext_resource type="Script" uid="uid://ceee5uxapn6ph" path="res://defense.gd" id="1_l8iht"]
