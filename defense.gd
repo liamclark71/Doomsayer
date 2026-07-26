@@ -7,6 +7,8 @@ extends Node2D
 @onready var peasant = $Peasant
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var game_over_box = $CanvasLayer/GameOverBox
+@onready var pause_box = $CanvasLayer/PauseBox
+@onready var blood_splatter = $CanvasLayer/BloodSplatter
 
 @export var goblin_scene: PackedScene
 
@@ -89,6 +91,7 @@ func _ready():
 	health_bar.update_health(peasant.hitpoints, peasant.max_hitpoints)
 	peasant.hitpoints_changed.connect(health_bar.update_health)
 	peasant.player_defeated.connect(_on_player_defeated)
+	peasant.hitpoints_changed.connect(_blood_splatter_animation)
 	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
 	waves_left_label = goblin_counter.get_child(0).get_child(1)
@@ -107,6 +110,13 @@ func _ready():
 	waves_left_label.visible = false
 	game_started = true
 	_start_next_wave()
+	
+	blood_splatter.modulate = Color.TRANSPARENT
+	
+func _blood_splatter_animation(_a, _b):
+	var tween = get_tree().create_tween()
+	tween.tween_property(blood_splatter, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(blood_splatter, "modulate", Color.TRANSPARENT, 0.2)
 
 
 func _on_player_defeated():
