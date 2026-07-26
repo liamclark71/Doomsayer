@@ -78,6 +78,12 @@ func _ready():
 	
 	has_bow = Dialogic.VAR.items.bow
 	has_dodge = Dialogic.VAR.items.dodge
+	if !has_dodge:
+		$ControlsLabel.text = "WASD to Move
+Left click to shoot
+Right click to swing
+E to interact
+ESC or P to pause"
 	has_revive = Dialogic.VAR.items.revive
 	if has_revive:
 		revive_label.visible = true
