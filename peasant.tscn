@@ -706,9 +706,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_3u1pd")
 arrow_scene = ExtResource("2_p0nvd")
 rock_scene = ExtResource("3_d237o")
-has_bow = true
-has_dodge = true
-has_revive = true
+camera_lookahead = 0.25
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=1103565257]
 position = Vector2(3.3881318e-21, 4.7683716e-07)
@@ -760,6 +758,7 @@ one_shot = true
 
 [node name="SwingTimer" type="Timer" parent="." unique_id=1075684604]
 process_callback = 0
+wait_time = 0.7
 one_shot = true
 
 [node name="Camera" type="Camera2D" parent="." unique_id=78403538]

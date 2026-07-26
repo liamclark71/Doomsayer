@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://br5k1rjq1fl0l" path="res://wave_announcement.tscn" id="10_do84s"]
 [ext_resource type="PackedScene" uid="uid://bhf0ha26jc1oi" path="res://barricade.tscn" id="10_fcfsq"]
 [ext_resource type="PackedScene" uid="uid://iplk4uh21ikx" path="res://goblin_counter.tscn" id="11_du5ti"]
+[ext_resource type="PackedScene" uid="uid://dwtwbfea3ua6k" path="res://health_bar.tscn" id="11_j4bm0"]
 [ext_resource type="PackedScene" uid="uid://cdsrt5ocmilts" path="res://blacksmith.tscn" id="13_du5ti"]
 [ext_resource type="PackedScene" uid="uid://djou1lnqxbikv" path="res://carpenter.tscn" id="14_bt355"]
 [ext_resource type="PackedScene" uid="uid://jd6rlf07mbtr" path="res://acrobat.tscn" id="15_gb10l"]
@@ -162,6 +163,18 @@ texture_region_size = Vector2i(64, 64)
 3:9/0 = 0
 3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 16, 16, 16, 16, -16, 32, -16)
 3:9/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, -16, -32, -16, -32, 16, -16, 16)
+4:9/0 = 0
+4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 16, 16, 16, 16, -16, 32, -16)
+4:9/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, -16, -32, -16, -32, 16, -16, 16)
+5:9/0 = 0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 16, 16, 16, 16, -16, 32, -16)
+5:9/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, -16, -32, -16, -32, 16, -16, 16)
+6:9/0 = 0
+6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 16, 16, 16, 16, -16, 32, -16)
+6:9/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, -16, -32, -16, -32, 16, -16, 16)
+7:9/0 = 0
+7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 16, 16, 16, 16, -16, 32, -16)
+7:9/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, -16, -32, -16, -32, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bt355"]
 texture = ExtResource("4_do84s")
@@ -265,6 +278,8 @@ visible = false
 
 [node name="GoblinCounter" parent="CanvasLayer" unique_id=1684856688 instance=ExtResource("11_du5ti")]
 
+[node name="HealthBar" parent="CanvasLayer" unique_id=1588093766 instance=ExtResource("11_j4bm0")]
+
 [node name="NorthSpawner1" parent="." unique_id=688616312 groups=["spawners_north"] instance=ExtResource("8_t4un6")]
 position = Vector2(-557, -1117)
 
@@ -319,6 +334,21 @@ position = Vector2(1152, 993)
 [node name="Goblin" parent="." unique_id=1828912522 instance=ExtResource("3_b1r40")]
 position = Vector2(-248, 510)
 
+[node name="Goblin2" parent="." unique_id=713401717 instance=ExtResource("3_b1r40")]
+position = Vector2(-220, 106)
+
+[node name="Goblin5" parent="." unique_id=1862663369 instance=ExtResource("3_b1r40")]
+position = Vector2(-220, 106)
+
+[node name="Goblin6" parent="." unique_id=378081708 instance=ExtResource("3_b1r40")]
+position = Vector2(-220, 106)
+
+[node name="Goblin7" parent="." unique_id=934592929 instance=ExtResource("3_b1r40")]
+position = Vector2(-220, 106)
+
+[node name="Goblin8" parent="." unique_id=1189681486 instance=ExtResource("3_b1r40")]
+position = Vector2(-220, 106)
+
 [node name="Blacksmith" parent="." unique_id=1519016829 instance=ExtResource("13_du5ti")]
 position = Vector2(1095, 490)
 
@@ -334,8 +364,8 @@ position = Vector2(497, 599)
 [node name="Hunter" parent="." unique_id=1347582463 instance=ExtResource("17_3gunn")]
 position = Vector2(-72, 334)
 
-[node name="Goblin2" parent="." unique_id=291356877 instance=ExtResource("3_b1r40")]
-position = Vector2(-146, 143)
+[node name="Goblin4" parent="." unique_id=529917617 instance=ExtResource("3_b1r40")]
+position = Vector2(246, 382)
 
 [node name="Goblin3" parent="." unique_id=1019054948 instance=ExtResource("3_b1r40")]
 position = Vector2(-294, -435)

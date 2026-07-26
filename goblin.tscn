@@ -302,6 +302,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 platform_floor_layers = 4294967280
 script = ExtResource("1_u6mjv")
+speed = 250
 metadata/_custom_type_script = "uid://dwjqkht2jmr7f"
 
 [node name="Legs" type="AnimatedSprite2D" parent="." unique_id=102870723]
@@ -329,6 +330,7 @@ shape = SubResource("CircleShape2D_yikbh")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=268476584]
 avoidance_enabled = true
 radius = 19.0
+max_speed = 1000.0
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1231414089]
 collision_layer = 8

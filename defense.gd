@@ -5,6 +5,7 @@ extends Node2D
 @onready var subtitle_label: Label = wave_announcement.get_node("MarginContainer/VBoxContainer/Subtitle")
 @onready var goblin_counter: Control = $CanvasLayer/GoblinCounter
 @onready var peasant = $Peasant
+@onready var health_bar = $CanvasLayer/HealthBar
 
 @export var goblin_scene: PackedScene
 
@@ -15,16 +16,26 @@ extends Node2D
 @export var min_spawn_interval: float = 0.3
 @export var interval_decrease_per_wave: float = 0.15
 
-@export var base_goblins_per_wave: int = 1
-@export var goblins_per_wave_increase: int = 3
+@export var base_goblins_per_wave: int = 10
+@export var goblins_per_wave_increase: int = 5
+@export var waves_total = 10
 
 # after this each wave will be from all directions
-var wave_directions: Array[Array] = [["north"], ["south"], ["east"], ["north", "south"], ["south", "east"]]
+var wave_directions: Array[Array] = [["north"],
+ 									["south"],
+ 									["east"],
+ 									["west"],
+ 									["north", "south"],
+ 									["south", "east"],
+ 									["west"],
+ 									["west", "east", "north"],
+									["west", "east", "north", "south"]]
 
 var direction_messages := {
 	"north": "They come from the north!",
 	"south": "They come from the south!",
 	"east": "They come from the east!",
+	"west": "They come from the west!",
 }
 
 enum State { IDLE, COUNTDOWN, WAVE_ACTIVE, WAVE_BREAK }
@@ -54,6 +65,10 @@ var recruited_acrobat = false
 var recruited_doctor = false
 var recruited_hunter = false
 
+var goblins_killed = 0
+
+
+
 
 func _ready():
 	# This must be commented out!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -71,6 +86,9 @@ func _ready():
 	
 	assign_variables()
 	cull_unwanted()
+	
+	health_bar.update_health(peasant.hitpoints, peasant.max_hitpoints)
+	peasant.hitpoints_changed.connect(health_bar.update_health)
 	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
 	for dir in direction_messages.keys():
@@ -248,6 +266,7 @@ func _spawn_goblin():
 
 
 func _on_goblin_died():
+	goblins_killed += 1
 	goblins_remaining -= 1
 	_update_goblins_left_label()
 	if goblins_remaining <= 0 and goblins_spawned_this_wave >= wave_goblins_total and state == State.WAVE_ACTIVE:
