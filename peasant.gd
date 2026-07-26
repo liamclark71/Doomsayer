@@ -1,17 +1,17 @@
 class_name Character extends CharacterBody2D
 
-@export var speed = 400
+@export var speed := 400
 @export var arrow_scene: PackedScene
 @export var rock_scene: PackedScene
-@export var hitpoints = 5
+@export var hitpoints := 5
 @export var dodge_speed = 1500
-@export var dodge_duration = 0.1
-@export var dodge_cooldown = 0.5
-@export var camera_lookahead = 0.15
+@export var dodge_duration := 0.1
+@export var dodge_cooldown := 0.5
+@export var camera_lookahead := 0.15
 
-@export var has_bow = false
-@export var has_dodge = false
-@export var has_revive = false
+@export var has_bow := false
+@export var has_dodge := false
+@export var has_revive := false
 
 @onready var legs = $Legs
 @onready var torso = $Torso
@@ -42,6 +42,8 @@ class_name Character extends CharacterBody2D
 @onready var slash_sound = load("res://sound_assets/stabbed.wav")
 @onready var sword_wall_hit_sound = load("res://sound_assets/sword_hit_wall.wav") 
 @onready var bat_wall_hit_sound = load("res://sound_assets/club_hit_wall.wav")
+
+
 var camera 
 
 var damage = 1
@@ -58,17 +60,19 @@ var last_move_direction = Vector2.DOWN
 var swing_on_cooldown = false
 var shoot_on_cooldown = false
 var interact_object = null
-var max_hitpoints = 8
+var max_hitpoints := 8
 var showing_blocked_message = false
 
 var interact_scene = preload("res://interact_text.tscn")
 var interact_label = null  # track the current instance
+var invulnerable = false
 
 var has_sword: bool = false:
 	set(value):
 		has_sword = value
 		damage = 2 if value else 1
 
+signal hitpoints_changed(current: int, max: int)
 
 func _ready():
 	max_hitpoints = hitpoints
@@ -77,6 +81,7 @@ func _ready():
 	anim_tree.active = true
 	z_index = 1
 	hitbox.disabled = true
+	hitpoints_changed.emit(hitpoints, max_hitpoints)
 
 
 func walking_audio_on():
@@ -178,17 +183,20 @@ func _end_swing():
 
 func take_damage(dam, _damageType):
 	$GotStabbedAudioController.play()
-	if not alive:
+	if not alive or invulnerable:
 		return
 	var tween = get_tree().create_tween()
 	tween.tween_property($Torso, "modulate", Color(1.0, 0.35, 0.35), 0.1)
 	tween.tween_property($Torso, "modulate", Color.WHITE, 0.1)
 	hitpoints -= dam
-	print("hp: ", hitpoints)
+	hitpoints_changed.emit(hitpoints, max_hitpoints)
 	if hitpoints <= 0:
 		game_over()
-	else:
-		print("OOUUWWWOUWOWOUUWWWWUU")
+
+
+func heal_to_full():
+	hitpoints = max_hitpoints
+	hitpoints_changed.emit(hitpoints, max_hitpoints)
 
 func handle_revive_audio():
 	$ReviveAudioController.play()
@@ -198,7 +206,9 @@ func game_over():
 		handle_revive_audio()
 		has_revive = false
 		hitpoints = max_hitpoints
+		hitpoints_changed.emit(hitpoints, max_hitpoints)
 		_show_potion_label()
+		_start_invulnerability()
 		return
 		
 	print("Oh no! I have been defeated by the Goblins")
@@ -214,6 +224,19 @@ func game_over():
 		var tween = get_tree().create_tween()
 		tween.tween_interval(1.5)
 		tween.tween_property(game_over_menu, "modulate", Color(1,1,1,.9), 1)
+
+
+func _start_invulnerability(duration: float = 2.0):
+	invulnerable = true
+
+	var blink_tween = get_tree().create_tween()
+	blink_tween.set_loops(int(duration / 0.2))
+	blink_tween.tween_property($Torso, "modulate:a", 0.3, 0.1)
+	blink_tween.tween_property($Torso, "modulate:a", 1.0, 0.1)
+
+	await get_tree().create_timer(duration).timeout
+	invulnerable = false
+	$Torso.modulate.a = 1.0
 
 
 func _show_potion_label():

@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
-@export var speed = 100
+@export var speed = 300
 @export var hitpoints: int = 2
 
 @onready var agent = $NavigationAgent2D

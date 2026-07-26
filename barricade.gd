@@ -73,6 +73,8 @@ func take_damage(dam, _damage_type):
 		hitpoints -= dam
 		if hitpoints <= 0:
 			break_barricade()
+		else:
+			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 3))
 
 
 func break_barricade():
