@@ -114,7 +114,6 @@ audio/type_sound_bus="Sound Effects"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
