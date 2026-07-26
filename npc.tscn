@@ -760,6 +760,7 @@ attenuation = 7.4642572
 
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
 stream = ExtResource("26_8d7p2")
+attenuation = 2.2191393
 
 [node name="PotionLabel" type="Label" parent="." unique_id=308662403]
 offset_right = 40.0

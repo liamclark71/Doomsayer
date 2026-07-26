@@ -13,7 +13,7 @@ extends Node2D
 @export var countdown_duration: float = 3.0
 @export var break_duration: float = 5.0
 
-@export var base_spawn_interval: float = 2.0
+@export var base_spawn_interval: float = 0.0001
 @export var min_spawn_interval: float = 0.3
 @export var interval_decrease_per_wave: float = 0.15
 
@@ -136,6 +136,13 @@ func cull_unwanted():
 		$Doctor.queue_free()
 	if !recruited_hunter:
 		$Hunter.queue_free()
+
+
+
+func _unhandled_input(event):
+	if not game_started and event.is_action_pressed("start"):
+		game_started = true
+		_start_next_wave()
 
 
 func _start_next_wave():

@@ -359,6 +359,7 @@ autostart = true
 attenuation = 5.856333
 
 [node name="DamageAudioController" type="AudioStreamPlayer2D" parent="." unique_id=876903028]
+attenuation = 3.8637443
 
 [node name="ChatterAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1363963632]
 volume_db = -0.58
