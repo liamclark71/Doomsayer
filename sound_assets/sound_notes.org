@@ -1,6 +1,6 @@
 #+title: Sound Notes
 
-* TODO Combat
+* DONE Combat
 ** DONE Barricades
 *** DONE Board barricade fixing
 
@@ -34,7 +34,7 @@
 
 ** DONE revisit everything and determine normalization
 
-* TODO Pause Settings
+* DONE Pause Settings
 ** DONE Music
 *** DONE On/Off
 *** DONE Slider
@@ -42,4 +42,5 @@
 *** DONE On/Off
 *** DONE Slider
 
-* TODO Fade sounds when dead
+* DONE Fade sounds when dead
+* TODO Delay music start

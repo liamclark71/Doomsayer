@@ -34,4 +34,4 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.66763264, 0.8010265, 0.91413707, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
-text = "Waves Left: "
+text = "Waves"

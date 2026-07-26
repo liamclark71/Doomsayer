@@ -269,7 +269,7 @@ position = Vector2(-278, 205)
 process_mode = 3
 stream = ExtResource("5_7088l")
 volume_db = -13.152
-autoplay = true
+bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1557942526]
 
@@ -383,4 +383,5 @@ text = "WASD to Move
 Left click to shoot
 Right click to swing
 Space to dodge
-E to interact"
+E to interact
+ESC or P to pause"

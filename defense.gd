@@ -54,6 +54,7 @@ var wave_goblins_total := 0
 var goblins_spawned_this_wave := 0
 var goblins_remaining := 0
 var goblins_left_label
+var waves_left_label
 
 var has_bow = false
 var has_dodge = false
@@ -93,6 +94,8 @@ func _ready():
 	peasant.hitpoints_changed.connect(_blood_splatter_animation)
 	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
+	waves_left_label = goblin_counter.get_child(0).get_child(1)
+	
 	for dir in direction_messages.keys():
 		spawn_points_by_direction[dir] = get_tree().get_nodes_in_group("spawners_%s" % dir)
 
@@ -104,6 +107,7 @@ func _ready():
 	wave_announcement.visible = false
 	subtitle_label.modulate = Color.TRANSPARENT
 	goblins_left_label.visible = false
+	waves_left_label.visible = false
 	game_started = true
 	_start_next_wave()
 	
@@ -167,13 +171,16 @@ func _unhandled_input(event):
 
 
 func _start_next_wave():
-	if wave >= waves_total:
+	if wave > waves_total:
 		_trigger_victory()
 		return
 	
 	wave += 1
 	state = State.COUNTDOWN
 	await _show_countdown()
+	if not $AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
+	waves_left_label.visible = true
 	_begin_wave()
 
 
@@ -256,7 +263,10 @@ func _begin_wave():
 	goblins_spawned_this_wave = 0
 	goblins_remaining = wave_goblins_total
 	_update_goblins_left_label()
+	_update_waves_left_label()
+	
 	goblins_left_label.visible = true
+	waves_left_label.visible = true
 
 	spawn_interval = max(min_spawn_interval, base_spawn_interval - interval_decrease_per_wave * (wave - 1))
 	spawn_timer.wait_time = spawn_interval
@@ -282,6 +292,7 @@ func _end_wave():
 	state = State.WAVE_BREAK
 	spawn_timer.stop()
 	goblins_left_label.visible = false
+	_update_waves_left_label()
 	await get_tree().create_timer(break_duration).timeout
 	_start_next_wave()
 
@@ -307,6 +318,7 @@ func _spawn_goblin():
 	get_tree().current_scene.add_child(goblin)
 	goblin.global_position = point.global_position
 
+
 	goblins_spawned_this_wave += 1
 	goblin.goblin_died.connect(_on_goblin_died)
 
@@ -321,3 +333,6 @@ func _on_goblin_died():
 
 func _update_goblins_left_label():
 	goblins_left_label.text = "Goblins left: %d" % max(goblins_remaining, 0)
+
+func _update_waves_left_label():
+	waves_left_label.text = "Waves Left: %d" % min(waves_total - wave + 1, 8)
