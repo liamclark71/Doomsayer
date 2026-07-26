@@ -23,7 +23,6 @@ func _ready():
 	barricade_damage_sound_controller = $BoardDamageAudioController.stream
 	max_hitpoints = hitpoints
 	walls_layer = get_tree().get_first_node_in_group("walls")
-	walls_layer.get_cell_alternative_tile(cell)
 	if walls_layer:
 		cell = walls_layer.local_to_map(walls_layer.to_local(global_position))
 		current_source_id = walls_layer.get_cell_source_id(cell)
