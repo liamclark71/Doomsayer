@@ -13,16 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://dacm53oo4qu31" path="res://sprites/bald npc/bald npc frames/007.png" id="11_5fjty"]
 [ext_resource type="Texture2D" uid="uid://dh25bppiaclbp" path="res://sprites/bald npc/bald npc frames/008.png" id="12_gegpq"]
 [ext_resource type="Texture2D" uid="uid://ou2yrr1m72l2" path="res://sprites/bald npc/bald npc frames/009.png" id="13_lqe0l"]
-[ext_resource type="Texture2D" uid="uid://cl73igfaqabju" path="res://sprites/bald npc/bald npc frames/004.png" id="14_c44l1"]
-[ext_resource type="Texture2D" uid="uid://ckl3cq7srskpe" path="res://sprites/bald npc/bald npc frames/005.png" id="15_ag07b"]
+[ext_resource type="Texture2D" uid="uid://vdgbxpf374tl" path="res://sprites/acrobat frames/004.png" id="14_txhb6"]
+[ext_resource type="Texture2D" uid="uid://sww6lpfbctjb" path="res://sprites/acrobat frames/005.png" id="15_v27pj"]
 [ext_resource type="Texture2D" uid="uid://cila0m7hy3c6x" path="res://sprites/bald npc/bald npc frames/001.png" id="16_455jj"]
-[ext_resource type="Texture2D" uid="uid://d06oje7g4a72f" path="res://sprites/bald npc/bald npc frames/000.png" id="17_wtbv2"]
-[ext_resource type="Texture2D" uid="uid://b2sgfefxpvebn" path="res://sprites/bald npc/bald npc frames/014.png" id="18_yyrik"]
-[ext_resource type="Texture2D" uid="uid://rq25nh7v2nu0" path="res://sprites/bald npc/bald npc frames/015.png" id="19_0y3wg"]
-[ext_resource type="Texture2D" uid="uid://nci2rkrbfc6t" path="res://sprites/bald npc/bald npc frames/010.png" id="20_4x647"]
-[ext_resource type="Texture2D" uid="uid://dbppuf5g0xpu" path="res://sprites/bald npc/bald npc frames/011.png" id="21_tm17w"]
-[ext_resource type="Texture2D" uid="uid://lauxdipdbwnj" path="res://sprites/bald npc/bald npc frames/012.png" id="22_qxpiu"]
-[ext_resource type="Texture2D" uid="uid://ddiys84ncjys4" path="res://sprites/bald npc/bald npc frames/013.png" id="23_m86rf"]
+[ext_resource type="Texture2D" uid="uid://d18ta6l4354j4" path="res://sprites/acrobat frames/000.png" id="17_txhb6"]
+[ext_resource type="Texture2D" uid="uid://doww3l0xmfg7f" path="res://sprites/acrobat frames/014.png" id="18_i1co8"]
+[ext_resource type="Texture2D" uid="uid://cavujeekqcr4" path="res://sprites/acrobat frames/001.png" id="18_v27pj"]
+[ext_resource type="Texture2D" uid="uid://h6ggofb8bxky" path="res://sprites/acrobat frames/015.png" id="19_uq3wu"]
+[ext_resource type="Texture2D" uid="uid://b0wil7mpplhi6" path="res://sprites/acrobat frames/010.png" id="20_txhb6"]
+[ext_resource type="Texture2D" uid="uid://g2rvp8ofnpoi" path="res://sprites/acrobat frames/011.png" id="21_v27pj"]
+[ext_resource type="Texture2D" uid="uid://c7gpe5eln8sbe" path="res://sprites/acrobat frames/012.png" id="22_i1co8"]
+[ext_resource type="Texture2D" uid="uid://bubuv370v5de3" path="res://sprites/acrobat frames/013.png" id="23_txhb6"]
 [ext_resource type="Texture2D" uid="uid://bu0m7y8nxytrl" path="res://sprites/bald npc/bald npc frames/002.png" id="24_mej5q"]
 [ext_resource type="Texture2D" uid="uid://btdr2d78xfjjd" path="res://sprites/bald npc/bald npc frames/003.png" id="25_76d8n"]
 [ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_p20ut"]
@@ -95,13 +96,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_c44l1")
+"texture": ExtResource("14_txhb6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_ag07b")
+"texture": ExtResource("15_v27pj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_455jj")
+"texture": ExtResource("17_txhb6")
 }],
 "loop": 1,
 "name": &"club_swing",
@@ -109,10 +110,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_wtbv2")
+"texture": ExtResource("17_txhb6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_455jj")
+"texture": ExtResource("18_v27pj")
 }],
 "loop": 1,
 "name": &"default",
@@ -120,10 +121,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_yyrik")
+"texture": ExtResource("18_i1co8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_0y3wg")
+"texture": ExtResource("19_uq3wu")
 }],
 "loop": 1,
 "name": &"die",
@@ -131,7 +132,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_4x647")
+"texture": ExtResource("20_txhb6")
 }],
 "loop": 1,
 "name": &"sling_draw",
@@ -139,10 +140,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_tm17w")
+"texture": ExtResource("21_v27pj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_qxpiu")
+"texture": ExtResource("22_i1co8")
 }],
 "loop": 1,
 "name": &"sling_hold",
@@ -150,7 +151,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_m86rf")
+"texture": ExtResource("23_txhb6")
 }],
 "loop": 1,
 "name": &"sling_release",
@@ -757,9 +758,12 @@ one_shot = true
 
 [node name="AttackAudioController" type="AudioStreamPlayer2D" parent="." unique_id=509212817]
 attenuation = 7.4642572
+bus = &"Sound Effects"
 
 [node name="GotStabbedAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1608978277]
+scale = Vector2(1, 0.9933582)
 stream = ExtResource("26_p20ut")
+bus = &"Sound Effects"
 
 [node name="PotionLabel" type="Label" parent="." unique_id=308662403]
 offset_right = 40.0
