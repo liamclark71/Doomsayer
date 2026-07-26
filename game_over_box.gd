@@ -11,7 +11,6 @@ func _ready():
 	bus_index = AudioServer.get_bus_index("Sound Effects")
 
 func _process(_delta):
-	print(volume)
 	if visible:
 		if volume_before_visible == -1:
 			volume_before_visible = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
