@@ -23,6 +23,8 @@ class_name Character extends CharacterBody2D
 @onready var shoot_timer = $ShootTimer
 @onready var potion_label = $PotionLabel
 @onready var game_over_menu = get_node("/root/defense/CanvasLayer/GameOverBox")
+@onready var pause_menu = get_node("/root/defense/CanvasLayer/PauseBox")
+
 @onready var ranged_charge_sound = load("res://sound_assets/ranged_charge.wav")
 @onready var bow_ranged_release_sound = load("res://sound_assets/arrow_release.wav")
 @onready var slingshot_release_sound = load('res://sound_assets/slingshot_release.wav')
@@ -134,6 +136,11 @@ func handle_ranged_release_audio():
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
+	if Input.is_action_just_pressed("pause"):
+		if pause_menu:
+			pause_menu.visible = true
+			get_tree().paused = !get_tree().paused
+			
 	if input_direction != Vector2.ZERO:
 		last_move_direction = input_direction
 	

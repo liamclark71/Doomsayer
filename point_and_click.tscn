@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crmd2suricbd3" path="res://point_and_click.gd" id="1_0odkp"]
 [ext_resource type="Script" uid="uid://dj6wb3kkfkf5m" path="res://status_display.gd" id="3_aea43"]
+[ext_resource type="PackedScene" uid="uid://dyphdrsrq5g7q" path="res://volume_slider.tscn" id="4_0odkp"]
 [ext_resource type="AudioStream" uid="uid://lpab2ubf3l5u" path="res://soundtracks/doomssay.wav" id="6_6oia1"]
 
 [node name="point_and_click" type="Node" unique_id=1708095002]
@@ -10,6 +11,7 @@ script = ExtResource("1_0odkp")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1008169357]
 stream = ExtResource("6_6oia1")
 autoplay = true
+bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=807090422]
 layer = 2
@@ -57,3 +59,59 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/status_display" unique_id=1725047698]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 580.0
+offset_right = 277.0
+offset_bottom = 636.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/status_display/MarginContainer2" unique_id=113226689]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer" unique_id=165443133]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer/MarginContainer3" unique_id=1833017443]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1487699528]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.20424429, 1.5446963e-06, 0.0033929292, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "Sound Effects   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume_slider" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=2026291094 instance=ExtResource("4_0odkp")]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+bus_name = "Sound Effects"
+
+[node name="Music" type="MarginContainer" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer" unique_id=1265938155]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer/Music" unique_id=629196381]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer/Music/HBoxContainer" unique_id=1225887978]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.20424429, 1.5446963e-06, 0.0033929292, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "Music   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" parent="CanvasLayer/status_display/MarginContainer2/VBoxContainer/Music/HBoxContainer" unique_id=259221528 instance=ExtResource("4_0odkp")]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+bus_name = "Music"

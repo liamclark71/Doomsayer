@@ -32,12 +32,14 @@
 ** DONE Goblin
 *** DONE Walking Chatter
 
-** TODO revisit everything and determine normalization
+** DONE revisit everything and determine normalization
 
 * TODO Pause Settings
-** TODO Music
-*** TODO On/Off
-*** TODO Slider
-** TODO Sound Effects
-*** TODO On/Off
-*** TODO Slider
+** DONE Music
+*** DONE On/Off
+*** DONE Slider
+** DONE Sound Effects
+*** DONE On/Off
+*** DONE Slider
+
+* TODO Fade sounds when dead

@@ -24,6 +24,7 @@ texture = ExtResource("1_l5ahi")
 [node name="CollisionAudioController" type="AudioStreamPlayer2D" parent="." unique_id=354087726]
 stream = ExtResource("3_acd0x")
 attenuation = 4.141059
+bus = &"Sound Effects"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

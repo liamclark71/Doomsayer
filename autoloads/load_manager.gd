@@ -12,7 +12,6 @@ var _progress: Array = []
 var use_sub_threads : bool = true
 
 
-
 func load_scene(scene_path: String) -> void:
 	_scene_path = scene_path
 	

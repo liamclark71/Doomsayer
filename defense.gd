@@ -7,6 +7,7 @@ extends Node2D
 @onready var peasant = $Peasant
 @onready var health_bar = $CanvasLayer/HealthBar
 @onready var game_over_box = $CanvasLayer/GameOverBox
+@onready var pause_box = $CanvasLayer/PauseBox
 
 @export var goblin_scene: PackedScene
 

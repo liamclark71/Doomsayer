@@ -357,13 +357,16 @@ autostart = true
 
 [node name="SpearAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1102054912]
 attenuation = 5.856333
+bus = &"Sound Effects"
 
 [node name="DamageAudioController" type="AudioStreamPlayer2D" parent="." unique_id=876903028]
 attenuation = 3.8637443
+bus = &"Sound Effects"
 
 [node name="ChatterAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1363963632]
 volume_db = -0.58
 attenuation = 6.06286
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="Torso/HitBox" to="." method="_on_hit_box_body_exited"]
