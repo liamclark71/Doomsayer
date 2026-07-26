@@ -8,8 +8,8 @@ extends Enemy
 @onready var hurtbox = $HurtBox/CollisionShape2D
 @onready var path_timer = $PathTimer
 
-@export var attack_range = 110
-@export var damage = 1
+@export var attack_range := 110
+@export var damage := 1
 @export var knockback_friction := 1500.0
 @onready var death_sounds: Array[AudioStream] = [
 	load("res://sound_assets/goblin_death1.wav"),
@@ -74,6 +74,9 @@ func _ready():
 	agent.target_desired_distance = 80
 	legs.play("stand")
 	anim_tree.active = true
+	
+	var skin_color = randf_range(0.8, 1.2)
+	self.modulate = Color(skin_color, skin_color, skin_color)
 	
 	target = get_closest_character()
 	if target:
