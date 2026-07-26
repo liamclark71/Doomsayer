@@ -268,7 +268,6 @@ position = Vector2(-278, 205)
 process_mode = 3
 stream = ExtResource("5_7088l")
 volume_db = -13.152
-autoplay = true
 bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1557942526]
@@ -282,7 +281,6 @@ visible = false
 [node name="GoblinCounter" parent="CanvasLayer" unique_id=1684856688 instance=ExtResource("11_du5ti")]
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=1588093766 instance=ExtResource("11_j4bm0")]
-
 
 [node name="PauseBox" parent="CanvasLayer" unique_id=985386047 instance=ExtResource("12_3gunn")]
 process_mode = 3
@@ -299,7 +297,6 @@ offset_right = -34.0
 offset_bottom = -524.0
 grow_horizontal = 2
 grow_vertical = 2
-
 
 [node name="NorthSpawner1" parent="." unique_id=688616312 groups=["spawners_north"] instance=ExtResource("8_t4un6")]
 position = Vector2(-557, -1117)

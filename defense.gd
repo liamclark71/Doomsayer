@@ -168,6 +168,8 @@ func _start_next_wave():
 	wave += 1
 	state = State.COUNTDOWN
 	await _show_countdown()
+	if not $AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
 	waves_left_label.visible = true
 	_begin_wave()
 
