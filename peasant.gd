@@ -201,6 +201,8 @@ func heal_to_full():
 func handle_revive_audio():
 	$ReviveAudioController.play()
 	
+signal player_defeated
+
 func game_over():
 	if has_revive == true:
 		handle_revive_audio()
@@ -218,6 +220,7 @@ func game_over():
 	legs.visible = false
 	z_index = -1
 	alive = false
+	player_defeated.emit()
 	if game_over_menu:
 		game_over_menu.modulate = Color.TRANSPARENT
 		game_over_menu.visible = true

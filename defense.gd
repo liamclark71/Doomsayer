@@ -6,6 +6,7 @@ extends Node2D
 @onready var goblin_counter: Control = $CanvasLayer/GoblinCounter
 @onready var peasant = $Peasant
 @onready var health_bar = $CanvasLayer/HealthBar
+@onready var game_over_box = $CanvasLayer/GameOverBox
 
 @export var goblin_scene: PackedScene
 
@@ -86,6 +87,7 @@ func _ready():
 	
 	health_bar.update_health(peasant.hitpoints, peasant.max_hitpoints)
 	peasant.hitpoints_changed.connect(health_bar.update_health)
+	peasant.player_defeated.connect(_on_player_defeated)
 	
 	goblins_left_label = goblin_counter.get_child(0).get_child(0)
 	for dir in direction_messages.keys():
@@ -101,6 +103,15 @@ func _ready():
 	goblins_left_label.visible = false
 	game_started = true
 	_start_next_wave()
+
+
+func _on_player_defeated():
+	var vbox = peasant.game_over_menu.get_node("Box/MarginContainer/VBoxContainer")
+	var title_label = vbox.get_child(0)
+	var goblin_label = vbox.get_child(1)
+	
+	title_label.text = "Game Over"
+	goblin_label.text = "Goblins Killed: %d" % goblins_killed
 
 
 func assign_variables():
@@ -139,10 +150,33 @@ func cull_unwanted():
 
 
 func _start_next_wave():
+	if wave >= waves_total:
+		_trigger_victory()
+		return
+	
 	wave += 1
 	state = State.COUNTDOWN
 	await _show_countdown()
 	_begin_wave()
+
+
+func _trigger_victory():
+	state = State.IDLE
+	spawn_timer.stop()
+	
+	if game_over_box:
+		var vbox = game_over_box.get_node("Box/MarginContainer/VBoxContainer")
+		var title_label = vbox.get_child(0)
+		var goblin_label = vbox.get_child(1)
+		
+		title_label.text = "Victory"
+		goblin_label.text = "Goblins Killed: %d" % goblins_killed
+		
+		game_over_box.modulate = Color.TRANSPARENT
+		game_over_box.visible = true
+		var tween = get_tree().create_tween()
+		tween.tween_interval(1.0)
+		tween.tween_property(game_over_box, "modulate", Color(1, 1, 1, .9), 1)
 
 
 func _pick_wave_directions() -> Array:
