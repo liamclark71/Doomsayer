@@ -388,25 +388,25 @@ position = Vector2(2385, 788)
 rotation = 1.5707964
 
 [node name="Blacksmith" parent="." unique_id=1519016829 instance=ExtResource("13_du5ti")]
-position = Vector2(1095, 490)
+position = Vector2(-880, 453)
 
 [node name="Carpenter" parent="." unique_id=360790538 instance=ExtResource("14_bt355")]
-position = Vector2(-248, 700)
+position = Vector2(-227, 636)
 
 [node name="Acrobat" parent="." unique_id=459724250 instance=ExtResource("15_gb10l")]
-position = Vector2(-486, 486)
+position = Vector2(817, 438)
 
 [node name="Doctor" parent="." unique_id=1661031149 instance=ExtResource("16_j4bm0")]
 position = Vector2(497, 599)
 
 [node name="Hunter" parent="." unique_id=1347582463 instance=ExtResource("17_3gunn")]
-position = Vector2(-72, 334)
+position = Vector2(528, 172)
 
 [node name="ControlsLabel" type="Label" parent="." unique_id=979308864]
-offset_left = -610.0
-offset_top = -172.0
-offset_right = -241.0
-offset_bottom = 100.0
+offset_left = -413.0
+offset_top = 254.0
+offset_right = -44.0
+offset_bottom = 551.0
 theme_override_colors/font_color = Color(0.88525444, 0.5733664, 0.30013528, 1)
 theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 34
