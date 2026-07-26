@@ -30,17 +30,14 @@ shape = SubResource("RectangleShape2D_5gpkp")
 [node name="GlassShatterAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1273280220]
 stream = ExtResource("2_4w3go")
 attenuation = 3.605001
-bus = &"Sound Effects"
 
 [node name="BoardDamageAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1497483823]
 stream = SubResource("AudioStreamRandomizer_vc6nf")
 attenuation = 2.0000005
-bus = &"Sound Effects"
 
 [node name="FixAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1343004737]
 stream = ExtResource("5_c0sxi")
 attenuation = 2.5491211
-bus = &"Sound Effects"
 
 [node name="GoblinDetector" type="Area2D" parent="." unique_id=730210627]
 collision_layer = 0
