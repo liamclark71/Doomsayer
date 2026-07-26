@@ -19,7 +19,7 @@ extends Node2D
 @export var interval_decrease_per_wave: float = 0.15
 
 @export var base_goblins_per_wave: int = 10
-@export var goblins_per_wave_increase: int = 5
+@export var goblins_per_wave_increase: int = 3
 @export var waves_total = 8
 
 # after this each wave will be from all directions
