@@ -28,7 +28,7 @@ func _ready():
 		current_source_id = walls_layer.get_cell_source_id(cell)
 		window_atlas_coords = walls_layer.get_cell_atlas_coords(cell)
 		if boarded_up:
-			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
+			_set_cell_rotated(Vector2i(-5, 1))
 
 
 func get_global_rect() -> Rect2:
@@ -40,7 +40,7 @@ func set_boarded_up(value: bool):
 	boarded_up = value
 	if walls_layer:
 		if boarded_up:
-			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 1))
+			_set_cell_rotated(Vector2i(-5, 1))
 		else:
 			walls_layer.set_cell(cell, current_source_id, window_atlas_coords)
 
@@ -74,13 +74,13 @@ func take_damage(dam, _damage_type):
 		if hitpoints <= 0:
 			break_barricade()
 		else:
-			walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 3))
+			_set_cell_rotated(Vector2i(-1, 3))
 
 
 func break_barricade():
 	set_collision_layer_value(1, false)
 	targetable = false
-	walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
+	_set_cell_rotated(Vector2i(-1, 1))
 
 func handle_board_repair_audio():
 	if hitpoints < max_hitpoints:
@@ -90,7 +90,7 @@ func repair_barricade():
 	handle_board_repair_audio()
 	if boarded_up:
 		hitpoints = max_hitpoints
-		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
+		_set_cell_rotated(Vector2i(-5, 3))
 		targetable = true
 		_enable_collision_when_clear()
 
@@ -126,9 +126,9 @@ func break_glass_audio():
 func break_glass():
 	break_glass_audio()
 	if boarded_up:
-		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-5, 3))
+		_set_cell_rotated(Vector2i(-5, 3))
 	else:
-		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + Vector2i(-1, 1))
+		_set_cell_rotated(Vector2i(-1, 1))
 
 
 func _on_goblin_detector_body_entered(body):
@@ -139,3 +139,21 @@ func _on_goblin_detector_body_entered(body):
 func _on_goblin_detector_body_exited(body):
 	if body.is_in_group("goblin"):
 		nearby_goblins.erase(body)
+
+func _set_cell_rotated(cell_coords):
+	var flip_h = TileSetAtlasSource.TRANSFORM_FLIP_H
+	var flip_v = TileSetAtlasSource.TRANSFORM_FLIP_H
+	var transpose = TileSetAtlasSource.TRANSFORM_TRANSPOSE
+	var tile_alternate
+	if self.rotation_degrees == 0.0:
+		tile_alternate = 0
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + cell_coords, tile_alternate)
+	elif self.rotation_degrees == 90.0:
+		tile_alternate = transpose | flip_h
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + cell_coords, tile_alternate)
+	elif self.rotation_degrees == 180.0:
+		tile_alternate = flip_h | flip_v
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + cell_coords, tile_alternate)
+	elif self.rotation_degrees == 270.0:
+		tile_alternate = transpose | flip_v
+		walls_layer.set_cell(cell, current_source_id, window_atlas_coords + cell_coords, tile_alternate)
