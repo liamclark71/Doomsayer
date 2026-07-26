@@ -7,39 +7,45 @@ if {hours} >= 2.0 and {items.bow} == true:
 	set {conversation.bow_and_hours} = true
 Hunter: "What are you doing out here?"
 - "I'd like to buy a bow." | [if {items.bow} == false]
-	Hunter: "That'll be 6 gold."
+	Hunter: "A bow??? Wow! That'll be 6 gold."
 	- Purchase [obtain bow upgrade] | [if {gold} >= 6.0]
 		set {items.bow} = true
 		set {gold} -= 6.0
 		You now have the bow upgrade.
+		Hunter: "Remember, pointy side torwards enemy!"
 		jump hunter_greeting
 	- "I don't have that much money."
+		Hunter: "Thin ice buddy."
 		jump hunter_greeting
 - "Goblins will attack the town at nightfall." | [if {recruitment.hunter_recruited} == false]
 	Doomsayer: "I'm planning to mount a defense from the church.\
 	Will you join me?"
-	Hunter: "Goblins..."
-	Hunter: "Feisty little creatures...\
-	Not much good for eating."
+	Hunter: "Hehehe mount."
+	Hunter: "Goblins huh...\
+	What are those again?"
+	Doomsayer: "...Little green people?"
+	Hunter: "Ugh sounds awful count me in."
 	label hunter_choice
-	Hunter: "If you help me set up traps in the area, I'll join you at the church."
+	Hunter: "Shit wait, I've gotta set up some traps. If you help me out I'll join your little green slumber party or whatever."
 	- Agree to help [lose 3 hours] | [if {hours} >= 3.0]
 		set {recruitment.hunter_recruited} = true
 		set {hours} -= 3.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend three hours setting up traps around the perimeter of the village. You hope that some of the goblins will get caught.
-		The hunter shakes your hand and stalks off.
+		Hunter: "I just love traps, don't you?"
 		jump hunter_greeting
 	- Offer to go hunting instead [locked - bow required] | [if {items.bow} == false]
+		Hunter: "Oh yeah? You're gonna chase down a deer and maul it to death? Come back when you've got a bow."
 		jump hunter_choice
 	- Offer to go hunting instead [lose 2 hours] | [if {conversation.bow_and_hours} == true]
 		set {recruitment.hunter_recruited} = true
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0
 		You and the hunter spend two hours stalking deer in the forest. In the end, you manage to shoot one. The hunter is pleased with your marksmanship.
-		The hunter shakes your hand and stalks off.
+		Hunter: "BAM! Right between the eyes. Got em good, buddy."
 		jump hunter_greeting
 	- "I can't do that right now."
+		Hunter: "Then take a hike."
 		jump hunter_greeting
 - Return to the town square
 	leave Hunter

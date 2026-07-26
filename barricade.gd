@@ -1,12 +1,12 @@
 extends StaticBody2D
 
 @export var hitpoints := 8
-@export var boarded_up = false
+@export var boarded_up := false
 
 @onready var collision_shape = $CollisionShape2D
 
-var targetable = true
-var glass_intact = true
+var targetable := true
+var glass_intact := true
 var walls_layer: TileMapLayer
 var cell
 var current_source_id
@@ -23,6 +23,7 @@ func _ready():
 	barricade_damage_sound_controller = $BoardDamageAudioController.stream
 	max_hitpoints = hitpoints
 	walls_layer = get_tree().get_first_node_in_group("walls")
+	walls_layer.get_cell_alternative_tile(cell)
 	if walls_layer:
 		cell = walls_layer.local_to_map(walls_layer.to_local(global_position))
 		current_source_id = walls_layer.get_cell_source_id(cell)
