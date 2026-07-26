@@ -114,9 +114,10 @@ func _ready():
 	blood_splatter.modulate = Color.TRANSPARENT
 	
 func _blood_splatter_animation(_a, _b):
-	var tween = get_tree().create_tween()
-	tween.tween_property(blood_splatter, "modulate", Color.WHITE, 0.1)
-	tween.tween_property(blood_splatter, "modulate", Color.TRANSPARENT, 0.2)
+	if _a < _b:
+		var tween = get_tree().create_tween()
+		tween.tween_property(blood_splatter, "modulate", Color.WHITE, 0.1)
+		tween.tween_property(blood_splatter, "modulate", Color.TRANSPARENT, 0.2)
 
 
 func _on_player_defeated():
