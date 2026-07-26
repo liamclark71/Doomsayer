@@ -70,7 +70,7 @@ var goblins_killed = 0
 
 func _ready():
 	# This must be commented out!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	_apply_debug_overrides()
+	#_apply_debug_overrides()
 	
 	has_bow = Dialogic.VAR.items.bow
 	has_dodge = Dialogic.VAR.items.dodge
