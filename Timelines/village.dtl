@@ -7,7 +7,7 @@ All you know is, you have 10 hours left.
 set {hours} = 10
 - Enter village square
 label square
-[background arg="res://img/point_and_click/backgrounds/village_square.png" fade="0.0"]
+[background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Town Center Background 1.png" fade="0.0"]
 What a peaceful place.
 if {hours} > 0.0:
 	- Yell about the imminent goblin attack | [if {conversation.yell} == false]
