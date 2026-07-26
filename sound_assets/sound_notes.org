@@ -23,10 +23,10 @@
 
 
 
-** TODO Character
+** DONE Character
 *** DONE Walking
-*** TODO Dodge
-*** TODO Revive
+*** DONE Dodge
+*** DONE Revive
 
 
 ** DONE Goblin

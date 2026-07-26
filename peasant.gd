@@ -156,7 +156,11 @@ func get_input():
 	if Input.is_action_just_pressed("interact"):
 		interact()
 
+func _handle_dodge_audio():
+	$DashAudioController.play()
+
 func _start_dodge(input_direction: Vector2):
+	_handle_dodge_audio()
 	if input_direction != Vector2.ZERO:
 		dodge_direction = input_direction 
 	else: 
@@ -198,9 +202,14 @@ func heal_to_full():
 	hitpoints = max_hitpoints
 	hitpoints_changed.emit(hitpoints, max_hitpoints)
 
+func handle_revive_audio():
+	$ReviveAudioController.play()
+	
+signal player_defeated
 
 func game_over():
 	if has_revive == true:
+		handle_revive_audio()
 		has_revive = false
 		hitpoints = max_hitpoints
 		hitpoints_changed.emit(hitpoints, max_hitpoints)
@@ -215,6 +224,7 @@ func game_over():
 	legs.visible = false
 	z_index = -1
 	alive = false
+	player_defeated.emit()
 	if game_over_menu:
 		game_over_menu.modulate = Color.TRANSPARENT
 		game_over_menu.visible = true

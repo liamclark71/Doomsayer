@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://cgmvbhooc4bov" path="res://sprites/peasant/peasant body frames/003.png" id="20_d237o"]
 [ext_resource type="AudioStream" uid="uid://do3nvopgsm6ln" path="res://sound_assets/stabbed.wav" id="26_gp7sx"]
 [ext_resource type="AudioStream" uid="uid://hl3kgyfsskgg" path="res://sound_assets/footsteps.wav" id="27_s7gtl"]
+[ext_resource type="AudioStream" uid="uid://458jqkxos17d" path="res://sound_assets/goblin_chatter/heal.wav" id="28_qnjh6"]
+[ext_resource type="AudioStream" uid="uid://bgq27ru6786ai" path="res://sound_assets/goblin_chatter/dash.wav" id="29_plvwj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rskbl"]
 animations = [{
@@ -698,6 +700,12 @@ states/sword_swing/node = SubResource("AnimationNodeAnimation_dcrm0")
 states/sword_swing/position = Vector2(491.6, 192.8)
 transitions = ["default", "bow_draw", SubResource("AnimationNodeStateMachineTransition_2hwpg"), "bow_draw", "bow_hold", SubResource("AnimationNodeStateMachineTransition_62kdh"), "bow_hold", "bow_release", SubResource("AnimationNodeStateMachineTransition_mdp7r"), "bow_release", "default", SubResource("AnimationNodeStateMachineTransition_w6oug"), "default", "sling_draw", SubResource("AnimationNodeStateMachineTransition_3u1pd"), "sling_draw", "sling_hold", SubResource("AnimationNodeStateMachineTransition_p0nvd"), "sling_hold", "sling_release", SubResource("AnimationNodeStateMachineTransition_d237o"), "sling_release", "default", SubResource("AnimationNodeStateMachineTransition_61nkb"), "default", "club_swing", SubResource("AnimationNodeStateMachineTransition_q71mf"), "default", "sword_swing", SubResource("AnimationNodeStateMachineTransition_s7gtl"), "sword_swing", "default", SubResource("AnimationNodeStateMachineTransition_qnjh6"), "Start", "default", SubResource("AnimationNodeStateMachineTransition_1kt68"), "club_swing", "default", SubResource("AnimationNodeStateMachineTransition_gp7sx")]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vc6nf"]
+random_pitch = 1.0997431
+random_volume_offset_db = 1.37
+streams_count = 1
+stream_0/stream = ExtResource("29_plvwj")
+
 [node name="Peasant" type="CharacterBody2D" unique_id=772900983 groups=["characters"]]
 collision_layer = 2
 collision_mask = 13
@@ -788,6 +796,13 @@ vertical_alignment = 1
 [node name="WalkingAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1672019903]
 stream = ExtResource("27_s7gtl")
 autoplay = true
+
+[node name="ReviveAudioController" type="AudioStreamPlayer2D" parent="." unique_id=1637174821]
+stream = ExtResource("28_qnjh6")
+
+[node name="DashAudioController" type="AudioStreamPlayer2D" parent="." unique_id=2143909340]
+stream = SubResource("AudioStreamRandomizer_vc6nf")
+volume_db = -17.43
 
 [connection signal="area_entered" from="Torso/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Torso/HitBox" to="." method="_on_hit_box_body_entered"]
