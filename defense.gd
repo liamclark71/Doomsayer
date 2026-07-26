@@ -19,24 +19,20 @@ extends Node2D
 
 @export var base_goblins_per_wave: int = 10
 @export var goblins_per_wave_increase: int = 5
-@export var waves_total = 10
+@export var waves_total = 8
 
 # after this each wave will be from all directions
 var wave_directions: Array[Array] = [["north"],
  									["south"],
  									["east"],
- 									["west"],
  									["north", "south"],
  									["south", "east"],
- 									["west"],
- 									["west", "east", "north"],
-									["west", "east", "north", "south"]]
+ 									["east"]]
 
 var direction_messages := {
 	"north": "They come from the north!",
 	"south": "They come from the south!",
 	"east": "They come from the east!",
-	"west": "They come from the west!",
 }
 
 enum State { IDLE, COUNTDOWN, WAVE_ACTIVE, WAVE_BREAK }
