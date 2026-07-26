@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b35jf7fj47b8y" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://craymox8syvlc" path="res://loading_screen/menu_art_game_jam_2026.png" id="2_7vrkn"]
+[ext_resource type="AudioStream" uid="uid://cfnbt1igvmydx" path="res://soundtracks/mainmenudoomssay.wav" id="3_fu7sn"]
 
 [node name="Main Menu" type="Control" unique_id=918102893]
 layout_mode = 3
@@ -36,6 +37,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Start Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1833921622]
+stream = ExtResource("3_fu7sn")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="start_game" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]
