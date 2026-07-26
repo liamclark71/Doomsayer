@@ -22,8 +22,16 @@ theme_override_constants/margin_top = 30
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1405070992]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.66763264, 0.8010265, 0.91413707, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Goblins Left: 0"
+
+[node name="Label2" type="Label" parent="MarginContainer" unique_id=1881659691]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.66763264, 0.8010265, 0.91413707, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Waves Left: "
