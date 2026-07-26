@@ -1,6 +1,10 @@
 [background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Hunter Background 1.png" fade="0.0"]
 join Hunter center
 label hunter_greeting
+if {recruitment.hunter_recruited} == true and {items.bow} == true:
+	set {conversation.hunter} = true
+if {hours} >= 2.0 and {items.bow} == true:
+	set {conversation.bow_and_hours} = true
 Hunter: "What are you doing out here?"
 - "I'd like to buy a bow." | [if {items.bow} == false]
 	Hunter: "That'll be 6 gold."
@@ -28,7 +32,7 @@ Hunter: "What are you doing out here?"
 		jump hunter_greeting
 	- Offer to go hunting instead [locked - bow required] | [if {items.bow} == false]
 		jump hunter_choice
-	- Offer to go hunting instead [lose 2 hours] | [if {items.bow} == true]
+	- Offer to go hunting instead [lose 2 hours] | [if {conversation.bow_and_hours} == true]
 		set {recruitment.hunter_recruited} = true
 		set {hours} -= 2.0
 		set {recruitment.recruitees} += 1.0

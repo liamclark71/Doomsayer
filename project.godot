@@ -51,6 +51,11 @@ layout/style_list=["res://dialogue_style.tres"]
 layout/default_style="res://dialogue_style.tres"
 variables={
 "conversation": {
+"blacksmith": false,
+"bow_and_hours": false,
+"doctor": false,
+"dodge_and_hours": false,
+"hunter": false,
 "performances": 0,
 "yell": false
 },

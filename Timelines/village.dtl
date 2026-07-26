@@ -7,7 +7,7 @@ All you know is, you have 10 hours left.
 set {hours} = 10
 - Enter village square
 label square
-[background arg="res://img/point_and_click/backgrounds/village_square.png" fade="0.0"]
+[background arg="res://img/point_and_click/backgrounds/Game Jam 2026 Town Center Background 1.png" fade="0.0"]
 What a peaceful place.
 if {hours} > 0.0:
 	- Yell about the imminent goblin attack | [if {conversation.yell} == false]
@@ -17,14 +17,16 @@ if {hours} > 0.0:
 	- Visit the...
 		- Carpenter | [if {recruitment.carpenter_recruited} == false]
 			jump carpenter_timeline/
-		- Blacksmith | [if {recruitment.blacksmith_recruited} == false and {items.sword} == false]
+		- Blacksmith | [if {conversation.blacksmith} == false]
 			jump blacksmith_timeline/
-		- Hunter | [if {recruitment.hunter_recruited} == false and {items.bow} == false]
+		- Hunter | [if {conversation.hunter} == false]
 			jump hunter_timeline/
-		- Doctor | [if {recruitment.doctor_recruited} == false and {items.revive} == false]
+		- Doctor | [if {conversation.doctor} == false]
 			jump doctor_timeline/
 		- Acrobat | [if {recruitment.acrobat_recruited} == false]
 			jump acrobat_timeline/
+		- Return to the square
+			jump square
 	- Go to the church [forfeit remaining hours]
 		[signal arg="res://defense.tscn"]
 elif {hours} <= 0.0:

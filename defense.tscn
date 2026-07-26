@@ -283,9 +283,23 @@ visible = false
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=1588093766 instance=ExtResource("11_j4bm0")]
 
+
 [node name="PauseBox" parent="CanvasLayer" unique_id=985386047 instance=ExtResource("12_3gunn")]
 process_mode = 3
 visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=573410841]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 904.0
+offset_top = 83.0
+offset_right = -34.0
+offset_bottom = -524.0
+grow_horizontal = 2
+grow_vertical = 2
+
 
 [node name="NorthSpawner1" parent="." unique_id=688616312 groups=["spawners_north"] instance=ExtResource("8_t4un6")]
 position = Vector2(-557, -1117)
